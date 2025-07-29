@@ -31,7 +31,18 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 children: [
-                  SizedBox(height: 350),
+
+                  SizedBox(height: 280),
+
+                  Text('Sign In',
+                    style: TextStyle(
+                        fontSize: 60,
+                        fontWeight: FontWeight.w600,
+                      color: Colors.black45
+                    ),
+                  ),
+
+                  SizedBox(height: 30,),
 
                   /// Username Field
                   TextFormField(
@@ -41,7 +52,8 @@ class _SignInPageState extends State<SignInPage> {
                       prefixIcon: Icon(Icons.person),
                       prefixIconColor: Colors.black26,
                       // prefixIcon: Icon(Icons.verified_user),
-                      // filled: true,
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -68,7 +80,8 @@ class _SignInPageState extends State<SignInPage> {
                               : Icons.visibility_off,
                         ),
                       ),
-                      // filled: true,
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -77,25 +90,33 @@ class _SignInPageState extends State<SignInPage> {
 
                   SizedBox(height: 40),
 
-                  /// Button To Validate
-                  ElevatedButton(
-                    onPressed: () {
-                      // Form Validation
-                      if (_formKey.currentState!.validate()) {
-                        debugPrint('Data Processing.......');
-                        debugPrint(_userNameController.toString());
-                        debugPrint(_passwordController.toString());
-                      } else {
-                        debugPrint(
-                          'Invalid Details, all or some fields are not validates',
-                        );
-                        _passwordController.clear();
-                      }
-                    },
-                    child: Text('Sign In'),
-                  ),
+                  /// Buttons
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      /// Sign In Button To Validate
+                      ElevatedButton(
+                        onPressed: () {
+                          // Form Validation
+                          if (_formKey.currentState!.validate()) {
+                            debugPrint('Data Processing.......');
+                            debugPrint(_userNameController.toString());
+                            debugPrint(_passwordController.toString());
+                          } else {
+                            debugPrint(
+                              'Invalid Details, all or some fields are not validates',
+                            );
+                            _passwordController.clear();
+                          }
+                        },
+                        child: Text('Sign In'),
+                      ),
+                      // SizedBox(height: 20),
 
-                  ElevatedButton(onPressed: () {}, child: Text('Sign Up')),
+                      /// Sign Up
+                      ElevatedButton(onPressed: () {  }, child: Text('Sign Up')),
+                    ],
+                  ),
                 ],
               ),
             ),
