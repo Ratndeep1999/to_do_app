@@ -87,13 +87,16 @@ class _SignInPageState extends State<SignInPage> {
                         return 'Password must be contain at least one Lowercase letter';
                       } else if (!RegExp(r'[0-9]').hasMatch(password)) {
                         return 'Password must be contain at least one number';
-                      } else if (RegExp(r'[!@#$&*_]').hasMatch(password)) {
+                      } else if (!RegExp(r'[!@#$&*_]').hasMatch(password)) {
                         return 'Password must be contain at least one special character (!@#\$&*_)';
                       } 
                       if (password.contains(' ')) {
                         return 'Space not allow';
                       }
                       return null;
+                    },
+                    onChanged: (password) {
+                      _formKey.currentState!.validate();
                     },
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
@@ -131,8 +134,8 @@ class _SignInPageState extends State<SignInPage> {
                           // Form Validation
                           if (_formKey.currentState!.validate()) {
                             debugPrint('Data Processing.......');
-                            debugPrint(_userNameController.toString());
-                            debugPrint(_passwordController.toString());
+                            debugPrint(_userNameController.text);
+                            debugPrint(_passwordController.text);
                           } else {
                             debugPrint(
                               'Invalid Details, all or some fields are not validates',
