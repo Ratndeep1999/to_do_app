@@ -75,23 +75,22 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
 
-                  SizedBox(height: 60),
+                  SizedBox(height: 40),
 
-                  SizedBox(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Form Validation
-                        if ( _formKey.currentState!.validate()) {
-                          debugPrint('Data Processing.......');
-                          debugPrint(_userNameController.toString());
-                          debugPrint(_passwordController.toString());
-                        } else {
-                          debugPrint('Invalid Details, all or some fields are not validates');
-                          _passwordController.clear();
-                        }
-                      },
-                      child: Text('Sign In'),
-                    ),
+                  /// Button To Validate
+                  ElevatedButton(
+                    onPressed: () {
+                      // Form Validation
+                      if ( _formKey.currentState!.validate()) {
+                        debugPrint('Data Processing.......');
+                        debugPrint(_userNameController.toString());
+                        debugPrint(_passwordController.toString());
+                      } else {
+                        debugPrint('Invalid Details, all or some fields are not validates');
+                        _passwordController.clear();
+                      }
+                    },
+                    child: Text('Sign In'),
                   ),
                 ],
               ),
