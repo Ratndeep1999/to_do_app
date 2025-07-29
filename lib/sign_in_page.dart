@@ -51,6 +51,14 @@ class _SignInPageState extends State<SignInPage> {
                   /// Username Field
                   TextFormField(
                     controller: _userNameController,
+                    validator: (userName) {
+                      if (userName == null || userName.isEmpty) {
+                        return 'Please enter username properly';
+                      } else if (userName.length < 5) {
+                        return 'Username must be at least 5 characters';
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(
                       hintText: 'Enter your user name',
                       prefixIcon: Icon(Icons.person),
@@ -68,6 +76,25 @@ class _SignInPageState extends State<SignInPage> {
                   /// Password Field
                   TextFormField(
                     controller: _passwordController,
+                    validator: (password) {
+                      if (password == null || password.isEmpty) {
+                        return 'Please enter your username properly';
+                      } else if (password.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
+                        return 'Password must be contain at least one Uppercase letter';
+                      } else if (!RegExp(r'[a-z]').hasMatch(password)) {
+                        return 'Password must be contain at least one Lowercase letter';
+                      } else if (!RegExp(r'[0-9]').hasMatch(password)) {
+                        return 'Password must be contain at least one number';
+                      } else if (RegExp(r'[!@#$&*_]').hasMatch(password)) {
+                        return 'Password must be contain at least one special character (!@#\$&*_)';
+                      } 
+                      if (password.contains(' ')) {
+                        return 'Space not allow';
+                      }
+                      return null;
+                    },
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       hintText: 'Enter your password',
