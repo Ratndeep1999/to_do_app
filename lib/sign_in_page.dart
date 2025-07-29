@@ -56,6 +56,11 @@ class _SignInPageState extends State<SignInPage> {
                         return 'Please enter username properly';
                       } else if (userName.length < 5) {
                         return 'Username must be at least 5 characters';
+                      } else if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(userName)) {
+                        return "Only numbers and latter's are allow" ;
+                      } 
+                      if (userName.contains(' ')) {
+                        return 'Space is not allow' ;
                       }
                       return null;
                     },
