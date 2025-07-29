@@ -27,13 +27,14 @@ class _SignInPageState extends State<SignInPage> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            child: Column(
-              children: [
-                SizedBox(height: 350),
-                /// Username Field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: TextFormField(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Column(
+                children: [
+                  SizedBox(height: 350),
+
+                  /// Username Field
+                  TextFormField(
                     controller: _userNameController,
                     decoration: InputDecoration(
                       hintText: 'Enter your user name',
@@ -46,13 +47,10 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 20),
+                  SizedBox(height: 20),
 
-                /// Password Field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: TextFormField(
+                  /// Password Field
+                  TextFormField(
                     controller: _passwordController,
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
@@ -61,8 +59,8 @@ class _SignInPageState extends State<SignInPage> {
                       prefixIconColor: Colors.black26,
                       suffixIcon: InkWell(
                         onTap: () {
-                          _isPasswordVisible = !_isPasswordVisible ;
-                          setState(() {  });
+                          _isPasswordVisible = !_isPasswordVisible;
+                          setState(() {});
                         },
                         child: Icon(
                           _isPasswordVisible
@@ -76,8 +74,26 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                   ),
-                ),
-              ],
+
+                  SizedBox(height: 60),
+
+                  SizedBox(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if ( _formKey.currentState!.validate()) {
+                          debugPrint('Data Processing.......');
+                          debugPrint(_userNameController.toString());
+                          debugPrint(_passwordController.toString());
+                        } else {
+                          debugPrint('Invalid Details, all or some fields are not validates');
+                          _passwordController.clear();
+                        }
+                      },
+                      child: Text('Sign In'),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
