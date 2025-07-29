@@ -21,20 +21,20 @@ class _SignInPageState extends State<SignInPage> {
         backgroundColor: Colors.black12,
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                controller: _userNameController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: TextFormField(
+              controller: _userNameController,
+              decoration: InputDecoration(
+                filled: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
