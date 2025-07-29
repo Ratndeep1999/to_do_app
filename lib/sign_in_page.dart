@@ -10,7 +10,10 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
-  // final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // password visible or not
+  bool _isPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,8 @@ class _SignInPageState extends State<SignInPage> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(height: 350,),
+                SizedBox(height: 350),
+                /// Username Field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextFormField(
@@ -43,17 +47,29 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 20),
+
+                /// Password Field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextFormField(
-                    controller: _userNameController,
+                    controller: _passwordController,
+                    obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       hintText: 'Enter your password',
                       prefixIcon: Icon(Icons.password),
                       prefixIconColor: Colors.black26,
-                      suffixIcon: Icon(Icons.visibility),
-                      // prefixIcon: Icon(Icons.verified_user),
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          _isPasswordVisible = !_isPasswordVisible ;
+                          setState(() {  });
+                        },
+                        child: Icon(
+                          _isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
+                      ),
                       // filled: true,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -62,7 +78,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
               ],
-            )
+            ),
           ),
         ),
       ),
