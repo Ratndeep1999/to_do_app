@@ -81,17 +81,21 @@ class _SignInPageState extends State<SignInPage> {
                   ElevatedButton(
                     onPressed: () {
                       // Form Validation
-                      if ( _formKey.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         debugPrint('Data Processing.......');
                         debugPrint(_userNameController.toString());
                         debugPrint(_passwordController.toString());
                       } else {
-                        debugPrint('Invalid Details, all or some fields are not validates');
+                        debugPrint(
+                          'Invalid Details, all or some fields are not validates',
+                        );
                         _passwordController.clear();
                       }
                     },
                     child: Text('Sign In'),
                   ),
+
+                  ElevatedButton(onPressed: () {}, child: Text('Sign Up')),
                 ],
               ),
             ),
