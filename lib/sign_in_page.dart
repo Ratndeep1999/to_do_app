@@ -31,22 +31,22 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 children: [
-                  SizedBox(height: 280),
+                  SizedBox(height: 260),
 
                   Padding(
-                    padding: const EdgeInsets.only(right: 60),
+                    padding: const EdgeInsets.only(right: 55),
                     child: Text(
                       'Sign In',
                       // textDirection: TextDirection.rtl,
                       style: TextStyle(
-                        fontSize: 60,
+                        fontSize: 65,
                         fontWeight: FontWeight.w600,
                         color: Colors.black45,
                       ),
                     ),
                   ),
 
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
 
                   /// Username Field
                   TextFormField(
