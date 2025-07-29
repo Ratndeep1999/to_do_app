@@ -21,31 +21,49 @@ class _SignInPageState extends State<SignInPage> {
         backgroundColor: Colors.black12,
       ),
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              SizedBox(height: 350,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                child: TextFormField(
-                  controller: _userNameController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter your user name',
-                    prefixIcon: Icon(Icons.person),
-                    prefixIconColor: Colors.black26,
-                    // prefixIcon: Icon(Icons.verified_user),
-                    // filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                SizedBox(height: 350,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: TextFormField(
+                    controller: _userNameController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your user name',
+                      prefixIcon: Icon(Icons.person),
+                      prefixIconColor: Colors.black26,
+                      // prefixIcon: Icon(Icons.verified_user),
+                      // filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 20,),
-
-            ],
-          )
+                SizedBox(height: 20,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: TextFormField(
+                    controller: _userNameController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your password',
+                      prefixIcon: Icon(Icons.password),
+                      prefixIconColor: Colors.black26,
+                      suffixIcon: Icon(Icons.visibility),
+                      // prefixIcon: Icon(Icons.verified_user),
+                      // filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ),
         ),
       ),
     );
