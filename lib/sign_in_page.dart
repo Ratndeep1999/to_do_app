@@ -10,7 +10,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +23,27 @@ class _SignInPageState extends State<SignInPage> {
       body: SafeArea(
         child: Form(
           key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
-            child: TextFormField(
-              controller: _userNameController,
-              decoration: InputDecoration(
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
+          child: Column(
+            children: [
+              SizedBox(height: 350,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: TextFormField(
+                  controller: _userNameController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your user name',
+                    prefixIcon: Icon(Icons.person),
+                    prefixIconColor: Colors.black26,
+                    // prefixIcon: Icon(Icons.verified_user),
+                    // filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
+            ],
+          )
         ),
       ),
     );
