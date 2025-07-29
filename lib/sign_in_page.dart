@@ -31,18 +31,22 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 children: [
-
                   SizedBox(height: 280),
 
-                  Text('Sign In',
-                    style: TextStyle(
+                  Padding(
+                    padding: const EdgeInsets.only(right: 60),
+                    child: Text(
+                      'Sign In',
+                      // textDirection: TextDirection.rtl,
+                      style: TextStyle(
                         fontSize: 60,
                         fontWeight: FontWeight.w600,
-                      color: Colors.black45
+                        color: Colors.black45,
+                      ),
                     ),
                   ),
 
-                  SizedBox(height: 30,),
+                  SizedBox(height: 30),
 
                   /// Username Field
                   TextFormField(
@@ -114,7 +118,7 @@ class _SignInPageState extends State<SignInPage> {
                       // SizedBox(height: 20),
 
                       /// Sign Up
-                      ElevatedButton(onPressed: () {  }, child: Text('Sign Up')),
+                      ElevatedButton(onPressed: () {}, child: Text('Sign Up')),
                     ],
                   ),
                 ],
