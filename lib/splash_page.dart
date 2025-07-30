@@ -14,18 +14,27 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'TO DO List',
-              style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 50
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('lib/Assets/to_do.png'),
+              Text(
+                'TO DO List',
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 50),
               ),
-            ),
-          ],
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Text(
+                  'by Ratndeep',
+                  style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                  textAlign: TextAlign.end,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
