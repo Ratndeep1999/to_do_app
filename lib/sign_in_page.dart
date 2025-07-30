@@ -161,7 +161,7 @@ class _SignInPageState extends State<SignInPage> {
                     Padding(
                       padding: const EdgeInsets.only(left: 90),
                       child: Text(
-                        // if give . the applied before click
+                        // if give ( . ) the applied before click
                         'If you are new here then click on SIGN up',
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
