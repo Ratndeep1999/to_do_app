@@ -16,11 +16,16 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     debugPrint('InitState method');
     Future.delayed( const Duration(seconds: 3), () {
-
+      return _navigateToNextPage();
     });
   }
 
-
+  void _navigateToNextPage() {
+    Navigator.pushReplacement(
+      context, MaterialPageRoute(
+      builder: (context) => SignInPage(),),
+    );
+  }
 
 
   @override
