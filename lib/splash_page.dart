@@ -20,7 +20,13 @@ class _SplashPageState extends State<SplashPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('lib/Assets/to_do.png'),
+              Image.asset(
+                'lib/Assets/to_do.png',
+                height: 250,
+                width: 250,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 20,),
               Text(
                 'TO DO List',
                 style: TextStyle(fontWeight: FontWeight.w900, fontSize: 50),
