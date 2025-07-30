@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -36,7 +37,7 @@ class _SignInPageState extends State<SignInPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
-                    //SizedBox(height: 260),
+                    SizedBox(height: 100),
 
                     /// Sign in
                     Padding(
@@ -62,11 +63,13 @@ class _SignInPageState extends State<SignInPage> {
                           return 'Please enter username properly';
                         } else if (userName.length < 5) {
                           return 'Username must be at least 5 characters';
-                        } else if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(userName)) {
-                          return "Only numbers and latter's are allow" ;
+                        } else if (!RegExp(
+                          r'^[a-zA-Z0-9]+$',
+                        ).hasMatch(userName)) {
+                          return "Only numbers and latter's are allow";
                         }
                         if (userName.contains(' ')) {
-                          return 'Space is not allow' ;
+                          return 'Space is not allow';
                         }
                         return null;
                       },
@@ -133,7 +136,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
 
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
 
                     /// Sign In Button To Validate
                     ElevatedButton(
@@ -153,8 +156,34 @@ class _SignInPageState extends State<SignInPage> {
                       child: Text('Sign In'),
                     ),
 
+                    SizedBox(height: 60),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 90),
+                      child: Text(
+                        // if give . the applied before click
+                        'If you are new here then click on SIGN up',
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          // color: Colors.black38,
+                        ),
+                      ),
+                    ),
+
                     /// Sign up
                     InkWell(
+                      onTap: () {
+                        // It replace page from sign in to sign up
+                        Navigator.pushReplacement(
+                          context, MaterialPageRoute(
+                          builder: (context) {
+                              return SignUpPage();
+                            },
+                          ),
+                        );
+                      },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Text(
@@ -168,7 +197,6 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
