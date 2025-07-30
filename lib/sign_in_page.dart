@@ -36,8 +36,9 @@ class _SignInPageState extends State<SignInPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
-                    SizedBox(height: 260),
+                    //SizedBox(height: 260),
 
+                    /// Sign in
                     Padding(
                       padding: const EdgeInsets.only(right: 55),
                       child: Text(
@@ -134,33 +135,37 @@ class _SignInPageState extends State<SignInPage> {
 
                     SizedBox(height: 40),
 
-                    /// Buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        /// Sign In Button To Validate
-                        ElevatedButton(
-                          onPressed: () {
-                            // Form Validation
-                            if (_formKey.currentState!.validate()) {
-                              debugPrint('Data Processing.......');
-                              debugPrint(_userNameController.text);
-                              debugPrint(_passwordController.text);
-                            } else {
-                              debugPrint(
-                                'Invalid Details, all or some fields are not validates',
-                              );
-                              _passwordController.clear();
-                            }
-                          },
-                          child: Text('Sign In'),
-                        ),
-                        // SizedBox(height: 20),
-
-                        /// Sign Up
-                        ElevatedButton(onPressed: () {}, child: Text('Sign Up')),
-                      ],
+                    /// Sign In Button To Validate
+                    ElevatedButton(
+                      onPressed: () {
+                        // Form Validation
+                        if (_formKey.currentState!.validate()) {
+                          debugPrint('Data Processing.......');
+                          debugPrint(_userNameController.text);
+                          debugPrint(_passwordController.text);
+                        } else {
+                          debugPrint(
+                            'Invalid Details, all or some fields are not validates',
+                          );
+                          _passwordController.clear();
+                        }
+                      },
+                      child: Text('Sign In'),
                     ),
+
+                    /// Sign up
+                    SizedBox(
+                      child: Text(
+                        'SIGN up',
+                        // textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          fontSize: 65,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black45,
+                        ),
+                      ),
+                    ),
+
                   ],
                 ),
               ),
