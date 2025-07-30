@@ -10,6 +10,14 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(),
+      body: SafeArea(
+          child: Column( children: [
+            Text('TO Do'),
+          ],),
+      ),
+    );
   }
 }
