@@ -14,9 +14,19 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(),
       body: SafeArea(
-          child: Column( children: [
-            Text('TO Do'),
-          ],),
+        child: Column(
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'TO DO List',
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 50
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
