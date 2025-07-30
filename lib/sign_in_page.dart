@@ -154,14 +154,17 @@ class _SignInPageState extends State<SignInPage> {
                     ),
 
                     /// Sign up
-                    SizedBox(
-                      child: Text(
-                        'SIGN up',
-                        // textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          fontSize: 65,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black45,
+                    InkWell(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          'SIGN up',
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(
+                            fontSize: 65,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black45,
+                          ),
                         ),
                       ),
                     ),
