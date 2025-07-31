@@ -35,7 +35,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 /// Full name
                 TextFormField(
                   controller: _fullNameController,
-                  // validator: ,
+                  validator: (fullName) {
+                    if ( fullName == null || fullName.isEmpty) {
+                      return 'Please enter your full name' ;
+                    }
+                    if (fullName.length < 6 ) {
+                      return 'Full name length must be 6' ;
+                    }
+                    return null ;
+                  } ,
                   decoration: InputDecoration(
                     hintText: 'Enter your full name',
                     filled: true,
