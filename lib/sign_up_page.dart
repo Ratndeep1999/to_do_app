@@ -61,8 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
                     /// Username
                     TextFormField(
@@ -83,8 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
                     /// Email
                     TextFormField(
@@ -106,8 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
                     /// Phone no.
                     TextFormField(
@@ -129,8 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
 
                     ElevatedButton(
                       onPressed: () {
@@ -144,8 +140,17 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       child: Text('Save'),
                     ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.075),
 
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02 ),
+                    Text(
+                      'If you already have account then click on SIGN in',
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 2.0
+                      ),
+                    ),
 
                     /// Sign in
                     InkWell(
