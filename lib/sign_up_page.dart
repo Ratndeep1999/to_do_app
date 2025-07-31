@@ -66,6 +66,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     /// Username
                     TextFormField(
                       controller: _userNameController,
+                      validator: (userName) {
+                        if ( userName == null || userName.isEmpty )  {
+                          return 'Please enter your username' ;
+                        }
+                        return null ;
+                      },
                       decoration: InputDecoration(
                         icon: Icon(Icons.account_circle),
                         hintText: 'Enter username',
@@ -82,6 +88,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     /// Email
                     TextFormField(
                       controller: _emailController,
+                      validator: (email) {
+                        if ( email == null || email.isEmpty )  {
+                          return 'Please enter your email address' ;
+                        }
+                        return null ;
+                      },
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         icon: Icon(Icons.email_outlined),
