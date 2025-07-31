@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                     /// Username
                     TextFormField(
@@ -84,7 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                     /// Email
                     TextFormField(
@@ -107,7 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                     /// Phone no.
                     TextFormField(
@@ -130,7 +130,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                     ElevatedButton(
                       onPressed: () {
@@ -145,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text('Save'),
                     ),
 
-                    SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02 ),
 
                     /// Sign in
                     InkWell(
@@ -159,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Text(
-                          'SIGN up',
+                          'SIGN in',
                           textDirection: TextDirection.rtl,
                           style: TextStyle(
                             fontSize: 65,
