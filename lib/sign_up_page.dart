@@ -8,8 +8,33 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+
+  final GlobalKey _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("To Do"),
+        centerTitle: true,
+        backgroundColor: Colors.black12,
+      ),
+      body: SafeArea(
+          child: Form(
+            key: _formKey ,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50),
+              child: Column(
+                children: [
+                  SizedBox(height: 50,),
+
+                  TextFormField(),
+                ],
+              ),
+            ),
+          ),
+      ),
+    );
   }
 }
