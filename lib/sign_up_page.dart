@@ -60,6 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 /// Email
                 TextFormField(
                   controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'Enter your email address',
                     filled: true,
@@ -70,7 +71,21 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
 
+                /// Phone no.
+                TextFormField(
+                  controller: _userNameController,
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your mobile no.',
+                    filled: true,
+                    fillColor: Colors.grey.shade200,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
 
+                ElevatedButton(onPressed: () {}, child: Text('Save')),
               ],
             ),
           ),
