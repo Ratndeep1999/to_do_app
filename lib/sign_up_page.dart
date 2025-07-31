@@ -51,6 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       } ,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
+                        icon: Icon(Icons.face),
                         hintText: 'Enter your full name',
                         filled: true,
                         fillColor: Colors.grey.shade200,
@@ -60,12 +61,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                     /// Username
                     TextFormField(
                       controller: _userNameController,
                       decoration: InputDecoration(
+                        icon: Icon(Icons.account_circle),
                         hintText: 'Enter username',
                         filled: true,
                         fillColor: Colors.grey.shade200,
@@ -75,11 +77,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+
                     /// Email
                     TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
+                        icon: Icon(Icons.email_outlined),
                         hintText: 'Enter your email address',
                         filled: true,
                         fillColor: Colors.grey.shade200,
@@ -89,11 +94,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
 
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+
                     /// Phone no.
                     TextFormField(
                       controller: _mobileNumberController,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
+                        icon: Icon(Icons.phone),
                         hintText: 'Enter your mobile no.',
                         filled: true,
                         fillColor: Colors.grey.shade200,
@@ -102,6 +110,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
+                    
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                     ElevatedButton(
                         onPressed: () {
