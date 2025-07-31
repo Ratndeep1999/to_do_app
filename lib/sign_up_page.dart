@@ -10,6 +10,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
+  final _userNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
               children: [
                 SizedBox(height: 50),
 
+                /// Full name
                 TextFormField(
                   controller: _fullNameController,
                   decoration: InputDecoration(
@@ -40,6 +42,22 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
+
+                /// Username
+                TextFormField(
+                  controller: _userNameController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter username',
+                    filled: true,
+                    fillColor: Colors.grey.shade200,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+
+
+
               ],
             ),
           ),
