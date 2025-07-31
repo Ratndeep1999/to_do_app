@@ -11,6 +11,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
   final _userNameController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,18 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
 
+                /// Email
+                TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your email address',
+                    filled: true,
+                    fillColor: Colors.grey.shade200,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
 
 
               ],
