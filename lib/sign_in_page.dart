@@ -19,10 +19,11 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("To Do"),
         centerTitle: true,
-        backgroundColor: Colors.black12,
+        backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: InkWell(
@@ -37,7 +38,7 @@ class _SignInPageState extends State<SignInPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
-                    SizedBox(height: 100),
+                    SizedBox( height: MediaQuery.of(context).size.height * 0.125),
 
                     /// Sign in
                     Padding(
@@ -53,7 +54,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
 
-                    SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025,),
 
                     /// Username Field
                     TextFormField(
@@ -85,7 +86,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025,),
 
                     /// Password Field
                     TextFormField(
@@ -135,8 +136,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     ),
-
-                    SizedBox(height: 20),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.025,),
 
                     /// Sign In Button To Validate
                     ElevatedButton(
@@ -156,7 +156,7 @@ class _SignInPageState extends State<SignInPage> {
                       child: Text('Sign In'),
                     ),
 
-                    SizedBox(height: 60),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.075,),
 
                     Padding(
                       padding: const EdgeInsets.only(left: 90),
