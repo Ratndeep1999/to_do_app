@@ -22,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
       appBar: AppBar(
         title: Text("To Do"),
         centerTitle: true,
-        backgroundColor: Colors.black12,
+        backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: InkWell(
