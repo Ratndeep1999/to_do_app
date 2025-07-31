@@ -96,13 +96,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
 
-                ElevatedButton(onPressed: () {
-                  // if (_formKey.currentState!.validate() ) {
-                  //
-                  // } else {
-                  //
-                  // }
-                }, child: Text('Save')),
+                ElevatedButton(
+                    onPressed: () {  },
+                    child: Text('Save')),
               ],
             ),
           ),
