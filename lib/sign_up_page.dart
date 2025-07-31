@@ -44,6 +44,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                     return null ;
                   } ,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: 'Enter your full name',
                     filled: true,
