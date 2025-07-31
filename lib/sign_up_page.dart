@@ -8,7 +8,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
   final _userNameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -97,7 +97,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
 
                 ElevatedButton(
-                    onPressed: () {  },
+                    onPressed: () {
+                      if ( _formKey.currentState!.validate()) {
+                        debugPrint('Data Processing.....');
+                      } else {
+                        debugPrint('Invalid Details all or any fields are not validate');
+                      }
+
+                    },
                     child: Text('Save')),
               ],
             ),
