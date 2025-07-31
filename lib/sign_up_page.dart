@@ -12,6 +12,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _fullNameController = TextEditingController();
   final _userNameController = TextEditingController();
   final _emailController = TextEditingController();
+  final _mobileNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 /// Full name
                 TextFormField(
                   controller: _fullNameController,
+                  validator: ,
                   decoration: InputDecoration(
                     hintText: 'Enter your full name',
                     filled: true,
@@ -73,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 /// Phone no.
                 TextFormField(
-                  controller: _userNameController,
+                  controller: _mobileNumberController,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     hintText: 'Enter your mobile no.',
@@ -85,7 +87,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
 
-                ElevatedButton(onPressed: () {}, child: Text('Save')),
+                ElevatedButton(onPressed: () {
+                  // if (_formKey.currentState!.validate() ) {
+                  //
+                  // } else {
+                  //
+                  // }
+                }, child: Text('Save')),
               ],
             ),
           ),
