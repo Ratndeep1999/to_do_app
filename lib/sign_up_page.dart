@@ -23,90 +23,99 @@ class _SignUpPageState extends State<SignUpPage> {
         centerTitle: true,
         backgroundColor: Colors.black12,
       ),
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
-            child: Column(
-              children: [
-                SizedBox(height: 50),
+      body: SingleChildScrollView(
+        child: InkWell(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: SafeArea(
+            child: Form(
+              key: _formKey,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Column(
+                  children: [
+                    SizedBox(height: 50),
 
-                /// Full name
-                TextFormField(
-                  controller: _fullNameController,
-                  validator: (fullName) {
-                    if ( fullName == null || fullName.isEmpty) {
-                      return 'Please enter your full name' ;
-                    }
-                    if (fullName.length < 6 ) {
-                      return 'Full name length must be 6' ;
-                    }
-                    return null ;
-                  } ,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    hintText: 'Enter your full name',
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                    /// Full name
+                    TextFormField(
+                      controller: _fullNameController,
+                      validator: (fullName) {
+                        if ( fullName == null || fullName.isEmpty) {
+                          return 'Please enter your full name' ;
+                        }
+                        if (fullName.length < 6 ) {
+                          return 'Full name length must be 6' ;
+                        }
+                        return null ;
+                      } ,
+                      keyboardType: TextInputType.name,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your full name',
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
 
-                /// Username
-                TextFormField(
-                  controller: _userNameController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter username',
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+
+                    /// Username
+                    TextFormField(
+                      controller: _userNameController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter username',
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
 
-                /// Email
-                TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: 'Enter your email address',
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                    /// Email
+                    TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your email address',
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
 
-                /// Phone no.
-                TextFormField(
-                  controller: _mobileNumberController,
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    hintText: 'Enter your mobile no.',
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                    /// Phone no.
+                    TextFormField(
+                      controller: _mobileNumberController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your mobile no.',
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                     ),
-                  ),
+
+                    ElevatedButton(
+                        onPressed: () {
+                          if ( _formKey.currentState!.validate()) {
+                            debugPrint('Data Processing.....');
+                          } else {
+                            debugPrint('Invalid Details all or any fields are not validate');
+                          }
+
+                        },
+                        child: Text('Save')),
+                  ],
                 ),
-
-                ElevatedButton(
-                    onPressed: () {
-                      if ( _formKey.currentState!.validate()) {
-                        debugPrint('Data Processing.....');
-                      } else {
-                        debugPrint('Invalid Details all or any fields are not validate');
-                      }
-
-                    },
-                    child: Text('Save')),
-              ],
+              ),
             ),
           ),
         ),
