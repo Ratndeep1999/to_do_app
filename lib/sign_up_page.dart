@@ -35,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 /// Full name
                 TextFormField(
                   controller: _fullNameController,
-                  validator: ,
+                  // validator: ,
                   decoration: InputDecoration(
                     hintText: 'Enter your full name',
                     filled: true,
