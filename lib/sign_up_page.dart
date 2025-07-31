@@ -118,7 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       decoration: InputDecoration(
                         icon: Icon(Icons.phone),
-                        hintText: 'Enter your mobile no.',
+                        hintText: 'Enter your mobile number.',
                         filled: true,
                         fillColor: Colors.grey.shade200,
                         border: OutlineInputBorder(
