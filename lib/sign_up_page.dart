@@ -112,6 +112,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     TextFormField(
                       controller: _mobileNumberController,
                       keyboardType: TextInputType.phone,
+                      validator: (phoneNumber) {
+                        if ( phoneNumber == null || phoneNumber.isEmpty )  {
+                          return 'Please enter your phone number' ;
+                        }
+                        return null ;
+                      },
                       decoration: InputDecoration(
                         icon: Icon(Icons.phone),
                         hintText: 'Enter your mobile no.',
