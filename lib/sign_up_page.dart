@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/sign_in_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -41,14 +42,14 @@ class _SignUpPageState extends State<SignUpPage> {
                     TextFormField(
                       controller: _fullNameController,
                       validator: (fullName) {
-                        if ( fullName == null || fullName.isEmpty) {
-                          return 'Please enter your full name' ;
+                        if (fullName == null || fullName.isEmpty) {
+                          return 'Please enter your full name';
                         }
-                        if (fullName.length < 6 ) {
-                          return 'Full name length must be 6' ;
+                        if (fullName.length < 6) {
+                          return 'Full name length must be 6';
                         }
-                        return null ;
-                      } ,
+                        return null;
+                      },
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                         icon: Icon(Icons.face),
@@ -67,10 +68,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     TextFormField(
                       controller: _userNameController,
                       validator: (userName) {
-                        if ( userName == null || userName.isEmpty )  {
-                          return 'Please enter your username' ;
+                        if (userName == null || userName.isEmpty) {
+                          return 'Please enter your username';
                         }
-                        return null ;
+                        return null;
                       },
                       decoration: InputDecoration(
                         icon: Icon(Icons.account_circle),
@@ -89,10 +90,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     TextFormField(
                       controller: _emailController,
                       validator: (email) {
-                        if ( email == null || email.isEmpty )  {
-                          return 'Please enter your email address' ;
+                        if (email == null || email.isEmpty) {
+                          return 'Please enter your email address';
                         }
-                        return null ;
+                        return null;
                       },
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -113,10 +114,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       controller: _mobileNumberController,
                       keyboardType: TextInputType.phone,
                       validator: (phoneNumber) {
-                        if ( phoneNumber == null || phoneNumber.isEmpty )  {
-                          return 'Please enter your phone number' ;
+                        if (phoneNumber == null || phoneNumber.isEmpty) {
+                          return 'Please enter your phone number';
                         }
-                        return null ;
+                        return null;
                       },
                       decoration: InputDecoration(
                         icon: Icon(Icons.phone),
@@ -128,19 +129,46 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    
+
                     SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                     ElevatedButton(
-                        onPressed: () {
-                          if ( _formKey.currentState!.validate()) {
-                            debugPrint('Data Processing.....');
-                          } else {
-                            debugPrint('Invalid Details all or any fields are not validate');
-                          }
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          debugPrint('Data Processing.....');
+                        } else {
+                          debugPrint(
+                            'Invalid Details all or any fields are not validate',
+                          );
+                        }
+                      },
+                      child: Text('Save'),
+                    ),
 
-                        },
-                        child: Text('Save')),
+                    SizedBox(height: 20),
+
+                    /// Sign in
+                    InkWell(
+                      onTap: () {
+                        // It replace page from sign up to sign in
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignInPage()),
+                        );
+                      },
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          'SIGN up',
+                          textDirection: TextDirection.rtl,
+                          style: TextStyle(
+                            fontSize: 65,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black45,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
