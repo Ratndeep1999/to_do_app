@@ -89,18 +89,20 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        //Title
                         Text(
                           'Return Library Books',
                           style: TextStyle(
-                            fontSize: 23,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
+                        // Description
                         Text(
                           'Gather overdue library books and return Gather overdue library books and return',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 15),
                         ),
                         SizedBox(height: 2,),
 
