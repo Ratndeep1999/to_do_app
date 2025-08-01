@@ -118,6 +118,12 @@ class _ToDoListPageState extends State<ToDoListPage> {
                             SizedBox(width: 5,),
                             Text('26/11/2024'),
 
+                            SizedBox(width: 12,),
+
+                            // Notification
+                            Icon(Icons.notifications, size: 18),
+
+
                           ],
                         )
                       ],
