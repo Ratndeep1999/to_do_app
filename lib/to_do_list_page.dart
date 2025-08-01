@@ -74,7 +74,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.75,
                 child: ListView.separated(
-                  itemCount: 10,
+                  itemCount: 1000,
                   itemBuilder: (context, index) => Row(
                     children: [
                       /// Dynamic Blue Circle
@@ -149,6 +149,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                   ),
                   // It separate item with separator but not at last item
                   separatorBuilder: (context, index) {
+                    debugPrint(index.toString());
                     return Divider();
                   },
                 ),
