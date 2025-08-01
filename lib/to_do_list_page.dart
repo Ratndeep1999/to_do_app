@@ -75,7 +75,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                 height: MediaQuery.of(context).size.height * 0.75,
                 child: ListView.separated(
                   itemCount: 1000,
-                  itemBuilder: (context, index) => Row(
+                  itemBuilder: (BuildContext context, index) => Row(
                     children: [
                       /// Dynamic Blue Circle
                       Container(
