@@ -111,6 +111,8 @@ class _ToDoListPageState extends State<ToDoListPage> {
                             SizedBox(width: 2,),
                             Text('11:30 AM'),
 
+                            SizedBox(width: 12,),
+
 
 
                           ],
