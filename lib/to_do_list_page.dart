@@ -90,7 +90,10 @@ class _ToDoListPageState extends State<ToDoListPage> {
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.blue),
                         ),
-                        child: Icon(Icons.check, size: 25,),
+                        child: Visibility(
+                          visible: index.isEven,
+                          child: Icon(Icons.check, size: 25),
+                        ),
                       ),
                       SizedBox(width: 10),
 
