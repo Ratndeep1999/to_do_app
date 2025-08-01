@@ -82,6 +82,8 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     ),
                   ),
 
+                  SizedBox(width: 10),
+
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
