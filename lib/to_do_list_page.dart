@@ -142,6 +142,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                                 Icon(Icons.repeat, size: 18),
                               ],
                             ),
+                            SizedBox(height: MediaQuery.of(context).size.height * 0.02,)
                           ],
                         ),
                       ),
