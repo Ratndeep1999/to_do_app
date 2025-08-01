@@ -86,9 +86,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                         border: BoxBorder.all(width: 2, color: Colors.blue),
                       ),
                     ),
-
                     SizedBox(width: 10),
-
                     /// Title and Description of List
                     Expanded(
                       child: Column(
