@@ -24,11 +24,50 @@ class _ToDoListPageState extends State<ToDoListPage> {
             ),
           ),
           Spacer(),
-          Icon(Icons.menu, size: 35)
+          Icon(Icons.menu, size: 35),
         ],
-        //backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
       ),
-      body: SafeArea(child: Column(children: [])),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+
+              /// Today Filter section
+              Row(
+                children: [
+                  Text(
+                    'Today',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+                  ),
+                  Spacer(),
+
+                  Container(
+                    height: 45,
+                    width: 110,
+                    decoration: BoxDecoration(
+                      border: BoxBorder.all(width: 2, color: Colors.black12),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Filter ',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                        Icon(Icons.filter_alt),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
