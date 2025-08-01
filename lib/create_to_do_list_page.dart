@@ -10,6 +10,9 @@ class CreateToDoListPage extends StatefulWidget {
 class _CreateToDoListPageState extends State<CreateToDoListPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(child: Column(children: [])),
+    );
   }
 }
