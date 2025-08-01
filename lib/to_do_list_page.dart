@@ -113,7 +113,10 @@ class _ToDoListPageState extends State<ToDoListPage> {
 
                             SizedBox(width: 12,),
 
-
+                            // Date
+                            Icon(Icons.calendar_today_rounded, size: 16,),
+                            SizedBox(width: 5,),
+                            Text('26/11/2024'),
 
                           ],
                         )
