@@ -103,6 +103,12 @@ class _ToDoListPageState extends State<ToDoListPage> {
                           style: TextStyle(fontSize: 16),
                         ),
 
+                        /// Time, Date, Notification, Refresh
+                        Row(
+                          children: [
+
+                          ],
+                        )
                       ],
                     ),
                   ),
