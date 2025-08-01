@@ -106,6 +106,12 @@ class _ToDoListPageState extends State<ToDoListPage> {
                         /// Time, Date, Notification, Refresh
                         Row(
                           children: [
+                            // Time
+                            Icon(Icons.watch_later_outlined, size: 18,),
+                            SizedBox(width: 2,),
+                            Text('11:30 AM'),
+
+
 
                           ],
                         )
