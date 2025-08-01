@@ -104,35 +104,34 @@ class _ToDoListPageState extends State<ToDoListPage> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 15),
                         ),
-                        SizedBox(height: 2,),
+                        SizedBox(height: 2),
 
                         /// Time, Date, Notification, Refresh
                         Row(
                           children: [
                             // Time
-                            Icon(Icons.watch_later_outlined, size: 18,),
-                            SizedBox(width: 2,),
-                            Text('11:30 AM'),
+                            Icon(Icons.watch_later_outlined, size: 18),
+                            SizedBox(width: 2),
+                            Text('11:30 AM', style: TextStyle(fontSize: 13)),
 
-                            SizedBox(width: 12,),
+                            SizedBox(width: 12),
 
                             // Date
-                            Icon(Icons.calendar_today_rounded, size: 16,),
-                            SizedBox(width: 5,),
-                            Text('26/11/2024'),
+                            Icon(Icons.calendar_today_rounded, size: 16),
+                            SizedBox(width: 5),
+                            Text('26/11/2024', style: TextStyle(fontSize: 12)),
 
-                            SizedBox(width: 12,),
+                            SizedBox(width: 12),
 
                             // Notification
                             Icon(Icons.notifications, size: 18),
 
-                            SizedBox(width: 12,),
+                            SizedBox(width: 12),
 
                             // Refresh
-                            Icon(Icons.repeat, size: 18,)
-
+                            Icon(Icons.repeat, size: 18),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
