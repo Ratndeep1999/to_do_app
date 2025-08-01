@@ -12,6 +12,9 @@ class _ToDoListPageState extends State<ToDoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {}
+      ),
       appBar: AppBar(
         actionsPadding: EdgeInsets.symmetric(horizontal: 20),
         actions: [
