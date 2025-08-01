@@ -74,8 +74,8 @@ class _ToDoListPageState extends State<ToDoListPage> {
               Row(
                 children: [
                   Container(
-                    height: 45,
-                    width: 45,
+                    height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: BoxBorder.all(width: 2, color: Colors.blue),
@@ -102,6 +102,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 16),
                         ),
+                        SizedBox(height: 2,),
 
                         /// Time, Date, Notification, Refresh
                         Row(
