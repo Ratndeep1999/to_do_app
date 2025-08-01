@@ -78,6 +78,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                 itemCount: 10,
                 itemBuilder: (context, index) => Row(
                   children: [
+                    /// Dynamic Blue Circle
                     Container(
                       height: 50,
                       width: 50,
