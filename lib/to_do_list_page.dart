@@ -91,7 +91,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                         Text(
                           'Return Library Books',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 23,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -99,8 +99,9 @@ class _ToDoListPageState extends State<ToDoListPage> {
                           'Gather overdue library books and return Gather overdue library books and return',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(),
+                          style: TextStyle(fontSize: 16),
                         ),
+
                       ],
                     ),
                   ),
