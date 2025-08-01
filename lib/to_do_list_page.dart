@@ -56,7 +56,10 @@ class _ToDoListPageState extends State<ToDoListPage> {
                       children: [
                         Text(
                           'Filter ',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                         Icon(Icons.filter_alt),
                       ],
@@ -65,9 +68,21 @@ class _ToDoListPageState extends State<ToDoListPage> {
                 ],
               ),
 
-              /// Fist section
-              Row()
+              SizedBox(height: 30),
 
+              /// List section
+              Row(
+                children: [
+                  Container(
+                    height: 45,
+                    width: 45,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: BoxBorder.all(width: 2, color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
