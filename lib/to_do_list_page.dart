@@ -33,11 +33,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 0.03),
-
+              SizedBox(height: MediaQuery.of(context).size.height * 0.027),
               /// Today Filter section
               Row(
                 children: [
@@ -46,7 +42,6 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                   ),
                   Spacer(),
-
                   Container(
                     height: 45,
                     width: 110,
@@ -70,85 +65,91 @@ class _ToDoListPageState extends State<ToDoListPage> {
                   ),
                 ],
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
 
-              SizedBox(height: 30),
-
-              /// List section
-              ListView.separated(
-                itemCount: 10,
-                itemBuilder: (context, index) => Row(
-                  children: [
-                    /// Dynamic Blue Circle
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: BoxBorder.all(width: 2, color: Colors.blue),
+              /// ListView section
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.75,
+                child: ListView.separated(
+                  itemCount: 10,
+                  itemBuilder: (context, index) => Row(
+                    children: [
+                      /// Dynamic Blue Circle
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2, color: Colors.blue),
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 10),
-                    /// Title and Description of List
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //Title
-                          Text(
-                            'Return Library Books',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
+                      SizedBox(width: 10),
+
+                      /// Title and Description of List
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //Title
+                            Text(
+                              'Return Library Books',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                          // Description
-                          Text(
-                            'Gather overdue library books and return Gather overdue library books and return',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(height: 2),
+                            // Description
+                            Text(
+                              'Gather overdue library books and return Gather overdue library books and return',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            SizedBox(height: 2),
 
-                          /// Time, Date, Notification, Refresh
-                          Row(
-                            children: [
-                              // Time
-                              Icon(Icons.watch_later_outlined, size: 18),
-                              SizedBox(width: 2),
-                              Text('11:30 AM', style: TextStyle(fontSize: 13)),
+                            /// Time, Date, Notification, Refresh
+                            Row(
+                              children: [
+                                // Time
+                                Icon(Icons.watch_later_outlined, size: 18),
+                                SizedBox(width: 2),
+                                Text(
+                                  '11:30 AM',
+                                  style: TextStyle(fontSize: 13),
+                                ),
 
-                              SizedBox(width: 12),
+                                SizedBox(width: 12),
 
-                              // Date
-                              Icon(Icons.calendar_today_rounded, size: 16),
-                              SizedBox(width: 5),
-                              Text('26/11/2024', style: TextStyle(fontSize: 12)),
+                                // Date
+                                Icon(Icons.calendar_today_rounded, size: 16),
+                                SizedBox(width: 5),
+                                Text(
+                                  '26/11/2024',
+                                  style: TextStyle(fontSize: 12),
+                                ),
 
-                              SizedBox(width: 12),
+                                SizedBox(width: 12),
 
-                              // Notification
-                              Icon(Icons.notifications, size: 18),
+                                // Notification
+                                Icon(Icons.notifications, size: 18),
 
-                              SizedBox(width: 12),
+                                SizedBox(width: 12),
 
-                              // Refresh
-                              Icon(Icons.repeat, size: 18),
-                            ],
-                          ),
-                        ],
+                                // Refresh
+                                Icon(Icons.repeat, size: 18),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ) ,
-                // It separate item with separator but not at last item
-                separatorBuilder: (context, index) {
-                  return Divider(
-
-                  );
-                },
+                    ],
+                  ),
+                  // It separate item with separator but not at last item
+                  separatorBuilder: (context, index) {
+                    return Divider();
+                  },
+                ),
               ),
-
             ],
           ),
         ),
