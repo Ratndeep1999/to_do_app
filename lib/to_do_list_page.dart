@@ -123,6 +123,10 @@ class _ToDoListPageState extends State<ToDoListPage> {
                             // Notification
                             Icon(Icons.notifications, size: 18),
 
+                            SizedBox(width: 12,),
+
+                            // Refresh
+                            Icon(Icons.repeat, size: 18,)
 
                           ],
                         )
