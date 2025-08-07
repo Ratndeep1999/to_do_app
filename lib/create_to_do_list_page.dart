@@ -12,7 +12,18 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(child: Column(children: [])),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+          child: Column(
+              children: [
+                Icon(
+                    Icons.close
+                )
+              ]
+          ),
+        ),
+      ),
     );
   }
 }
