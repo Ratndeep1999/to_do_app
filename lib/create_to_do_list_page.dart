@@ -16,11 +16,13 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
         child: Padding(
           padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
           child: Column(
-              children: [
-                Icon(
-                    Icons.close
-                )
-              ]
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(Icons.close, weight: 20.0, size: 25,),
+              Text('Create to-do', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+
+              ),
+            ],
           ),
         ),
       ),
