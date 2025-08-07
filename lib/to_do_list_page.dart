@@ -82,8 +82,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
 
               /// ListView section
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.75,
+              Expanded(
                 child: ListView.separated(
                   itemCount: 1000,
                   itemBuilder: (BuildContext context, index) => Row(
