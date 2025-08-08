@@ -19,6 +19,10 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
       body: InkWell(
         // Disables the splash effect
         splashFactory: NoSplash.splashFactory,
+        // Disables long-press highlight
+        highlightColor: Colors.transparent,
+        // Ensures no splash color on long press
+        splashColor: Colors.transparent,
         onTap: () {
           FocusScope.of(context).unfocus();
         },
