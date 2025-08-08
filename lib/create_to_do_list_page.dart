@@ -82,7 +82,21 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
             
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
             
-
+                /// Days Section
+                Wrap(
+                  direction: Axis.horizontal,
+                  runSpacing: MediaQuery.of(context).size.height * 0.012,
+                  spacing: MediaQuery.of(context).size.width * 0.03,
+                  children: [
+                    CustomChip(title: 'Sunday'),
+                    CustomChip(title: 'Monday'),
+                    CustomChip(title: 'Tuesday'),
+                    CustomChip(title: 'Wednesday'),
+                    CustomChip(title: 'Thursday'),
+                    CustomChip(title: 'Friday'),
+                    CustomChip(title: 'Saturday'),
+                  ],
+                ),
               ],
             ),
           ),
