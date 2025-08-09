@@ -14,6 +14,7 @@ class CreateToDoListPage extends StatefulWidget {
 class _CreateToDoListPageState extends State<CreateToDoListPage> {
   String repeatSelected = 'No repeat';
   String selectedDays = '';
+  bool isRemainderActive = false ;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,13 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                   /// Set Remainder
-                  SetRemainderWidget(),
+                  SetRemainderWidget(
+                    isRemainder: isRemainderActive,
+                    activeRemainder: (bool value) {
+                      isRemainderActive = value ;
+                      setState(() {});
+                    },
+                  ),
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
