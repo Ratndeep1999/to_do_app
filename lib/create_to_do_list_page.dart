@@ -89,19 +89,38 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                       /// Parent Timeline
                       CustomChip(
                         title: 'Daily',
-                        isSelected: repeatSelected == 'Daily',
+                        isSelected: repeatSelected == 'Daily' ? true : false,
+                        // this method work when it calls from child class
+                        onSelect: (String value) {
+                          // to test what function return when calls from child class
+                          debugPrint('Daily select');
+                          // return value assign to repeatSelected
+                          repeatSelected = value;
+                        },
                       ),
                       CustomChip(
                         title: 'Weekly',
                         isSelected: repeatSelected == 'Weekly',
+                        onSelect: (String value) {
+                          debugPrint('Weekly select');
+                          repeatSelected = value;
+                        },
                       ),
                       CustomChip(
                         title: 'Monthly',
                         isSelected: repeatSelected == 'Monthly',
+                        onSelect: (String value) {
+                          debugPrint('Monthly select');
+                          repeatSelected = value;
+                        },
                       ),
                       CustomChip(
                         title: 'No repeat',
                         isSelected: repeatSelected == 'No repeat',
+                        onSelect: (String value) {
+                          debugPrint('No repeat select');
+                          repeatSelected = value;
+                        },
                       ),
                     ],
                   ),
