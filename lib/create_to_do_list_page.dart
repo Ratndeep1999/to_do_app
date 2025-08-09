@@ -12,7 +12,8 @@ class CreateToDoListPage extends StatefulWidget {
 }
 
 class _CreateToDoListPageState extends State<CreateToDoListPage> {
-  String repeatSelected = '';
+  String repeatSelected = 'No repeat';
+  String selectedDays = '';
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +96,9 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                           // to test what function return when calls from child class
                           debugPrint('Daily select');
                           // return value assign to repeatSelected
-                          repeatSelected = value;
+                          setState(() {
+                            repeatSelected = value;
+                          });
                         },
                       ),
                       CustomChip(
@@ -103,7 +106,9 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                         isSelected: repeatSelected == 'Weekly',
                         onSelect: (String value) {
                           debugPrint('Weekly select');
-                          repeatSelected = value;
+                          setState(() {
+                            repeatSelected = value;
+                          });
                         },
                       ),
                       CustomChip(
@@ -111,7 +116,9 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                         isSelected: repeatSelected == 'Monthly',
                         onSelect: (String value) {
                           debugPrint('Monthly select');
-                          repeatSelected = value;
+                          setState(() {
+                            repeatSelected = value;
+                          });
                         },
                       ),
                       CustomChip(
@@ -119,7 +126,9 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                         isSelected: repeatSelected == 'No repeat',
                         onSelect: (String value) {
                           debugPrint('No repeat select');
-                          repeatSelected = value;
+                          setState(() {
+                            repeatSelected = value;
+                          });
                         },
                       ),
                     ],
@@ -127,20 +136,69 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                   /// Days Section
-                  // Wrap(
-                  //   direction: Axis.horizontal,
-                  //   runSpacing: MediaQuery.of(context).size.height * 0.012,
-                  //   spacing: MediaQuery.of(context).size.width * 0.03,
-                  //   children: [
-                  //     CustomChip(title: 'Sunday'),
-                  //     CustomChip(title: 'Monday'),
-                  //     CustomChip(title: 'Tuesday'),
-                  //     CustomChip(title: 'Wednesday'),
-                  //     CustomChip(title: 'Thursday'),
-                  //     CustomChip(title: 'Friday'),
-                  //     CustomChip(title: 'Saturday'),
-                  //   ],
-                  // ),
+                  Wrap(
+                    direction: Axis.horizontal,
+                    runSpacing: MediaQuery.of(context).size.height * 0.012,
+                    spacing: MediaQuery.of(context).size.width * 0.03,
+                    children: [
+                      CustomChip(
+                        title: 'Sunday',
+                        isSelected: selectedDays == 'Sunday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                      CustomChip(
+                        title: 'Monday',
+                        isSelected: selectedDays == 'Monday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                      CustomChip(
+                        title: 'Tuesday',
+                        isSelected: selectedDays == 'Tuesday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                      CustomChip(
+                        title: 'Wednesday',
+                        isSelected: selectedDays == 'Wednesday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                      CustomChip(
+                        title: 'Thursday',
+                        isSelected: selectedDays == 'Thursday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                      CustomChip(
+                        title: 'Friday',
+                        isSelected: selectedDays == 'Friday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                      CustomChip(
+                        title: 'Saturday',
+                        isSelected: selectedDays == 'Saturday',
+                        onSelect: (String value) {
+                          selectedDays = value;
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
