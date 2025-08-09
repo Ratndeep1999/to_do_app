@@ -12,6 +12,8 @@ class CreateToDoListPage extends StatefulWidget {
 }
 
 class _CreateToDoListPageState extends State<CreateToDoListPage> {
+  String repeatSelected = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,30 +87,41 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                     spacing: MediaQuery.of(context).size.width * 0.03,
                     children: [
                       /// Parent Timeline
-                      CustomChip(title: 'Daily'),
-                      CustomChip(title: 'Weekly'),
-                      CustomChip(title: 'Monthly'),
-                      CustomChip(title: 'No repeat'),
+                      CustomChip(
+                        title: 'Daily',
+                        isSelected: repeatSelected == 'Daily',
+                      ),
+                      CustomChip(
+                        title: 'Weekly',
+                        isSelected: repeatSelected == 'Weekly',
+                      ),
+                      CustomChip(
+                        title: 'Monthly',
+                        isSelected: repeatSelected == 'Monthly',
+                      ),
+                      CustomChip(
+                        title: 'No repeat',
+                        isSelected: repeatSelected == 'No repeat',
+                      ),
                     ],
                   ),
-
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                   /// Days Section
-                  Wrap(
-                    direction: Axis.horizontal,
-                    runSpacing: MediaQuery.of(context).size.height * 0.012,
-                    spacing: MediaQuery.of(context).size.width * 0.03,
-                    children: [
-                      CustomChip(title: 'Sunday'),
-                      CustomChip(title: 'Monday'),
-                      CustomChip(title: 'Tuesday'),
-                      CustomChip(title: 'Wednesday'),
-                      CustomChip(title: 'Thursday'),
-                      CustomChip(title: 'Friday'),
-                      CustomChip(title: 'Saturday'),
-                    ],
-                  ),
+                  // Wrap(
+                  //   direction: Axis.horizontal,
+                  //   runSpacing: MediaQuery.of(context).size.height * 0.012,
+                  //   spacing: MediaQuery.of(context).size.width * 0.03,
+                  //   children: [
+                  //     CustomChip(title: 'Sunday'),
+                  //     CustomChip(title: 'Monday'),
+                  //     CustomChip(title: 'Tuesday'),
+                  //     CustomChip(title: 'Wednesday'),
+                  //     CustomChip(title: 'Thursday'),
+                  //     CustomChip(title: 'Friday'),
+                  //     CustomChip(title: 'Saturday'),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
