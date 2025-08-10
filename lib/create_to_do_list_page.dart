@@ -209,7 +209,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
     );
   }
 
-  // this method checks if value is add then remove it else add it
+  // this method checks if days is add then remove it else add it
   void updateSelectedDays(String value) {
     setState(() {
       selectedDays.contains(value)
