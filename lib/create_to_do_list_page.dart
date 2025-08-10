@@ -13,8 +13,8 @@ class CreateToDoListPage extends StatefulWidget {
 
 class _CreateToDoListPageState extends State<CreateToDoListPage> {
   String repeatSelected = 'No repeat';
-  String selectedDays = '';
-  bool isRemainderActive = false ;
+  Set<String> selectedDays = {};
+  bool isRemainderActive = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,9 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   ///. Title
                   InkWell(
                     splashFactory: NoSplash.splashFactory,
-                    onTap: () {},
+                    onTap: () {
+
+                    },
                     child: Text(
                       'Create to-do',
                       style: TextStyle(
@@ -66,7 +68,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   SetRemainderWidget(
                     isRemainder: isRemainderActive,
                     activeRemainder: (bool value) {
-                      isRemainderActive = value ;
+                      isRemainderActive = value;
                       setState(() {});
                     },
                   ),
@@ -81,7 +83,6 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   CustomTextFieldWidget(hint: 'Title'),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.015),
                   CustomTextFieldWidget(hint: 'Description'),
-
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                   /// Repeat Section
@@ -97,7 +98,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                       /// Parent Timeline
                       CustomChip(
                         title: 'Daily',
-                        isSelected: repeatSelected == 'Daily' ? true : false,
+                        isSelected: repeatSelected == 'Daily',
                         // this method work when it calls from child class
                         onSelect: (String value) {
                           // to test what function return when calls from child class
@@ -150,58 +151,51 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                     children: [
                       CustomChip(
                         title: 'Sunday',
-                        isSelected: selectedDays == 'Sunday',
+                        isSelected: selectedDays.contains('Sunday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                       CustomChip(
                         title: 'Monday',
-                        isSelected: selectedDays == 'Monday',
+                        isSelected: selectedDays.contains('Monday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                       CustomChip(
                         title: 'Tuesday',
-                        isSelected: selectedDays == 'Tuesday',
+                        isSelected: selectedDays.contains('Tuesday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                       CustomChip(
                         title: 'Wednesday',
-                        isSelected: selectedDays == 'Wednesday',
+                        isSelected: selectedDays.contains('Wednesday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                       CustomChip(
                         title: 'Thursday',
-                        isSelected: selectedDays == 'Thursday',
+                        isSelected: selectedDays.contains('Thursday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                       CustomChip(
                         title: 'Friday',
-                        isSelected: selectedDays == 'Friday',
+                        isSelected: selectedDays.contains('Friday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                       CustomChip(
                         title: 'Saturday',
-                        isSelected: selectedDays == 'Saturday',
+                        isSelected: selectedDays.contains('Saturday'),
                         onSelect: (String value) {
-                          selectedDays = value;
-                          setState(() {});
+                          updateSelectedDays(value);
                         },
                       ),
                     ],
@@ -213,5 +207,14 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
         ),
       ),
     );
+  }
+
+  // this method checks if value is add then remove it else add it
+  void updateSelectedDays(String value) {
+    setState(() {
+      selectedDays.contains(value)
+          ? selectedDays.remove(value)
+          : selectedDays.add(value);
+    });
   }
 }
