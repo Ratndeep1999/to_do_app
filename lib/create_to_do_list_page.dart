@@ -15,8 +15,9 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
   String repeatSelected = 'No repeat';
   Set<String> selectedDays = {};
   bool isRemainderActive = false;
-  String _titleInput = '' ;
-  String _descriptionInput = '' ;
+  String _titleInput = '';
+
+  String _descriptionInput = '';
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,10 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   ///. Title
                   InkWell(
                     splashFactory: NoSplash.splashFactory,
-                    onTap: () {},
+                    onTap: () {
+                      // method for save data
+                      userInputSave();
+                    },
                     child: Text(
                       'Create to-do',
                       style: TextStyle(
@@ -85,7 +89,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                     hint: 'Title',
                     maxLines: 1,
                     userInput: (String title) {
-                      _titleInput = title ;
+                      _titleInput = title;
                       debugPrint(_titleInput);
                     },
                   ),
@@ -234,9 +238,31 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
   }
 
   // method for title and description validation
-  // void userInputValidation() {
-  //   if () {
-  //
-  //   }
-  // }
+  bool userInputValidation() {
+    if (_titleInput.trim().isEmpty) {
+      return false;
+    }
+    if (_descriptionInput.trim().isEmpty) {
+      return false;
+    }
+    return true;
+  }
+
+  // method for save date if valid otherwise show snack bar
+  void userInputSave() {
+    if (userInputValidation()) {
+
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: Duration(seconds: 4),
+          showCloseIcon: true,
+          content: Text(
+            'Please Input Details Properly.....',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+        ),
+      );
+    }
+  }
 }
