@@ -15,6 +15,8 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
   String repeatSelected = 'No repeat';
   Set<String> selectedDays = {};
   bool isRemainderActive = false;
+  String _titleInput = '' ;
+  String _descriptionInput = '' ;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +52,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   ///. Title
                   InkWell(
                     splashFactory: NoSplash.splashFactory,
-                    onTap: () {
-
-                    },
+                    onTap: () {},
                     child: Text(
                       'Create to-do',
                       style: TextStyle(
@@ -70,6 +70,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                     activeRemainder: (bool value) {
                       isRemainderActive = value;
                       setState(() {});
+                      debugPrint(isRemainderActive.toString());
                     },
                   ),
 
@@ -80,9 +81,23 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                   /// Text Fields
-                  CustomTextFieldWidget(hint: 'Title'),
+                  CustomTextFieldWidget(
+                    hint: 'Title',
+                    maxLines: 1,
+                    userInput: (String title) {
+                      _titleInput = title ;
+                      debugPrint(_titleInput);
+                    },
+                  ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.015),
-                  CustomTextFieldWidget(hint: 'Description'),
+                  CustomTextFieldWidget(
+                    hint: 'Description',
+                    maxLines: 2,
+                    userInput: (String description) {
+                      _descriptionInput = description;
+                      debugPrint(_descriptionInput);
+                    },
+                  ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                   /// Repeat Section
@@ -217,4 +232,11 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
           : selectedDays.add(value);
     });
   }
+
+  // method for title and description validation
+  // void userInputValidation() {
+  //   if () {
+  //
+  //   }
+  // }
 }
