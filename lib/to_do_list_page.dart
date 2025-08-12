@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/create_to_do_list_page.dart';
+import 'package:to_do_app/to_do_model_class.dart';
+import 'to do list page widgets/to_do_list_item.dart';
 
 class ToDoListPage extends StatefulWidget {
   const ToDoListPage({super.key});
@@ -9,16 +11,25 @@ class ToDoListPage extends StatefulWidget {
 }
 
 class _ToDoListPageState extends State<ToDoListPage> {
+  List<ToDoModel> toDoList = [];
+
   @override
   Widget build(BuildContext context) {
+    debugPrint('build Called one');
     return Scaffold(
       backgroundColor: Colors.white,
+      /// Floating Action Button
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          ToDoModel? data = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => CreateToDoListPage()),
-          );
+          ) as ToDoModel? ;
+
+          // if data is not null then add it int to toDoList as List_items
+          if (data != null) {
+            toDoList.add(data);
+          }
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         backgroundColor: Colors.black,
@@ -51,7 +62,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
               /// Today Filter section
               Row(
                 children: [
-                  Text(
+                  const Text(
                     'Today',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                   ),
@@ -66,7 +77,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Filter ',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -85,85 +96,10 @@ class _ToDoListPageState extends State<ToDoListPage> {
               Expanded(
                 child: ListView.separated(
                   itemCount: 1000,
-                  itemBuilder: (BuildContext context, index) => Row(
-                    children: [
-                      /// Dynamic Blue Circle
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 2, color: Colors.blue),
-                        ),
-                        child: Visibility(
-                          visible: index.isEven,
-                          child: Icon(Icons.check, size: 25),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-
-                      /// Title and Description of List
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //Title
-                            Text(
-                              'Return Library Books',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            // Description
-                            Text(
-                              'Gather overdue library books and return Gather overdue library books and return',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            SizedBox(height: 2),
-
-                            /// Time, Date, Notification, Refresh
-                            Row(
-                              children: [
-                                // Time
-                                Icon(Icons.watch_later_outlined, size: 18),
-                                SizedBox(width: 2),
-                                Text(
-                                  '11:30 AM',
-                                  style: TextStyle(fontSize: 13),
-                                ),
-
-                                SizedBox(width: 12),
-
-                                // Date
-                                Icon(Icons.calendar_today_rounded, size: 16),
-                                SizedBox(width: 5),
-                                Text(
-                                  '26/11/2024',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-
-                                SizedBox(width: 12),
-
-                                // Notification
-                                Icon(Icons.notifications, size: 18),
-
-                                SizedBox(width: 12),
-
-                                // Refresh
-                                Icon(Icons.repeat, size: 18),
-                              ],
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    debugPrint('Item : $index');
+                    return ToDoListItem(index: index, item: toDoList[index],);
+                  },
                   // It separate item with separator but not at last item
                   separatorBuilder: (context, index) {
                     debugPrint(index.toString());
@@ -178,3 +114,4 @@ class _ToDoListPageState extends State<ToDoListPage> {
     );
   }
 }
+
