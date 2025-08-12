@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 
 class CustomTextFieldWidget extends StatefulWidget {
   final String hint;
+  final int maxLines;
+  final Function(String) userInput;
 
-  const CustomTextFieldWidget({super.key, required this.hint});
+  const CustomTextFieldWidget({
+    super.key,
+    required this.hint,
+    required this.maxLines,
+    required this.userInput,
+  });
 
   @override
   State<CustomTextFieldWidget> createState() => _CustomTextFieldWidgetState();
@@ -28,11 +35,18 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
+      onChanged: (value) {
+        widget.userInput(value);
+      },
       keyboardType: TextInputType.text,
-      maxLines: 1,
+      maxLines: widget.maxLines,
       decoration: InputDecoration(
         hintText: widget.hint,
-        hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54, letterSpacing: 1),
+        hintStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black54,
+          letterSpacing: 1,
+        ),
         contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
         // when we see static position
         enabledBorder: OutlineInputBorder(
