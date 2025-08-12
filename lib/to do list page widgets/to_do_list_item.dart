@@ -61,14 +61,12 @@ class _ToDoListItemState extends State<ToDoListItem> {
                   Icon(Icons.watch_later_outlined, size: 18),
                   SizedBox(width: 2),
                   Text('11:30 AM', style: TextStyle(fontSize: 13)),
-
                   SizedBox(width: 12),
 
                   // Date
                   Icon(Icons.calendar_today_rounded, size: 16),
                   SizedBox(width: 5),
                   Text('26/11/2024', style: TextStyle(fontSize: 12)),
-
                   SizedBox(width: 12),
 
                   // Notification
