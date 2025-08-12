@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/to_do_model_class.dart';
 
 class ToDoListItem extends StatefulWidget {
-  const ToDoListItem({super.key, required this.index, required this.item});
+  const ToDoListItem({
+    super.key,
+    required this.index,
+    required this.item,
+  });
 
   final int index;
   final ToDoModel item;
@@ -38,12 +42,12 @@ class _ToDoListItemState extends State<ToDoListItem> {
             children: [
               //Title
               Text(
-                widget.item.title,
+                'Return Library Books',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               // Description
               Text(
-                widget.item.description,
+                'Gather overdue library books and return Gather overdue library books and return',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 15),
@@ -71,7 +75,7 @@ class _ToDoListItemState extends State<ToDoListItem> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        widget.item.isRemaindered = !widget.item.isRemaindered;
+                        widget.item.isRemaindered =!widget.item.isRemaindered;
                       });
                     },
                     child: Icon(
