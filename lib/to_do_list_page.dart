@@ -15,9 +15,10 @@ class _ToDoListPageState extends State<ToDoListPage> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('build Called one');
+    debugPrint('build Called');
     return Scaffold(
       backgroundColor: Colors.white,
+
       /// Floating Action Button
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
@@ -28,7 +29,9 @@ class _ToDoListPageState extends State<ToDoListPage> {
 
           // if data is not null then add it int to toDoList as List_items
           if (data != null) {
-            toDoList.add(data);
+            setState(() {
+              toDoList.add(data);
+            });
           }
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
@@ -62,11 +65,13 @@ class _ToDoListPageState extends State<ToDoListPage> {
               /// Today Filter section
               Row(
                 children: [
+                  // Today
                   const Text(
                     'Today',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
                   ),
                   Spacer(),
+                  // Filter button
                   Container(
                     height: 45,
                     width: 110,
@@ -95,14 +100,13 @@ class _ToDoListPageState extends State<ToDoListPage> {
               /// ListView section
               Expanded(
                 child: ListView.separated(
-                  itemCount: 1000,
+                  itemCount: toDoList.length,
                   itemBuilder: (BuildContext context, int index) {
                     debugPrint('Item : $index');
                     return ToDoListItem(index: index, item: toDoList[index],);
                   },
                   // It separate item with separator but not at last item
                   separatorBuilder: (context, index) {
-                    debugPrint(index.toString());
                     return Divider();
                   },
                 ),
