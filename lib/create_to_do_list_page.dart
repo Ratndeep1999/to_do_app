@@ -54,7 +54,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   InkWell(
                     splashFactory: NoSplash.splashFactory,
                     onTap: () {
-                      // save data
+                      // Save and pass data
                       userInputSave();
                     },
                     child: Text(
@@ -248,9 +248,11 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
     return true;
   }
 
-  // method for save date if valid otherwise show snack bar
+  // method for save and pass date if valid otherwise show snack bar
   void userInputSave() {
+    // userInputValidation() which return true ao false
     if (userInputValidation()) {
+      // Sava data in to toDoData which typ ei ToDoModel
       ToDoModel toDoData = ToDoModel(
         isRemaindered: isRemainderActive,
         description: _descriptionInput,
@@ -259,6 +261,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
         days: selectedDays,
         repeat: repeatSelected,
       );
+      // Data pass to previous page by using variable toDoData
       Navigator.of(context).pop(toDoData);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
