@@ -47,7 +47,7 @@ class _ToDoListItemState extends State<ToDoListItem> {
               ),
               // Description
               Text(
-                'Gather overdue library books and return Gather overdue library books and return',
+                widget.item.description,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 15),
