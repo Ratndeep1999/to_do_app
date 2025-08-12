@@ -22,10 +22,14 @@ class _ToDoListPageState extends State<ToDoListPage> {
       /// Floating Action Button
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          ToDoModel? data = await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CreateToDoListPage()),
-          ) as ToDoModel? ;
+          ToDoModel? data =
+              await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CreateToDoListPage(),
+                    ),
+                  )
+                  as ToDoModel?;
 
           // if data is not null then add it int to toDoList as List_items
           if (data != null) {
@@ -103,7 +107,11 @@ class _ToDoListPageState extends State<ToDoListPage> {
                   itemCount: toDoList.length,
                   itemBuilder: (BuildContext context, int index) {
                     debugPrint('Item : $index');
-                    return ToDoListItem(index: index, item: toDoList[index],);
+                    return ToDoListItem(
+                      index: index,
+                      item: toDoList[index],
+                      isRemainder: toDoList[index].isRemaindered,
+                    );
                   },
                   // It separate item with separator but not at last item
                   separatorBuilder: (context, index) {
@@ -118,4 +126,3 @@ class _ToDoListPageState extends State<ToDoListPage> {
     );
   }
 }
-
