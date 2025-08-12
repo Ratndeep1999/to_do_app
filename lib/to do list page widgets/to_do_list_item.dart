@@ -42,7 +42,7 @@ class _ToDoListItemState extends State<ToDoListItem> {
             children: [
               //Title
               Text(
-                'Return Library Books',
+                widget.item.title,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               // Description
