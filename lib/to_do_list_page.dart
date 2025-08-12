@@ -110,7 +110,6 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     return ToDoListItem(
                       index: index,
                       item: toDoList[index],
-                      isRemainder: toDoList[index].isRemaindered,
                     );
                   },
                   // It separate item with separator but not at last item
