@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/to_do_model_class.dart';
 import 'create to do page widgets/custom_chip.dart';
 import 'create to do page widgets/custom_input_fields_widget.dart';
 import 'create to do page widgets/custom_text.dart';
@@ -16,7 +17,6 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
   Set<String> selectedDays = {};
   bool isRemainderActive = false;
   String _titleInput = '';
-
   String _descriptionInput = '';
 
   @override
@@ -54,7 +54,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   InkWell(
                     splashFactory: NoSplash.splashFactory,
                     onTap: () {
-                      // method for save data
+                      // save data
                       userInputSave();
                     },
                     child: Text(
@@ -251,7 +251,15 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
   // method for save date if valid otherwise show snack bar
   void userInputSave() {
     if (userInputValidation()) {
-
+      ToDoModel toDoData = ToDoModel(
+        isRemaindered: isRemainderActive,
+        description: _descriptionInput,
+        title: _titleInput,
+        isTaskCompleted: false,
+        days: selectedDays,
+        repeat: repeatSelected,
+      );
+      Navigator.of(context).pop(toDoData);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
