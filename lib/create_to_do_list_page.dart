@@ -260,6 +260,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
         isTaskCompleted: false,
         days: selectedDays,
         repeat: repeatSelected,
+        createDateTime: DateTime.now(),
       );
       // Data pass to previous page by using variable toDoData
       Navigator.of(context).pop(toDoData);
