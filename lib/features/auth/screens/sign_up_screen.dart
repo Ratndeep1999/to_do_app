@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/sign_in_page.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
   final _userNameController = TextEditingController();
@@ -61,7 +60,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.025,
+                    ),
 
                     /// Username
                     TextFormField(
@@ -82,7 +83,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.025,
+                    ),
 
                     /// Email
                     TextFormField(
@@ -104,7 +107,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.025,
+                    ),
 
                     /// Phone no.
                     TextFormField(
@@ -126,7 +131,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.025,
+                    ),
 
                     ElevatedButton(
                       onPressed: () {
@@ -140,7 +147,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       },
                       child: Text('Save'),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.075),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.075,
+                    ),
 
                     Text(
                       'If you already have account then click on SIGN in',
@@ -148,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 2.0
+                        letterSpacing: 2.0,
                       ),
                     ),
 
