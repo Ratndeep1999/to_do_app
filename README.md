@@ -15,8 +15,8 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-![Splash screen](lib/Assets/splash_screen.png)
-![Sign in screen](lib/Assets/sign_in.png)
-![Sign up screen](lib/Assets/sign_up.png)
-![create to do 1](lib/Assets/create_to_do_1.png)
-![create to do 2](lib/Assets/create_to_do_2.png)
+![Splash screen](assets/result/splash_screen.png)
+![Sign in screen](assets/result/sign_in.png)
+![Sign up screen](assets/result/sign_up.png)
+![create to do 1](assets/result/create_to_do_1.png)
+![create to do 2](assets/result/create_to_do_2.png)
