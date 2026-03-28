@@ -19,18 +19,18 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      /// Appbar
       appBar: AppBar(
         title: Text("To Do"),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
+
+      /// Body
       body: SingleChildScrollView(
         child: InkWell(
-          onTap: () {
-            // it enable to remove keyboard
-            FocusScope.of(context).unfocus();
-          },
+          /// Remove Keyboard Focus
+          onTap: () => FocusScope.of(context).unfocus(),
           child: SafeArea(
             child: Form(
               key: _formKey,
@@ -42,12 +42,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       height: MediaQuery.of(context).size.height * 0.125,
                     ),
 
-                    /// Sign in
+                    /// Sign in Label
                     Padding(
                       padding: const EdgeInsets.only(right: 55),
                       child: Text(
                         'SIGN in',
-                        // textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: 65,
                           fontWeight: FontWeight.w600,
@@ -63,26 +62,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     /// Username Field
                     TextFormField(
                       controller: _userNameController,
-                      validator: (userName) {
-                        if (userName == null || userName.isEmpty) {
-                          return 'Please enter username properly';
-                        } else if (userName.length < 5) {
-                          return 'Username must be at least 5 characters';
-                        } else if (!RegExp(
-                          r'^[a-zA-Z0-9]+$',
-                        ).hasMatch(userName)) {
-                          return "Only numbers and latter's are allow";
-                        }
-                        if (userName.contains(' ')) {
-                          return 'Space is not allow';
-                        }
-                        return null;
-                      },
+                      validator: userNameValidation,
                       decoration: InputDecoration(
                         hintText: 'Enter your user name',
                         prefixIcon: Icon(Icons.person),
                         prefixIconColor: Colors.black26,
-                        // prefixIcon: Icon(Icons.verified_user),
                         filled: true,
                         fillColor: Colors.grey.shade200,
                         border: OutlineInputBorder(
@@ -97,25 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     /// Password Field
                     TextFormField(
                       controller: _passwordController,
-                      validator: (password) {
-                        if (password == null || password.isEmpty) {
-                          return 'Please enter your username properly';
-                        } else if (password.length < 8) {
-                          return 'Password must be at least 8 characters';
-                        } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
-                          return 'Password must be contain at least one Uppercase letter';
-                        } else if (!RegExp(r'[a-z]').hasMatch(password)) {
-                          return 'Password must be contain at least one Lowercase letter';
-                        } else if (!RegExp(r'[0-9]').hasMatch(password)) {
-                          return 'Password must be contain at least one number';
-                        } else if (!RegExp(r'[!@#$&*_]').hasMatch(password)) {
-                          return 'Password must be contain at least one special character (!@#\$&*_)';
-                        }
-                        if (password.contains(' ')) {
-                          return 'Space not allow';
-                        }
-                        return null;
-                      },
+                      validator: passwordValidation,
                       onChanged: (password) {
                         _formKey.currentState!.validate();
                       },
@@ -217,5 +183,41 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
+  }
+
+  /// Username Validation
+  String? userNameValidation(userName) {
+    if (userName == null || userName.isEmpty) {
+      return 'Please enter username properly';
+    } else if (userName.length < 5) {
+      return 'Username must be at least 5 characters';
+    } else if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(userName)) {
+      return "Only numbers and latter's are allow";
+    }
+    if (userName.contains(' ')) {
+      return 'Space is not allow';
+    }
+    return null;
+  }
+
+  /// Password Validation
+  String? passwordValidation(password) {
+    if (password == null || password.isEmpty) {
+      return 'Please enter your username properly';
+    } else if (password.length < 8) {
+      return 'Password must be at least 8 characters';
+    } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
+      return 'Password must be contain at least one Uppercase letter';
+    } else if (!RegExp(r'[a-z]').hasMatch(password)) {
+      return 'Password must be contain at least one Lowercase letter';
+    } else if (!RegExp(r'[0-9]').hasMatch(password)) {
+      return 'Password must be contain at least one number';
+    } else if (!RegExp(r'[!@#$&*_]').hasMatch(password)) {
+      return 'Password must be contain at least one special character (!@#\$&*_)';
+    }
+    if (password.contains(' ')) {
+      return 'Space not allow';
+    }
+    return null;
   }
 }
