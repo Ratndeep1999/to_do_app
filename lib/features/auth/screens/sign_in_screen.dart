@@ -82,9 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     TextFormField(
                       controller: _passwordController,
                       validator: passwordValidation,
-                      onChanged: (password) {
-                        _formKey.currentState!.validate();
-                      },
+                      onChanged: (pass) => _formKey.currentState!.validate(),
                       obscureText: !_isPassVisible,
                       decoration: InputDecoration(
                         hintText: 'Enter your password',
