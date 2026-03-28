@@ -14,7 +14,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   /// Password visible or not
-  bool _isPasswordVisible = true;
+  bool _isPassVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -85,18 +85,16 @@ class _SignInScreenState extends State<SignInScreen> {
                       onChanged: (password) {
                         _formKey.currentState!.validate();
                       },
-                      obscureText: !_isPasswordVisible,
+                      obscureText: !_isPassVisible,
                       decoration: InputDecoration(
                         hintText: 'Enter your password',
                         prefixIcon: Icon(Icons.password),
                         prefixIconColor: Colors.black26,
                         suffixIcon: InkWell(
-                          onTap: () {
-                            _isPasswordVisible = !_isPasswordVisible;
-                            setState(() {});
-                          },
+                          onTap: () =>
+                              setState(() => _isPassVisible = !_isPassVisible),
                           child: Icon(
-                            _isPasswordVisible
+                            _isPassVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                           ),
