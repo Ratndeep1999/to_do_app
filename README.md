@@ -20,5 +20,3 @@ samples, guidance on mobile development, and a full API reference.
 ![Sign up screen](assets/result/sign_up.png)
 ![create to do 1](assets/result/create_to_do_1.png)
 ![create to do 2](assets/result/create_to_do_2.png)
-
-![Splash Screen](assets/result/splash_screen.png)
