@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               /// Splash Icon
               Image.asset(
-                'lib/assets/to_do.png',
+                'assets/icons/to_do.png',
                 height: 250,
                 width: 250,
                 fit: BoxFit.cover,
