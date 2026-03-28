@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -167,7 +168,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         // It replace page from sign up to sign in
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => SignInPage()),
+                          MaterialPageRoute(
+                            builder: (context) => SignInScreen(),
+                          ),
                         );
                       },
                       child: SizedBox(
