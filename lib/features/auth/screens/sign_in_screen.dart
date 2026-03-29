@@ -64,30 +64,18 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
 
                     /// Password InputFieldWidget
-                    TextFormField(
+                    InputFieldWidget(
                       controller: _passwordController,
                       validator: passwordValidation,
-                      onChanged: (pass) => _formKey.currentState!.validate(),
-                      obscureText: !_isPassVisible,
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                        prefixIcon: Icon(Icons.password),
-                        prefixIconColor: Colors.black26,
-                        suffixIcon: InkWell(
-                          onTap: () =>
-                              setState(() => _isPassVisible = !_isPassVisible),
-                          child: Icon(
-                            _isPassVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                        ),
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
+                      onChanged: (val) => debugPrint("Pass : $val"),
+                      hintText: "Enter your password",
+                      isObscure: _isPassVisible,
+                      prefix: Icons.password,
+                      suffix: _isPassVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      onSuffixTap: () =>
+                          setState(() => _isPassVisible = !_isPassVisible),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
