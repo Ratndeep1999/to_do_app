@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
+import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/label_widget.dart';
+import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -43,33 +45,25 @@ class _SignInScreenState extends State<SignInScreen> {
                       height: MediaQuery.of(context).size.height * 0.125,
                     ),
 
-                    /// Sign in Label
+                    /// Sign in LabelWidget
                     LabelWidget(label: 'SIGN in'),
 
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Username Field
-                    TextFormField(
+                    /// Username InputFieldWidget
+                    InputFieldWidget(
                       controller: _userNameController,
                       validator: userNameValidation,
-                      decoration: InputDecoration(
-                        hintText: 'Enter your user name',
-                        prefixIcon: Icon(Icons.person),
-                        prefixIconColor: Colors.black26,
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
+                      hintText: 'Enter your user name',
+                      prefix: Icons.person,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Password Field
+                    /// Password InputFieldWidget
                     TextFormField(
                       controller: _passwordController,
                       validator: passwordValidation,
@@ -121,22 +115,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       height: MediaQuery.of(context).size.height * 0.075,
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 90),
-                      child: Text(
-                        // if give ( . ) the applied before click
-                        'If you are new here then click on SIGN up',
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 2.0,
-                          // color: Colors.black38,
-                        ),
-                      ),
-                    ),
+                    /// Sub Label
+                    SubLabelWidget(label: 'If you are new here then click on'),
 
-                    /// Sign up
+                    /// Sign up Text Button
                     InkWell(
                       onTap: () {
                         // It replace page from sign in to sign up
