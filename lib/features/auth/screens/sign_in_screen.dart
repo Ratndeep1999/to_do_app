@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
+import 'package:to_do_app/features/auth/widgets/label_widget.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -43,17 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
 
                     /// Sign in Label
-                    Padding(
-                      padding: const EdgeInsets.only(right: 55),
-                      child: Text(
-                        'SIGN in',
-                        style: TextStyle(
-                          fontSize: 65,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black45,
-                        ),
-                      ),
-                    ),
+                    LabelWidget(label: 'SIGN in'),
 
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
