@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/widgets/unfocus_keyboard.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
+import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -18,48 +20,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      /// Appbar
       appBar: AppBar(
         title: Text("To Do"),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
+
+      /// Body
       body: SingleChildScrollView(
-        child: InkWell(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
+        child: UnfocusKeyboard(
           child: SafeArea(
+            minimum: EdgeInsets.symmetric(vertical: 50.0),
             child: Form(
               key: _formKey,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
-                    SizedBox(height: 50),
-
-                    /// Full name
-                    TextFormField(
+                    /// FullName InputFieldWidget
+                    InputFieldWidget(
                       controller: _fullNameController,
-                      validator: (fullName) {
-                        if (fullName == null || fullName.isEmpty) {
-                          return 'Please enter your full name';
-                        }
-                        if (fullName.length < 6) {
-                          return 'Full name length must be 6';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.face),
-                        hintText: 'Enter your full name',
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
+                      hintText: "Enter your full name",
+                      validator: fullNameValidation,
+                      icon: Icons.person,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
@@ -68,12 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     /// Username
                     TextFormField(
                       controller: _userNameController,
-                      validator: (userName) {
-                        if (userName == null || userName.isEmpty) {
-                          return 'Please enter your username';
-                        }
-                        return null;
-                      },
+                      validator: usernameValidation,
                       decoration: InputDecoration(
                         icon: Icon(Icons.account_circle),
                         hintText: 'Enter username',
@@ -194,5 +173,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  ///
+  String? fullNameValidation(fullName) {
+    if (fullName == null || fullName.isEmpty) {
+      return 'Please enter your full name';
+    }
+    if (fullName.length < 6) {
+      return 'Full name length must be 6';
+    }
+    return null;
+  }
+
+  ///
+  String? usernameValidation(userName) {
+    if (userName == null || userName.isEmpty) {
+      return 'Please enter your username';
+    }
+    return null;
   }
 }
