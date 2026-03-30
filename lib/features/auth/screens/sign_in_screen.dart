@@ -93,7 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     SubLabelWidget(label: 'If you are new here then click on'),
 
                     /// Sign up TextButtonWidget
-                    TextButtonWidget(onTap: authNavigation, label: "Sign Up"),
+                    TextButtonWidget(onTap: authNavigation, label: "Sign up"),
                   ],
                 ),
               ),
