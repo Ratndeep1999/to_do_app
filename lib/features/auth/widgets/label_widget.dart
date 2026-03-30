@@ -7,12 +7,11 @@ class LabelWidget extends StatelessWidget {
 
   @override
   Widget build(ctx) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 55),
-
-      /// Label
+    return SizedBox(
+      width: double.infinity,
       child: Text(
         label,
+        textAlign: TextAlign.end,
         style: TextStyle(
           fontSize: 65,
           fontWeight: FontWeight.w600,
