@@ -31,7 +31,7 @@ class InputFieldWidget extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       obscureText: isObscure,
-      textCapitalization: TextCapitalization.characters,
+      // textCapitalization: TextCapitalization.characters,
       keyboardType: TextInputType.text,
       // onSaved: ,
       // focusNode: ,
