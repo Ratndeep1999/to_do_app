@@ -13,22 +13,6 @@ class FloatingActionButtonWidget extends StatelessWidget {
         onPressed: onPress,
         splashColor: Colors.white,
         elevation: 12.0,
-        //   () async {
-        // ToDoModel? data =
-        // await Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => CreateToDoListPage(),
-        //   ),
-        // )
-        // as ToDoModel?;
-
-        //
-        // if (data != null) {
-        //   setState(() {
-        //     toDoList.add(data);
-        //   });
-        // },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         backgroundColor: Colors.black,
         child: const Icon(Icons.add, size: 30, color: Colors.white),
