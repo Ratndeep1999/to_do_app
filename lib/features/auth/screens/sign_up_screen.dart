@@ -50,18 +50,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
 
                     /// Username
-                    TextFormField(
+                    InputFieldWidget(
                       controller: _userNameController,
+                      hintText: "Enter your user name",
                       validator: usernameValidation,
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.account_circle),
-                        hintText: 'Enter username',
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
+                      icon: Icons.verified_user,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
