@@ -13,20 +13,30 @@ class TodoListWidget extends StatefulWidget {
 
 class _TodoListWidgetState extends State<TodoListWidget> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(ctx) {
+    final todoList = widget.toDoList;
+
     return Expanded(
       child: ListView.separated(
-        itemCount: 5,
+        itemCount: todoList.length,
         itemBuilder: (ctx, index) {
+          final item = widget.toDoList[index];
           return TodoListItemsWidget(
-            isTodoSelected: false,
-            isRemainder: false,
-            onTapToggle: () {},
-            onTapRemainder: () {},
-            title: '',
-            description: '',
-            time: '',
-            date: '',
+            isTodoSelected: item.isTaskCompleted,
+            isRemainder: item.isRemaindered,
+            onTapToggle: () =>
+                setState(() => item.isTaskCompleted = !item.isTaskCompleted),
+            onTapRemainder: () =>
+                setState(() => item.isRemaindered = !item.isRemaindered),
+            title: item.title,
+            description: item.description,
+            time: "",
+            date: "",
           );
         },
         separatorBuilder: (ctx, index) => Divider(),
