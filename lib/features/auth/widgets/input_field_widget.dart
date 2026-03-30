@@ -38,7 +38,7 @@ class InputFieldWidget extends StatelessWidget {
       // onFieldSubmitted: ,
       enableSuggestions: true,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 14.0),
+        contentPadding: EdgeInsets.only(left: 14, bottom: 14.0, top: 14.0),
         hintText: hintText,
         hintStyle: AppTexts.kHintTextStyle,
         errorStyle: TextStyle(color: Colors.black54, fontSize: 10),
