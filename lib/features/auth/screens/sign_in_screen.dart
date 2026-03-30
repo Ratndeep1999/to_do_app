@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/widgets/unfocus_keyboard.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
-import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/input_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/button_widget.dart';
 import 'package:to_do_app/features/auth/widgets/label_widget.dart';
 import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
+import 'package:to_do_app/features/auth/widgets/text_button_widget.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -30,21 +33,16 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
 
       /// Body
-      body: SingleChildScrollView(
-        child: InkWell(
-          /// Remove Keyboard Focus
-          onTap: () => FocusScope.of(context).unfocus(),
+      body: UnfocusKeyboard(
+        child: SingleChildScrollView(
           child: SafeArea(
+            minimum: EdgeInsets.symmetric(vertical: 80.0),
             child: Form(
               key: _formKey,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.125,
-                    ),
-
                     /// Sign in LabelWidget
                     LabelWidget(label: 'SIGN in'),
 
@@ -82,56 +80,20 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
 
                     /// Sign In Button To Validate
-                    ElevatedButton(
-                      onPressed: () {
-                        // Form Validation
-                        if (_formKey.currentState!.validate()) {
-                          debugPrint('Data Processing.......');
-                          debugPrint(_userNameController.text);
-                          debugPrint(_passwordController.text);
-                        } else {
-                          debugPrint(
-                            'Invalid Details, all or some fields are not validates',
-                          );
-                          _passwordController.clear();
-                        }
-                      },
-                      child: Text('Sign In'),
+                    ButtonWidget(
+                      onButtonPress: onSignInPress,
+                      label: "Sign In",
                     ),
 
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.075,
                     ),
 
-                    /// Sub Label
+                    /// SubLabelWidget
                     SubLabelWidget(label: 'If you are new here then click on'),
 
-                    /// Sign up Text Button
-                    InkWell(
-                      onTap: () {
-                        // It replace page from sign in to sign up
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return SignUpScreen();
-                            },
-                          ),
-                        );
-                      },
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          'SIGN up',
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            fontSize: 65,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black45,
-                          ),
-                        ),
-                      ),
-                    ),
+                    /// Sign up TextButtonWidget
+                    TextButtonWidget(onTap: authNavigation),
                   ],
                 ),
               ),
@@ -177,4 +139,22 @@ class _SignInScreenState extends State<SignInScreen> {
     }
     return null;
   }
+
+  ///
+  void onSignInPress() {
+    if (_formKey.currentState!.validate()) {
+      debugPrint('Data Processing.......');
+      debugPrint(_userNameController.text);
+      debugPrint(_passwordController.text);
+    } else {
+      debugPrint('Invalid Details, all or some fields are not validates');
+      _passwordController.clear();
+    }
+  }
+
+  ///
+  void authNavigation() => Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => SignUpScreen()),
+  );
 }
