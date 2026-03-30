@@ -100,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
 
                     /// Sign Up labelWidget
-                    TextButtonWidget(onTap: authNavigation, label: "Sign In"),
+                    TextButtonWidget(onTap: authNavigation, label: "Sign in"),
                   ],
                 ),
               ),
