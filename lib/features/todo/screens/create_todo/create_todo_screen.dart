@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/to_do_model_class.dart';
-import 'create to do page widgets/custom_chip.dart';
-import 'create to do page widgets/custom_input_fields_widget.dart';
-import 'create to do page widgets/custom_text.dart';
-import 'create to do page widgets/set_remainder_widget.dart';
+import '../../../../create to do page widgets/custom_chip.dart';
+import '../../../../create to do page widgets/custom_input_fields_widget.dart';
+import '../../../../create to do page widgets/custom_text.dart';
+import '../../../../create to do page widgets/set_remainder_widget.dart';
+import '../../../../to_do_model_class.dart';
 
-class CreateToDoListPage extends StatefulWidget {
-  const CreateToDoListPage({super.key});
+class CreateTodoScreen extends StatefulWidget {
+  const CreateTodoScreen({super.key});
 
   @override
-  State<CreateToDoListPage> createState() => _CreateToDoListPageState();
+  State<CreateTodoScreen> createState() => _CreateTodoScreenState();
 }
 
-class _CreateToDoListPageState extends State<CreateToDoListPage> {
+class _CreateTodoScreenState extends State<CreateTodoScreen> {
   String repeatSelected = 'No repeat';
   Set<String> selectedDays = {};
   bool isRemainderActive = false;
@@ -50,7 +50,7 @@ class _CreateToDoListPageState extends State<CreateToDoListPage> {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
 
-                  ///. Title
+                  /// Title
                   InkWell(
                     splashFactory: NoSplash.splashFactory,
                     onTap: () {
