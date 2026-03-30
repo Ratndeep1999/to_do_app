@@ -14,6 +14,8 @@ class NotificationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTapRemainder,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       child: Icon(
         isRemainder ? Icons.notifications_active_sharp : Icons.notifications,
         size: 18,
