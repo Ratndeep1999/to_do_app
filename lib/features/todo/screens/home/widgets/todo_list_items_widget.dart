@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/features/todo/widgets/description_widget.dart';
-import 'package:to_do_app/features/todo/widgets/time_date_and_noti_widget.dart';
-import 'package:to_do_app/features/todo/widgets/title_widget.dart';
-import 'package:to_do_app/features/todo/widgets/toggle_circle_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/time_date_and_noti_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/title_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/toggle_circle_widget.dart';
+import 'description_widget.dart';
 
 class TodoListItemsWidget extends StatelessWidget {
   const TodoListItemsWidget({

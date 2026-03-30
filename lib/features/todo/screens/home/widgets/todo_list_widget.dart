@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/features/todo/widgets/todo_list_items_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_items_widget.dart';
 import 'package:to_do_app/to_do_model_class.dart';
 
 class TodoListWidget extends StatefulWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/features/todo/widgets/notification_widget.dart';
+
+import 'notification_widget.dart';
 
 class TimeDateAndNotiWidget extends StatelessWidget {
   const TimeDateAndNotiWidget({
