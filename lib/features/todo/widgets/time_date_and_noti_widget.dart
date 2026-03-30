@@ -32,7 +32,10 @@ class TimeDateAndNotiWidget extends StatelessWidget {
         const SizedBox(width: 12),
 
         /// Notification
-        NotificationWidget(isRemainder: false, onTapRemainder: onTapRemainder),
+        NotificationWidget(
+          isRemainder: isRemainder,
+          onTapRemainder: onTapRemainder,
+        ),
         const SizedBox(width: 12),
 
         /// Refresh
