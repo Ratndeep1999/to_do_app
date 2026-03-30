@@ -96,8 +96,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     /// Sub Label Widget
                     SubLabelWidget(
-                      label:
-                          'If you already have account then click on SIGN in',
+                      label: 'If you already have account then click on',
                     ),
 
                     /// Sign Up labelWidget
