@@ -12,6 +12,7 @@ class InputFieldWidget extends StatelessWidget {
     this.prefix,
     this.suffix,
     this.onSuffixTap,
+    this.icon,
   });
 
   final TextEditingController controller;
@@ -21,6 +22,7 @@ class InputFieldWidget extends StatelessWidget {
   final String hintText;
   final IconData? prefix, suffix;
   final VoidCallback? onSuffixTap;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +42,17 @@ class InputFieldWidget extends StatelessWidget {
         hintText: hintText,
         hintStyle: AppTexts.kHintTextStyle,
         errorStyle: TextStyle(color: Colors.black54, fontSize: 10),
-        prefixIcon: Icon(prefix),
+        icon: icon != null ? Icon(icon, color: Colors.black26) : null,
+        prefixIcon: prefix != null ? Icon(prefix) : null,
         prefixIconColor: Colors.black26,
-        suffixIcon: InkWell(
-          onTap: onSuffixTap,
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          child: Icon(suffix, color: Colors.black26),
-        ),
+        suffixIcon: suffix != null
+            ? InkWell(
+                onTap: onSuffixTap,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                child: Icon(suffix, color: Colors.black26),
+              )
+            : null,
         filled: true,
         fillColor: Colors.grey.shade200,
         border: OutlineInputBorder(
