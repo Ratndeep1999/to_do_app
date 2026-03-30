@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/features/todo/widgets/notification_widget.dart';
 
 class TimeDateAndNotiWidget extends StatelessWidget {
   const TimeDateAndNotiWidget({
@@ -31,15 +32,7 @@ class TimeDateAndNotiWidget extends StatelessWidget {
         const SizedBox(width: 12),
 
         /// Notification
-        InkWell(
-          onTap: onTapRemainder,
-          child: Icon(
-            isRemainder
-                ? Icons.notifications_active_sharp
-                : Icons.notifications,
-            size: 18,
-          ),
-        ),
+        NotificationWidget(isRemainder: false, onTapRemainder: () {}),
         const SizedBox(width: 12),
 
         /// Refresh
