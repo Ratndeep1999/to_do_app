@@ -5,6 +5,8 @@ import 'package:to_do_app/features/todo/widgets/today_and_filter_widget.dart';
 import 'package:to_do_app/features/todo/widgets/todo_list_widget.dart';
 import 'package:to_do_app/to_do_model_class.dart';
 
+import '../../../create_to_do_list_page.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -20,8 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       /// Floating Action Button
-      floatingActionButton: FloatingActionButtonWidget(onPress: () {}),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButtonWidget(onPress: onCreateTodo),
 
       /// Appbar
       appBar: AppBar(
@@ -49,5 +50,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  ///
+  Future<void> onCreateTodo() async {
+    ToDoModel? data =
+        await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CreateToDoListPage()),
+            )
+            as ToDoModel?;
+
+    if (data != null) {
+      setState(() => toDoList.add(data));
+    }
   }
 }
