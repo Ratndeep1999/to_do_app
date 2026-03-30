@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/button_widget.dart';
+import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
+import 'package:to_do_app/features/auth/widgets/text_button_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -49,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Username
+                    /// Username InputFieldWidget
                     InputFieldWidget(
                       controller: _userNameController,
                       hintText: "Enter your user name",
@@ -60,104 +63,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Email
-                    TextFormField(
+                    /// Email InputFieldWidget
+                    InputFieldWidget(
                       controller: _emailController,
-                      validator: (email) {
-                        if (email == null || email.isEmpty) {
-                          return 'Please enter your email address';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.email_outlined),
-                        hintText: 'Enter your email address',
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
+                      hintText: "Enter your email",
+                      validator: emailValidation,
+                      icon: Icons.email_outlined,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Phone no.
-                    TextFormField(
+                    /// Phone no. InputFieldWidget
+                    InputFieldWidget(
                       controller: _mobileNumberController,
-                      keyboardType: TextInputType.phone,
-                      validator: (phoneNumber) {
-                        if (phoneNumber == null || phoneNumber.isEmpty) {
-                          return 'Please enter your phone number';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.phone),
-                        hintText: 'Enter your mobile number.',
-                        filled: true,
-                        fillColor: Colors.grey.shade200,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
+                      hintText: "Enter your ph. number",
+                      validator: numberValidation,
+                      icon: Icons.phone,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          debugPrint('Data Processing.....');
-                        } else {
-                          debugPrint(
-                            'Invalid Details all or any fields are not validate',
-                          );
-                        }
-                      },
-                      child: Text('Save'),
+                    /// Sign up Button Widget
+                    ButtonWidget(
+                      onButtonPress: onSignUpPress,
+                      label: "Sign Up",
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.075,
                     ),
 
-                    Text(
-                      'If you already have account then click on SIGN in',
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 2.0,
-                      ),
+                    /// Sub Label Widget
+                    SubLabelWidget(
+                      label:
+                          'If you already have account then click on SIGN in',
                     ),
 
-                    /// Sign in
-                    InkWell(
-                      onTap: () {
-                        // It replace page from sign up to sign in
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SignInScreen(),
-                          ),
-                        );
-                      },
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          'SIGN in',
-                          textDirection: TextDirection.rtl,
-                          style: TextStyle(
-                            fontSize: 65,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black45,
-                          ),
-                        ),
-                      ),
-                    ),
+                    /// Sign Up labelWidget
+                    TextButtonWidget(onTap: authNavigation, label: "Sign In"),
                   ],
                 ),
               ),
@@ -186,4 +130,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
     return null;
   }
+
+  ///
+  String? emailValidation(email) {
+    if (email == null || email.isEmpty) {
+      return 'Please enter your email address';
+    }
+    return null;
+  }
+
+  ///
+  String? numberValidation(phoneNumber) {
+    if (phoneNumber == null || phoneNumber.isEmpty) {
+      return 'Please enter your phone number';
+    }
+    return null;
+  }
+
+  ///
+  void onSignUpPress() {
+    if (_formKey.currentState!.validate()) {
+      debugPrint('Data Processing.....');
+    } else {
+      debugPrint('Invalid Details all or any fields are not validate');
+    }
+  }
+
+  ///
+  void authNavigation() => Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => SignInScreen()),
+  );
 }
