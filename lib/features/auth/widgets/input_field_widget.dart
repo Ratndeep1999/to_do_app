@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/constants/app_texts.dart';
+import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
 class InputFieldWidget extends StatelessWidget {
   const InputFieldWidget({
@@ -40,7 +40,7 @@ class InputFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(left: 14, bottom: 14.0, top: 14.0),
         hintText: hintText,
-        hintStyle: AppTexts.kHintTextStyle,
+        hintStyle: AppTextStyles.kHintTextStyle,
         errorStyle: TextStyle(color: Colors.black54, fontSize: 10),
         icon: icon != null ? Icon(icon, color: Colors.black26) : null,
         prefixIcon: prefix != null ? Icon(prefix) : null,

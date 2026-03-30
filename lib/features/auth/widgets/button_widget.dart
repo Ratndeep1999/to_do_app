@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/constants/app_texts.dart';
+import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
@@ -26,7 +26,7 @@ class ButtonWidget extends StatelessWidget {
             elevation: 4.0,
             shadowColor: Colors.black,
           ),
-          child: Text(label, style: AppTexts.kAuthButtonLabel),
+          child: Text(label, style: AppTextStyles.kAuthButtonLabel),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/constants/app_texts.dart';
+import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
 class LabelWidget extends StatelessWidget {
   const LabelWidget({super.key, required this.label});
@@ -10,7 +10,11 @@ class LabelWidget extends StatelessWidget {
   Widget build(ctx) {
     return SizedBox(
       width: double.infinity,
-      child: Text(label, textAlign: TextAlign.end, style: AppTexts.kAuthLabel),
+      child: Text(
+        label,
+        textAlign: TextAlign.end,
+        style: AppTextStyles.kAuthLabel,
+      ),
     );
   }
 }

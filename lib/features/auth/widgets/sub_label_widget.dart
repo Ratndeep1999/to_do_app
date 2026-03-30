@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/constants/app_texts.dart';
+import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
 class SubLabelWidget extends StatelessWidget {
   const SubLabelWidget({super.key, required this.label});
@@ -15,7 +15,7 @@ class SubLabelWidget extends StatelessWidget {
       child: Text(
         label,
         textAlign: TextAlign.end,
-        style: AppTexts.kAuthSubLabel,
+        style: AppTextStyles.kAuthSubLabel,
       ),
     );
   }
