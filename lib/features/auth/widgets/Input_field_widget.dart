@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/utils/constants/app_texts.dart';
 
 class InputFieldWidget extends StatelessWidget {
   const InputFieldWidget({
@@ -30,6 +31,7 @@ class InputFieldWidget extends StatelessWidget {
       obscureText: isObscure,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: AppTexts.kHintTextStyle,
         prefixIcon: Icon(prefix),
         prefixIconColor: Colors.black26,
         suffixIcon: InkWell(onTap: onSuffixTap, child: Icon(suffix)),
