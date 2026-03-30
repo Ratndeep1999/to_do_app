@@ -25,4 +25,11 @@ class AppTexts {
     fontWeight: FontWeight.w600,
     letterSpacing: 2.0,
   );
+
+  /// Input-Field Hint Style
+  static TextStyle kHintTextStyle = TextStyle(
+    color: Colors.black26,
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+  );
 }
