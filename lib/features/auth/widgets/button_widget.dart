@@ -13,17 +13,21 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      height: 50,
-      child: ElevatedButton(
-        onPressed: onButtonPress,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black54,
-          elevation: 4.0,
-          shadowColor: Colors.black,
+    return Align(
+      alignment: AlignmentGeometry.bottomRight,
+      child: SizedBox(
+        width: 200,
+        height: 50,
+        child: ElevatedButton(
+          onPressed: onButtonPress,
+          style: ElevatedButton.styleFrom(
+            alignment: Alignment.centerRight,
+            backgroundColor: Colors.black54,
+            elevation: 4.0,
+            shadowColor: Colors.black,
+          ),
+          child: Text(label, style: AppTexts.kAuthButtonLabel),
         ),
-        child: Text(label, style: AppTexts.kAuthButtonLabel),
       ),
     );
   }
