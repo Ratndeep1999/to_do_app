@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppTexts {
-  AppTexts._();
+class AppTextStyles {
+  AppTextStyles._();
 
   /// Auth Screen Styles
 
@@ -40,5 +40,11 @@ class AppTexts {
     fontSize: 24,
     fontWeight: FontWeight.w900,
     color: Colors.blue,
+  );
+
+  /// Today and Filter Style
+  static TextStyle kTodayLabel = TextStyle(
+    fontSize: 26,
+    fontWeight: FontWeight.w500,
   );
 }
