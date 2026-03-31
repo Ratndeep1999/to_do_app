@@ -47,4 +47,11 @@ class AppTextStyles {
     fontSize: 26,
     fontWeight: FontWeight.w500,
   );
+
+  /// Create To Do Screen Style
+  static TextStyle kCreateTodoLabel = TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 1.5,
+  );
 }
