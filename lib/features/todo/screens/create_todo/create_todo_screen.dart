@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/close_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/create_todo_button_widget.dart';
@@ -70,7 +71,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 InputFieldLabelWidget(text: 'Repeat'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
-                /// Timeline Section
+                /// Repeat Widget
                 Wrap(
                   direction: Axis.horizontal,
                   runSpacing: MediaQuery.of(context).size.height * 0.012,
@@ -124,7 +125,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
-                /// Days Section
+                /// WeekDays Widget
                 Wrap(
                   direction: Axis.horizontal,
                   runSpacing: MediaQuery.of(context).size.height * 0.012,
@@ -198,44 +199,43 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
     });
   }
 
-  // method for title and description validation
+  ///
   bool userInputValidation() {
-    if (_titleInput.trim().isEmpty) {
-      return false;
-    }
-    if (_descriptionInput.trim().isEmpty) {
-      return false;
-    }
+    final title = _titleController.text.trim();
+    final desc = _descController.text.trim();
+    if (title.isEmpty || desc.isEmpty) return false;
     return true;
   }
 
-  // method for save and pass date if valid otherwise show snack bar
+  ///
   void onCreateTodoPress() {
-    // userInputValidation() which return true ao false
     if (userInputValidation()) {
-      // Sava data in to toDoData which typ ei ToDoModel
+      /// Save Todo_Data
       ToDoModel toDoData = ToDoModel(
         isRemaindered: isRemainder,
-        description: _descriptionInput,
-        title: _titleInput,
+        description: _descController.text,
+        title: _titleController.text,
         isTaskCompleted: false,
         days: selectedDays,
         repeat: repeatSelected,
         createDateTime: DateTime.now(),
       );
-      // Data pass to previous page by using variable toDoData
       Navigator.of(context).pop(toDoData);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          duration: Duration(seconds: 4),
-          showCloseIcon: true,
-          content: Text(
-            'Please Input Details Properly.....',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-          ),
-        ),
-      );
+      showSnackBar(context, 'Please Fill The Details Properly.....!');
     }
   }
+}
+
+///
+void showSnackBar(context, label) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      duration: Duration(seconds: 3),
+      showCloseIcon: true,
+      backgroundColor: Colors.black,
+      dismissDirection: DismissDirection.horizontal,
+      content: Text(label, style: AppTextStyles.kSnackbarLabel),
+    ),
+  );
 }
