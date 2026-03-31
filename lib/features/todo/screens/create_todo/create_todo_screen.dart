@@ -4,9 +4,8 @@ import 'package:to_do_app/features/todo/screens/create_todo/widgets/close_button
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/create_todo_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/input_field_label_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/set_remainder_widget.dart';
+import 'package:to_do_app/features/todo/screens/create_todo/widgets/text_field_widget.dart';
 import '../../../../create to do page widgets/custom_chip.dart';
-import '../../../../create to do page widgets/custom_input_fields_widget.dart';
-import '../../../../create to do page widgets/custom_text.dart';
 import '../../../../to_do_model_class.dart';
 
 class CreateTodoScreen extends StatefulWidget {
@@ -20,8 +19,8 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
   String repeatSelected = 'No repeat';
   Set<String> selectedDays = {};
   bool isRemainder = false;
-  String _titleInput = '';
-  String _descriptionInput = '';
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,23 +52,17 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 InputFieldLabelWidget(text: 'Tells us about your task'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
-                /// Text Fields
-                CustomTextFieldWidget(
-                  hint: 'Title',
-                  maxLines: 1,
-                  userInput: (String title) {
-                    _titleInput = title;
-                    debugPrint(_titleInput);
-                  },
+                /// Title Text Field Widget
+                TextFieldWidget(
+                  hintText: "Title",
+                  controller: _titleController,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.015),
-                CustomTextFieldWidget(
-                  hint: 'Description',
-                  maxLines: 2,
-                  userInput: (String description) {
-                    _descriptionInput = description;
-                    debugPrint(_descriptionInput);
-                  },
+
+                /// Description Text Field Widget
+                TextFieldWidget(
+                  hintText: "Description",
+                  controller: _descController,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
