@@ -22,6 +22,16 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
   bool isRemainder = false;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
+  final List<String> repeatData = ["Daily", "Weekly", "Monthly", "No repeat"];
+  final List<String> weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +91,9 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                     CustomChip(
                       title: 'Daily',
                       isSelected: repeatSelected == 'Daily',
-                      // this method work when it calls from child class
                       onSelect: (String value) {
-                        // to test what function return when calls from child class
                         debugPrint('Daily select');
-                        // return value assign to repeatSelected
-                        setState(() {
-                          repeatSelected = value;
-                        });
+                        setState(() => repeatSelected = value);
                       },
                     ),
                     CustomChip(
