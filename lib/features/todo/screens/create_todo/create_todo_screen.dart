@@ -38,7 +38,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.03),
 
                 /// Create to-do Button
-                CreateTodoButtonWidget(),
+                CreateTodoButtonWidget(onTap: onCreateTodoPress),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                 /// Set Remainder
@@ -221,7 +221,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
   }
 
   // method for save and pass date if valid otherwise show snack bar
-  void userInputSave() {
+  void onCreateTodoPress() {
     // userInputValidation() which return true ao false
     if (userInputValidation()) {
       // Sava data in to toDoData which typ ei ToDoModel
