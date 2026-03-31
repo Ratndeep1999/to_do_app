@@ -54,4 +54,11 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     letterSpacing: 1.5,
   );
+
+  /// Set Remainder Style
+  static TextStyle kSetRemainder = TextStyle(
+    color: Colors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  );
 }
