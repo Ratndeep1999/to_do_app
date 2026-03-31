@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/widgets/unfocus_keyboard.dart';
+import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
 import 'package:to_do_app/features/auth/widgets/input_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/button_widget.dart';
@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
 
       /// Body
-      body: UnfocusKeyboard(
+      body: UnfocusKeyboardWidget(
         child: SingleChildScrollView(
           child: SafeArea(
             minimum: EdgeInsets.symmetric(vertical: 80.0),
