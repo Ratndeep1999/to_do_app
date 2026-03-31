@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UnfocusKeyboard extends StatelessWidget {
-  const UnfocusKeyboard({super.key, required this.child});
+class UnfocusKeyboardWidget extends StatelessWidget {
+  const UnfocusKeyboardWidget({super.key, required this.child});
 
   final Widget child;
 
@@ -9,6 +9,7 @@ class UnfocusKeyboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => FocusScope.of(context).unfocus(),
+      splashFactory: NoSplash.splashFactory,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       child: child,
