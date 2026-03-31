@@ -61,4 +61,17 @@ class AppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
+
+  /// Text Field Hint Label
+  static TextStyle kTextFieldHintLabel = TextStyle(
+    fontWeight: FontWeight.bold,
+    color: Colors.black54,
+    letterSpacing: 1,
+  );
+
+  /// Snack bar Label
+  static TextStyle kSnackbarLabel = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
 }
