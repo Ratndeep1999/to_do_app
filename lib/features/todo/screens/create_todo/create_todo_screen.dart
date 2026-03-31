@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/close_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/create_todo_button_widget.dart';
+import 'package:to_do_app/features/todo/screens/create_todo/widgets/input_field_label_widget.dart';
+import 'package:to_do_app/features/todo/screens/create_todo/widgets/set_remainder_widget.dart';
 import '../../../../create to do page widgets/custom_chip.dart';
 import '../../../../create to do page widgets/custom_input_fields_widget.dart';
 import '../../../../create to do page widgets/custom_text.dart';
-import '../../../../create to do page widgets/set_remainder_widget.dart';
 import '../../../../to_do_model_class.dart';
 
 class CreateTodoScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class CreateTodoScreen extends StatefulWidget {
 class _CreateTodoScreenState extends State<CreateTodoScreen> {
   String repeatSelected = 'No repeat';
   Set<String> selectedDays = {};
-  bool isRemainderActive = false;
+  bool isRemainder = false;
   String _titleInput = '';
   String _descriptionInput = '';
 
@@ -41,20 +42,15 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 CreateTodoButtonWidget(onTap: onCreateTodoPress),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
-                /// Set Remainder
+                /// Set Remainder Widget
                 SetRemainderWidget(
-                  isRemainder: isRemainderActive,
-                  activeRemainder: (bool value) {
-                    isRemainderActive = value;
-                    setState(() {});
-                    debugPrint(isRemainderActive.toString());
-                  },
+                  isRemainder: isRemainder,
+                  onTap: () => setState(() => isRemainder = !isRemainder),
                 ),
-
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
-                /// Task Description
-                CustomText(text: 'Tells us about your task'),
+                /// TextFields Label Widget
+                InputFieldLabelWidget(text: 'Tells us about your task'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 /// Text Fields
@@ -77,8 +73,8 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
-                /// Repeat Section
-                CustomText(text: 'Repeat'),
+                /// Chips Label Widget
+                InputFieldLabelWidget(text: 'Repeat'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 /// Timeline Section
@@ -226,7 +222,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
     if (userInputValidation()) {
       // Sava data in to toDoData which typ ei ToDoModel
       ToDoModel toDoData = ToDoModel(
-        isRemaindered: isRemainderActive,
+        isRemaindered: isRemainder,
         description: _descriptionInput,
         title: _titleInput,
         isTaskCompleted: false,
