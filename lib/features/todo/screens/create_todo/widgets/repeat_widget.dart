@@ -5,13 +5,15 @@ class RepeatWidget extends StatelessWidget {
   const RepeatWidget({
     super.key,
     required this.repeatData,
-    required this.selectedChip,
     required this.onSelect,
+    this.selectedChip,
+    this.selectedChips,
   });
 
   final List repeatData;
-  final String selectedChip;
   final Function(String) onSelect;
+  final String? selectedChip;
+  final Set<String>? selectedChips;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +22,16 @@ class RepeatWidget extends StatelessWidget {
       runSpacing: MediaQuery.of(context).size.height * 0.012,
       spacing: MediaQuery.of(context).size.width * 0.03,
       children: List.generate(repeatData.length, (int index) {
+        /// Single Chip Item
         final item = repeatData[index];
+
+        /// Check Single or Multi Chip
+        final isSelected = selectedChips != null
+            ? selectedChips!.contains(item)
+            : (selectedChip == item);
         return ChipWidget(
           title: item,
-          isSelected: (selectedChip == item),
+          isSelected: isSelected,
           onSelect: onSelect,
         );
       }),
