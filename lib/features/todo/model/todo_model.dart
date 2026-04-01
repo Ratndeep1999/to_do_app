@@ -5,8 +5,8 @@ class TodoModel {
   String description;
   String repeat;
   Set<String> days;
-  DateTime currentTime;
-  DateTime currentDate;
+  String currentTime;
+  String currentDate;
   DateTime createdAt;
 
   TodoModel({
