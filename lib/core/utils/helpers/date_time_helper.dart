@@ -7,7 +7,7 @@ class DateTimeHelper {
     final hour = dateTime.hour % 12 == 0 ? 12 : dateTime.hour % 12;
     final minute = dateTime.minute.toString().padLeft(2, "0");
     final period = dateTime.hour >= 12 ? "PM" : "AM";
-    return "$hour : $minute $period";
+    return "$hour:$minute $period";
   }
 
   /// Formated Date
@@ -15,6 +15,6 @@ class DateTimeHelper {
     final day = dateTime.day.toString().padLeft(2, "0");
     final month = dateTime.month.toString().padLeft(2, "0");
     final year = dateTime.year;
-    return "$day / $month / $year";
+    return "$day/$month/$year";
   }
 }
