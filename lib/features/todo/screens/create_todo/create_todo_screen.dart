@@ -4,9 +4,9 @@ import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/close_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/create_todo_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/input_field_label_widget.dart';
+import 'package:to_do_app/features/todo/screens/create_todo/widgets/repeat_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/set_remainder_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/text_field_widget.dart';
-import '../../../../create to do page widgets/custom_chip.dart';
 import '../../../../to_do_model_class.dart';
 
 class CreateTodoScreen extends StatefulWidget {
@@ -17,13 +17,11 @@ class CreateTodoScreen extends StatefulWidget {
 }
 
 class _CreateTodoScreenState extends State<CreateTodoScreen> {
-  String repeatSelected = 'No repeat';
-  Set<String> selectedDays = {};
   bool isRemainder = false;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
-  final List<String> repeatData = ["Daily", "Weekly", "Monthly", "No repeat"];
-  final List<String> weekDays = [
+  final List<String> _repeatData = ["Daily", "Weekly", "Monthly", "No repeat"];
+  final List<String> _weekDays = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -32,6 +30,8 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
     "Friday",
     "Saturday",
   ];
+  String selectedRepeat = "No repeat";
+  Set<String> selectedDays = {};
 
   @override
   Widget build(BuildContext context) {
@@ -82,110 +82,18 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 /// Repeat Widget
-                Wrap(
-                  direction: Axis.horizontal,
-                  runSpacing: MediaQuery.of(context).size.height * 0.012,
-                  spacing: MediaQuery.of(context).size.width * 0.03,
-                  children: [
-                    /// Parent Timeline
-                    CustomChip(
-                      title: 'Daily',
-                      isSelected: repeatSelected == 'Daily',
-                      onSelect: (String value) {
-                        debugPrint('Daily select');
-                        setState(() => repeatSelected = value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Weekly',
-                      isSelected: repeatSelected == 'Weekly',
-                      onSelect: (String value) {
-                        debugPrint('Weekly select');
-                        setState(() {
-                          repeatSelected = value;
-                        });
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Monthly',
-                      isSelected: repeatSelected == 'Monthly',
-                      onSelect: (String value) {
-                        debugPrint('Monthly select');
-                        setState(() {
-                          repeatSelected = value;
-                        });
-                      },
-                    ),
-                    CustomChip(
-                      title: 'No repeat',
-                      isSelected: repeatSelected == 'No repeat',
-                      onSelect: (String value) {
-                        debugPrint('No repeat select');
-                        setState(() {
-                          repeatSelected = value;
-                        });
-                      },
-                    ),
-                  ],
+                RepeatWidget(
+                  repeatData: _repeatData,
+                  selectedChip: selectedRepeat,
+                  onSelect: (title) => setState(() => selectedRepeat = title),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                 /// WeekDays Widget
-                Wrap(
-                  direction: Axis.horizontal,
-                  runSpacing: MediaQuery.of(context).size.height * 0.012,
-                  spacing: MediaQuery.of(context).size.width * 0.03,
-                  children: [
-                    CustomChip(
-                      title: 'Sunday',
-                      isSelected: selectedDays.contains('Sunday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Monday',
-                      isSelected: selectedDays.contains('Monday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Tuesday',
-                      isSelected: selectedDays.contains('Tuesday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Wednesday',
-                      isSelected: selectedDays.contains('Wednesday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Thursday',
-                      isSelected: selectedDays.contains('Thursday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Friday',
-                      isSelected: selectedDays.contains('Friday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                    CustomChip(
-                      title: 'Saturday',
-                      isSelected: selectedDays.contains('Saturday'),
-                      onSelect: (String value) {
-                        updateSelectedDays(value);
-                      },
-                    ),
-                  ],
+                RepeatWidget(
+                  repeatData: _weekDays,
+                  selectedChips: selectedDays,
+                  onSelect: updateSelectedDays,
                 ),
               ],
             ),
@@ -195,13 +103,10 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
     );
   }
 
-  // this method checks if days is add then remove it else add it
-  void updateSelectedDays(String value) {
-    setState(() {
-      selectedDays.contains(value)
-          ? selectedDays.remove(value)
-          : selectedDays.add(value);
-    });
+  ///
+  void updateSelectedDays(String title) {
+    final data = selectedDays.contains(title);
+    setState(() => data ? selectedDays.remove(title) : selectedDays.add(title));
   }
 
   ///
@@ -222,7 +127,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
         title: _titleController.text,
         isTaskCompleted: false,
         days: selectedDays,
-        repeat: repeatSelected,
+        repeat: selectedRepeat,
         createDateTime: DateTime.now(),
       );
       Navigator.of(context).pop(toDoData);
