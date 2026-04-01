@@ -5,8 +5,9 @@ class TodoModel {
   String description;
   String repeat;
   Set<String> days;
-  DateTime time;
-  DateTime date;
+  DateTime currentTime;
+  DateTime currentDate;
+  DateTime createdAt;
 
   TodoModel({
     required this.days,
@@ -14,8 +15,9 @@ class TodoModel {
     required this.isRemaindered,
     required this.description,
     required this.title,
-    required this.isTaskCompleted,
-    required this.time,
-    required this.date,
+    required this.currentTime,
+    required this.currentDate,
+    required this.createdAt,
+    this.isTaskCompleted = false,
   });
 }
