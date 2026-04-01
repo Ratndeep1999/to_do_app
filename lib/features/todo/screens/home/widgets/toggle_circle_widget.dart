@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class ToggleCircleWidget extends StatelessWidget {
   const ToggleCircleWidget({
     super.key,
-    required this.isSelected,
+    required this.isTaskComplete,
     required this.onTap,
   });
 
-  final bool isSelected;
+  final bool isTaskComplete;
   final VoidCallback onTap;
 
   @override
@@ -22,10 +22,10 @@ class ToggleCircleWidget extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(width: 2, color: Colors.blue),
-            color: isSelected ? Colors.blue : Colors.transparent,
+            color: isTaskComplete ? Colors.blue : Colors.transparent,
           ),
           child: Visibility(
-            visible: isSelected,
+            visible: isTaskComplete,
             child: Icon(Icons.check, size: 25),
           ),
         ),
