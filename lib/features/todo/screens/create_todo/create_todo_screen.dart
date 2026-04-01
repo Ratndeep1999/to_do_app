@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
+import 'package:to_do_app/core/utils/helpers/date_time_helper.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
+import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/close_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/create_todo_button_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/input_field_label_widget.dart';
@@ -119,9 +121,21 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
   ///
   void onCreateTodoPress() {
     if (userInputValidation()) {
-      /// Save Todo_Data
+      final now = DateTime.now();
 
-      Navigator.of(context).pop(toDoData);
+      /// Save Todo_Data
+      final TodoModel todoData = TodoModel(
+        isRemaindered: isRemainder,
+        isTaskCompleted: false,
+        title: _titleController.text,
+        description: _descController.text,
+        days: selectedDays,
+        repeat: selectedRepeat,
+        currentTime: DateTimeHelper.formatTime(now),
+        currentDate: DateTimeHelper.formatDate(now),
+        createdAt: now,
+      );
+      Navigator.of(context).pop(todoData);
     } else {
       showSnackBar(context, 'Please Fill The Details Properly.....!');
     }
