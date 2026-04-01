@@ -45,6 +45,3 @@ class TimeDateAndNotiWidget extends StatelessWidget {
     );
   }
 }
-
-// '${getTime().toString().padLeft(2, '0')}:${widget.item.createDateTime.minute.toString().padLeft(2, '0')} ${getAmPm()}',
-// '${widget.item.createDateTime.day}/${widget.item.createDateTime.month}/${widget.item.createDateTime.year}',
