@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_items_widget.dart';
-import 'package:to_do_app/to_do_model_class.dart';
 
 class TodoListWidget extends StatefulWidget {
   const TodoListWidget({super.key, required this.toDoList});
 
-  final List<ToDoModel> toDoList;
+  final List<TodoModel> toDoList;
 
   @override
   State<TodoListWidget> createState() => _TodoListWidgetState();
@@ -35,8 +35,8 @@ class _TodoListWidgetState extends State<TodoListWidget> {
                 setState(() => item.isRemaindered = !item.isRemaindered),
             title: item.title,
             description: item.description,
-            time: "",
-            date: "",
+            time: item.currentTime,
+            date: item.currentDate,
           );
         },
         separatorBuilder: (ctx, index) => Divider(),
