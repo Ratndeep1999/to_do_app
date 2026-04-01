@@ -7,7 +7,7 @@ import 'description_widget.dart';
 class TodoListItemsWidget extends StatelessWidget {
   const TodoListItemsWidget({
     super.key,
-    required this.isTodoSelected,
+    required this.isTaskComplete,
     required this.isRemainder,
     required this.onTapToggle,
     required this.onTapRemainder,
@@ -17,7 +17,7 @@ class TodoListItemsWidget extends StatelessWidget {
     required this.date,
   });
 
-  final bool isTodoSelected, isRemainder;
+  final bool isTaskComplete, isRemainder;
   final VoidCallback onTapToggle, onTapRemainder;
   final String title, description, time, date;
 
@@ -26,7 +26,7 @@ class TodoListItemsWidget extends StatelessWidget {
     return Row(
       children: [
         /// Toggle Circle Widget
-        ToggleCircleWidget(isSelected: isTodoSelected, onTap: onTapToggle),
+        ToggleCircleWidget(isTaskComplete: isTaskComplete, onTap: onTapToggle),
         SizedBox(width: 10),
 
         /// ToDoData
@@ -37,10 +37,13 @@ class TodoListItemsWidget extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height * 0.005),
 
               /// Title Widget
-              TitleWidget(title: title),
+              TitleWidget(title: title, isTaskComplete: isTaskComplete),
 
               /// Description Widget
-              DescriptionWidget(desc: description),
+              DescriptionWidget(
+                desc: description,
+                isTaskComplete: isTaskComplete,
+              ),
               SizedBox(height: 2),
 
               /// Time, Date, Notification, Refresh
