@@ -7,7 +7,6 @@ import 'package:to_do_app/features/todo/screens/create_todo/widgets/input_field_
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/repeat_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/set_remainder_widget.dart';
 import 'package:to_do_app/features/todo/screens/create_todo/widgets/text_field_widget.dart';
-import '../../../../to_do_model_class.dart';
 
 class CreateTodoScreen extends StatefulWidget {
   const CreateTodoScreen({super.key});
@@ -121,15 +120,7 @@ class _CreateTodoScreenState extends State<CreateTodoScreen> {
   void onCreateTodoPress() {
     if (userInputValidation()) {
       /// Save Todo_Data
-      ToDoModel toDoData = ToDoModel(
-        isRemaindered: isRemainder,
-        description: _descController.text,
-        title: _titleController.text,
-        isTaskCompleted: false,
-        days: selectedDays,
-        repeat: selectedRepeat,
-        createDateTime: DateTime.now(),
-      );
+
       Navigator.of(context).pop(toDoData);
     } else {
       showSnackBar(context, 'Please Fill The Details Properly.....!');
