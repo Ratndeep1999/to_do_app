@@ -4,11 +4,11 @@ class MiddleButtonWidget extends StatelessWidget {
   const MiddleButtonWidget({
     super.key,
     required this.onSkipPress,
-    required this.isLast,
+    required this.isLastPage,
   });
 
   final VoidCallback onSkipPress;
-  final bool isLast;
+  final bool isLastPage;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MiddleButtonWidget extends StatelessWidget {
       child: FilledButton(
         onPressed: onSkipPress,
         style: FilledButton.styleFrom(backgroundColor: Colors.black45),
-        child: Text(isLast ? "Get Started" : "Next"),
+        child: Text(isLastPage ? "Get Started" : "Next"),
       ),
     );
   }
