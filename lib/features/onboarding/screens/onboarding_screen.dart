@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:to_do_app/features/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/side_button_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/onboarding_item_widget.dart';
-import 'package:to_do_app/features/onboarding/widgets/skip_button_widget.dart';
+import 'package:to_do_app/features/onboarding/widgets/middle_button_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -50,13 +50,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                /// Left Button
                 SideButtonWidget(onTap: () {}, isLeft: true),
 
-                /// Skip Button
-                SkipButtonWidget(onSkipPress: () {}, isLast: false),
+                MiddleButtonWidget(onSkipPress: () {}, isLast: false),
 
-                /// Right Button
                 SideButtonWidget(onTap: () {}),
               ],
             ),
