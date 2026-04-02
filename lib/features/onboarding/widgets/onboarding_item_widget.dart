@@ -1,40 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/features/onboarding/data/onboarding_data.dart';
 
 class OnboardingItemWidget extends StatelessWidget {
   const OnboardingItemWidget({
     super.key,
-    required this.title,
-    required this.description,
-    required this.iconPath,
+    required this.controller,
+    required this.onPageChanged,
   });
 
-  final String title;
-  final String description;
-  final String iconPath;
+  final PageController controller;
+  final Function(int) onPageChanged;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        /// Text
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-        ),
-        const SizedBox(height: 60),
+    return Expanded(
+      child: PageView.builder(
+        itemCount: onboardingData.length,
+        controller: controller,
+        onPageChanged: onPageChanged,
+        itemBuilder: (ctx, index) {
+          final item = onboardingData[index];
 
-        /// Icon
-        Image.asset(iconPath, width: 250, height: 250),
-        const SizedBox(height: 50),
+          /// Onboarding Items Widget
+          return Column(
+            children: [
+              /// Text
+              Text(
+                item.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+              ),
+              const SizedBox(height: 60),
 
-        /// Description
-        Text(
-          description,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
-        ),
-      ],
+              /// Icon
+              Image.asset(item.imagePath, width: 250, height: 250),
+              const SizedBox(height: 40),
+
+              /// Description
+              Text(
+                item.desc,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
