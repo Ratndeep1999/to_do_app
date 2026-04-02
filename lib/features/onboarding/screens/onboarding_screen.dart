@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:to_do_app/features/onboarding/data/onboarding_data.dart';
 import 'package:to_do_app/features/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/side_button_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/onboarding_item_widget.dart';
@@ -52,7 +53,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 SideButtonWidget(onTap: () {}, isLeft: true),
 
-                MiddleButtonWidget(onSkipPress: () {}, isLast: false),
+                MiddleButtonWidget(
+                  onSkipPress: () {},
+                  isLastPage: (_pageIndex == (onboardingData.length - 1)),
+                ),
 
                 SideButtonWidget(onTap: () {}),
               ],
