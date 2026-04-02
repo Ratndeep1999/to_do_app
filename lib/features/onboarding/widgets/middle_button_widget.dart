@@ -18,7 +18,7 @@ class MiddleButtonWidget extends StatelessWidget {
       child: FilledButton(
         onPressed: onSkipPress,
         style: FilledButton.styleFrom(backgroundColor: Colors.black45),
-        child: Text(isLastPage ? "Get Started" : "Next"),
+        child: Text(isLastPage ? "Get Started" : "Skip"),
       ),
     );
   }
