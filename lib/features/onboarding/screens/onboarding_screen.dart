@@ -31,7 +31,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 16.0),
         child: Column(
           children: [
             /// Onboarding Item Widget
@@ -45,6 +45,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             DotIndicatorWidget(pageIndex: _pageIndex),
 
             /// Bottom Section
+            Row(
+              children: [
+                /// Left Button
+                InkWell(
+                  onTap: () {},
+                  splashColor: Colors.white,
+                  child: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: Colors.black45,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Transform.rotate(
+                        angle: 1,
+                        child: Icon(Icons.play_arrow, size: 30),
+                      ),
+                    ),
+                  ),
+                ),
+
+                /// Skip Button
+                /// Right Button
+              ],
+            ),
           ],
         ),
       ),
