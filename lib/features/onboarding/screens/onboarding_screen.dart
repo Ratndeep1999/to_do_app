@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:to_do_app/features/onboarding/data/onboarding_data.dart';
+import 'package:to_do_app/features/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/onboarding_item_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -11,6 +11,9 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _controller = PageController();
+  int _pageIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -28,24 +31,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 128.0, horizontal: 16),
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
         child: Column(
           children: [
-            Expanded(
-              child: PageView.builder(
-                itemCount: onboardingData.length,
-                itemBuilder: (ctx, index) {
-                  final item = onboardingData[index];
-
-                  /// Title, Description and Icon Widget
-                  return OnboardingItemWidget(
-                    title: item.title,
-                    description: item.desc,
-                    iconPath: item.imagePath,
-                  );
-                },
-              ),
+            /// Onboarding Item Widget
+            OnboardingItemWidget(
+              controller: _controller,
+              onPageChanged: (index) => setState(() => _pageIndex = index),
             ),
+            SizedBox(height: 20),
+
+            /// Dot indicator
+            DotIndicatorWidget(pageIndex: _pageIndex),
+
+            /// Bottom Section
           ],
         ),
       ),
