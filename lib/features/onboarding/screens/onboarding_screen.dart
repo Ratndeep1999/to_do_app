@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do_app/features/onboarding/widgets/dot_indicator_widget.dart';
+import 'package:to_do_app/features/onboarding/widgets/side_button_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/onboarding_item_widget.dart';
+import 'package:to_do_app/features/onboarding/widgets/skip_button_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -31,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 96.0),
         child: Column(
           children: [
             /// Onboarding Item Widget
@@ -39,51 +41,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               controller: _controller,
               onPageChanged: (index) => setState(() => _pageIndex = index),
             ),
-            SizedBox(height: 20),
 
             /// Dot indicator
             DotIndicatorWidget(pageIndex: _pageIndex),
+            SizedBox(height: 50),
 
             /// Bottom Section
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 /// Left Button
-                NavButtonWidget(onTap: () {}, isLeft: true),
+                SideButtonWidget(onTap: () {}, isLeft: true),
 
                 /// Skip Button
+                SkipButtonWidget(onSkipPress: () {}, isLast: false),
+
                 /// Right Button
+                SideButtonWidget(onTap: () {}),
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class NavButtonWidget extends StatelessWidget {
-  const NavButtonWidget({super.key, required this.onTap, this.isLeft});
-
-  final VoidCallback onTap;
-  final bool? isLeft;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      splashColor: Colors.white,
-      child: SizedBox(
-        height: 50,
-        width: 50,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Colors.black45,
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Transform.rotate(
-            angle: (isLeft ?? false) ? 1 : 0,
-            child: Icon(Icons.play_arrow, size: 30),
-          ),
         ),
       ),
     );
