@@ -36,7 +36,7 @@ class DotIndicatorWidget extends StatelessWidget {
                   radius: 4,
                   backgroundColor: (index <= _pageIndex)
                       ? Colors.white
-                      : Colors.red,
+                      : Colors.black,
                 ),
               );
             }),
