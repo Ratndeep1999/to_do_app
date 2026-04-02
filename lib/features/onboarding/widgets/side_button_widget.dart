@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NavButtonWidget extends StatelessWidget {
-  const NavButtonWidget({super.key, required this.onTap, this.isLeft});
+class SideButtonWidget extends StatelessWidget {
+  const SideButtonWidget({super.key, required this.onTap, this.isLeft});
 
   final VoidCallback onTap;
   final bool? isLeft;
