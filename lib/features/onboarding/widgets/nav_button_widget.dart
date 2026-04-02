@@ -12,8 +12,8 @@ class NavButtonWidget extends StatelessWidget {
       onTap: onTap,
       splashColor: Colors.white,
       child: SizedBox(
-        height: 50,
-        width: 50,
+        height: 40,
+        width: 40,
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.black45,
@@ -21,7 +21,7 @@ class NavButtonWidget extends StatelessWidget {
           ),
           child: Transform.rotate(
             angle: (isLeft ?? false) ? 1 : 0,
-            child: Icon(Icons.play_arrow, size: 30),
+            child: Icon(Icons.play_arrow, size: 24),
           ),
         ),
       ),
