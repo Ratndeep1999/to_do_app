@@ -16,8 +16,6 @@ class OnboardingItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 120),
-
         /// Text
         Text(
           title,
