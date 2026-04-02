@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SkipButtonWidget extends StatelessWidget {
-  const SkipButtonWidget({
+class MiddleButtonWidget extends StatelessWidget {
+  const MiddleButtonWidget({
     super.key,
     required this.onSkipPress,
     required this.isLast,
