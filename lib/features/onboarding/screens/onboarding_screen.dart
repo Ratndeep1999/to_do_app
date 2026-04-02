@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:to_do_app/core/utils/constants/app_icons.dart';
 import 'package:to_do_app/core/utils/constants/app_strings.dart';
+import 'package:to_do_app/features/onboarding/data/onboarding_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -30,29 +31,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         top: false,
         minimum: EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          children: [
-            SizedBox(height: 100),
+        child: PageView.builder(
+          itemCount: onboardingData.length,
+          itemBuilder: (ctx, index) {
+            final item = onboardingData[index];
+            return Column(
+              children: [
+                SizedBox(height: 120),
 
-            /// Text
-            Text(
-              AppStrings.kOnboardingTitle1,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
-            ),
-            const SizedBox(height: 80),
+                /// Text
+                Text(
+                  item.title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(height: 60),
 
-            /// Icon
-            Image.asset(AppIcons.kOnboardingIcon1, width: 250, height: 250),
-            const SizedBox(height: 50),
+                /// Icon
+                Image.asset(item.imagePath, width: 250, height: 250),
+                const SizedBox(height: 50),
 
-            /// Description
-            Text(
-              AppStrings.kOnboardingDesc1,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
-            ),
-          ],
+                /// Description
+                Text(
+                  item.desc,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
