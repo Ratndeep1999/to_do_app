@@ -19,7 +19,7 @@ class SharedPrefService {
   static const String kOnboardingStatus = "onboarding_status";
   static const String kSignInStatus = "sign_in_status";
 
-  /// Onboarding Staus Methods
+  /// Onboarding Status Methods
   Future<void> setOnboardingStatus() async {
     final prefs = await _instancePrefs;
     prefs.setBool(kOnboardingStatus, true);
@@ -28,5 +28,21 @@ class SharedPrefService {
   Future<bool> getOnboardingStatus() async {
     final prefs = await _instancePrefs;
     return prefs.getBool(kOnboardingStatus) ?? false;
+  }
+
+  /// Sign In Status Methods
+  Future<void> setSignInStatus(bool status) async {
+    final prefs = await _instancePrefs;
+    prefs.setBool(kSignInStatus, status);
+  }
+
+  Future<bool> getSignInStatus() async {
+    final prefs = await _instancePrefs;
+    return prefs.getBool(kSignInStatus) ?? false;
+  }
+
+  Future<void> clearLoginInStatus() async {
+    final prefs = await _instancePrefs;
+    prefs.remove(kSignInStatus);
   }
 }
