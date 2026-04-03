@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/validators/auth_validators.dart';
-
 import 'Input_field_widget.dart';
 
 class PasswordFieldWidget extends StatelessWidget {
