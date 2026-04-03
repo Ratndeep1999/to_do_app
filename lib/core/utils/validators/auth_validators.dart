@@ -34,4 +34,39 @@ class AuthValidators {
     }
     return null;
   }
+
+  /// Full Name Validation
+  String? fullName(String? fullName) {
+    if (fullName == null || fullName.isEmpty) {
+      return 'Please enter your full name';
+    }
+    if (fullName.length < 6) {
+      return 'Full name length must be 6';
+    }
+    return null;
+  }
+
+  /// User Name Validation
+  String? username(String? userName) {
+    if (userName == null || userName.isEmpty) {
+      return 'Please enter your username';
+    }
+    return null;
+  }
+
+  /// Email Validation
+  String? email(String? email) {
+    if (email == null || email.isEmpty) {
+      return 'Please enter your email address';
+    }
+    return null;
+  }
+
+  /// Phone Number Validation
+  String? number(String? phoneNumber) {
+    if (phoneNumber == null || phoneNumber.isEmpty) {
+      return 'Please enter your phone number';
+    }
+    return null;
+  }
 }
