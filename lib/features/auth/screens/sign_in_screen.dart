@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/utils/validators/auth_validators.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
 import 'package:to_do_app/features/auth/widgets/input_field_widget.dart';
@@ -18,9 +19,14 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  /// Password visible or not
   bool _isPassVisible = true;
+
+  @override
+  void dispose() {
+    _userNameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     /// Username InputFieldWidget
                     InputFieldWidget(
                       controller: _userNameController,
-                      validator: userNameValidation,
+                      validator: AuthValidators.userName,
                       hintText: 'Enter your user name',
                       prefix: Icons.person,
                     ),
@@ -60,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     /// Password InputFieldWidget
                     InputFieldWidget(
                       controller: _passwordController,
-                      validator: passwordValidation,
+                      validator: AuthValidators.password,
                       onChanged: (val) => debugPrint("Pass : $val"),
                       hintText: "Enter your password",
                       isObscure: _isPassVisible,
@@ -93,42 +99,6 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
-  }
-
-  /// Username Validation
-  String? userNameValidation(userName) {
-    if (userName == null || userName.isEmpty) {
-      return 'Please enter username properly';
-    } else if (userName.length < 5) {
-      return 'Username must be at least 5 characters';
-    } else if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(userName)) {
-      return "Only numbers and latter's are allow";
-    }
-    if (userName.contains(' ')) {
-      return 'Space is not allow';
-    }
-    return null;
-  }
-
-  /// Password Validation
-  String? passwordValidation(password) {
-    if (password == null || password.isEmpty) {
-      return 'Please enter your username properly';
-    } else if (password.length < 8) {
-      return 'Password must be at least 8 characters';
-    } else if (!RegExp(r'[A-Z]').hasMatch(password)) {
-      return 'Password must be contain at least one Uppercase letter';
-    } else if (!RegExp(r'[a-z]').hasMatch(password)) {
-      return 'Password must be contain at least one Lowercase letter';
-    } else if (!RegExp(r'[0-9]').hasMatch(password)) {
-      return 'Password must be contain at least one number';
-    } else if (!RegExp(r'[!@#$&*_]').hasMatch(password)) {
-      return 'Password must be contain at least one special character (!@#\$&*_)';
-    }
-    if (password.contains(' ')) {
-      return 'Space not allow';
-    }
-    return null;
   }
 
   ///
