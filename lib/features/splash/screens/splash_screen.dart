@@ -14,8 +14,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () => _navigateToNextPage());
+    _startTimer();
   }
+
+  void _startTimer() =>
+      Future.delayed(const Duration(seconds: 3), () => _navigateToNextPage());
 
   /// Go to next page
   Future<void> _navigateToNextPage() async {
