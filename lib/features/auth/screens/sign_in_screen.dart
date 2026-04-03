@@ -24,6 +24,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       /// Appbar
       appBar: AppBar(
@@ -45,10 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     /// Sign in LabelWidget
                     LabelWidget(label: 'SIGN in'),
-
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Username InputFieldWidget
                     InputFieldWidget(
@@ -57,9 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       hintText: 'Enter your user name',
                       prefix: Icons.person,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Password InputFieldWidget
                     InputFieldWidget(
@@ -75,19 +71,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       onSuffixTap: () =>
                           setState(() => _isPassVisible = !_isPassVisible),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Sign In Button To Validate
                     ButtonWidget(
                       onButtonPress: onSignInPress,
                       label: "Sign In",
                     ),
-
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.075,
-                    ),
+                    SizedBox(height: height * 0.075),
 
                     /// SubLabelWidget
                     SubLabelWidget(label: 'If you are new here then click on'),
