@@ -9,12 +9,16 @@ class PasswordFieldWidget extends StatelessWidget {
     required this.isPassVisible,
     required this.onToggle,
     this.onChanged,
+    this.prefix,
+    this.icon,
   });
 
   final TextEditingController controller;
   final bool isPassVisible;
   final VoidCallback onToggle;
   final Function(String?)? onChanged;
+  final IconData? prefix;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +28,10 @@ class PasswordFieldWidget extends StatelessWidget {
       onChanged: onChanged,
       hintText: "Enter your password",
       isObscure: isPassVisible,
-      prefix: Icons.password,
+      prefix: prefix,
       suffix: isPassVisible ? Icons.visibility : Icons.visibility_off,
       onSuffixTap: onToggle,
+      icon: icon,
     );
   }
 }
