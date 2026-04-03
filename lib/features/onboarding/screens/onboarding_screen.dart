@@ -51,14 +51,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SideButtonWidget(onTap: onSideButton, isLeft: true),
+                SideButtonWidget(onTap: () => onSideButton(true), isLeft: true),
 
                 MiddleButtonWidget(
                   onSkipPress: onMiddleButton,
                   isLastPage: (_pageIndex == (onboardingData.length - 1)),
                 ),
 
-                SideButtonWidget(onTap: onSideButton),
+                SideButtonWidget(onTap: () => onSideButton(false)),
               ],
             ),
           ],
@@ -67,7 +67,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  void onSideButton() {}
+  ///
+  void onSideButton(bool isLeftButton) {
+    if (isLeftButton) {
+      _controller.previousPage(
+        duration: Duration(milliseconds: 460),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+    _controller.nextPage(
+      duration: Duration(milliseconds: 460),
+      curve: Curves.easeInOut,
+    );
+  }
 
   void onMiddleButton() {}
 }
