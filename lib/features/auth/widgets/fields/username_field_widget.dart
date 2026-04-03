@@ -14,7 +14,6 @@ class UsernameFieldWidget extends StatelessWidget {
       controller: controller,
       validator: AuthValidators.userName,
       hintText: 'Enter your user name',
-      prefix: Icons.person,
       icon: icon,
     );
   }
