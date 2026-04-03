@@ -41,7 +41,7 @@ class SharedPrefService {
     return prefs.getBool(kSignInStatus) ?? false;
   }
 
-  Future<void> clearLoginInStatus() async {
+  Future<void> clearLoginStatus() async {
     final prefs = await _instancePrefs;
     prefs.remove(kSignInStatus);
   }

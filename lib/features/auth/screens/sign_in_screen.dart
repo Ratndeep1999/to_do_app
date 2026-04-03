@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
-import 'package:to_do_app/features/auth/widgets/sign_in_form_widget.dart';
+import 'package:to_do_app/features/auth/widgets/form_widgets/sign_in_form_widget.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -62,7 +62,9 @@ class _SignInScreenState extends State<SignInScreen> {
       debugPrint(_userNameController.text);
       debugPrint(_passwordController.text);
     } else {
-      debugPrint('Invalid Details, all or some fields are not validates');
+      debugPrint(
+        'Invalid Details, all or some field_widgets are not validates',
+      );
       _passwordController.clear();
     }
   }

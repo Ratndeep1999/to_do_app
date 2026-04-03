@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/features/auth/widgets/fields/password_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/button_widget.dart';
+import 'package:to_do_app/features/auth/widgets/field_widgets/password_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/field_widgets/username_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/label_widget.dart';
 import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
 import 'package:to_do_app/features/auth/widgets/text_button_widget.dart';
-import 'package:to_do_app/features/auth/widgets/fields/username_field_widget.dart';
-import 'button_widget.dart';
-import 'label_widget.dart';
 
 class SignInFormWidget extends StatelessWidget {
   const SignInFormWidget({
