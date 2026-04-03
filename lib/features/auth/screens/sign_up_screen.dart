@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/utils/validators/auth_validators.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
@@ -19,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _userNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _mobileNumberController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,44 +43,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
-                    /// FullName InputFieldWidget
+                    /// FullName
                     InputFieldWidget(
                       controller: _fullNameController,
                       hintText: "Enter your full name",
-                      validator: fullNameValidation,
+                      validator: AuthValidators.fullName,
                       icon: Icons.person,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Username InputFieldWidget
+                    /// Username
                     InputFieldWidget(
                       controller: _userNameController,
                       hintText: "Enter your user name",
-                      validator: usernameValidation,
+                      validator: AuthValidators.userName,
                       icon: Icons.verified_user,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Email InputFieldWidget
+                    /// Email
                     InputFieldWidget(
                       controller: _emailController,
                       hintText: "Enter your email",
-                      validator: emailValidation,
+                      validator: AuthValidators.email,
                       icon: Icons.email_outlined,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
 
-                    /// Phone no. InputFieldWidget
+                    /// Phone no.
                     InputFieldWidget(
                       controller: _mobileNumberController,
                       hintText: "Enter your ph. number",
-                      validator: numberValidation,
+                      validator: AuthValidators.number,
                       icon: Icons.phone,
                     ),
                     SizedBox(
@@ -109,41 +111,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  }
-
-  ///
-  String? fullNameValidation(fullName) {
-    if (fullName == null || fullName.isEmpty) {
-      return 'Please enter your full name';
-    }
-    if (fullName.length < 6) {
-      return 'Full name length must be 6';
-    }
-    return null;
-  }
-
-  ///
-  String? usernameValidation(userName) {
-    if (userName == null || userName.isEmpty) {
-      return 'Please enter your username';
-    }
-    return null;
-  }
-
-  ///
-  String? emailValidation(email) {
-    if (email == null || email.isEmpty) {
-      return 'Please enter your email address';
-    }
-    return null;
-  }
-
-  ///
-  String? numberValidation(phoneNumber) {
-    if (phoneNumber == null || phoneNumber.isEmpty) {
-      return 'Please enter your phone number';
-    }
-    return null;
   }
 
   ///
