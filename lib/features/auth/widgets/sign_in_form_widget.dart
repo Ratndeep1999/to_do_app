@@ -51,6 +51,7 @@ class SignInFormWidget extends StatelessWidget {
               isPassVisible: isPassVisible,
               onToggle: onTogglePassword,
               onChanged: onPassChanged,
+              prefix: Icons.password,
             ),
             SizedBox(height: height * 0.025),
 
