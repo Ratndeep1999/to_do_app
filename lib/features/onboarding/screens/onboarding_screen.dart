@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:to_do_app/core/services/shared_pref_service.dart';
+import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 import 'package:to_do_app/features/onboarding/data/onboarding_data.dart';
 import 'package:to_do_app/features/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:to_do_app/features/onboarding/widgets/side_button_widget.dart';
@@ -84,10 +86,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   ///
-  void onMiddleButton(bool? isLastPage) {
+  Future<void> onMiddleButton(bool? isLastPage) async {
     if (isLastPage ?? false) {
-      // Push Replacement
-      debugPrint("Replace......!");
+      replaceOnboarding();
       return;
     }
     _controller.animateToPage(
@@ -95,5 +96,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       duration: Duration(milliseconds: 1000),
       curve: Curves.easeInOut,
     );
+  }
+
+  Future<void> replaceOnboarding() async {
+    await SharedPrefService().setOnboardingStatus();
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute(builder: (ctx) => SignInScreen()));
   }
 }
