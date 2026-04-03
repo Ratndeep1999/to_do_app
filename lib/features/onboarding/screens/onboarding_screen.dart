@@ -51,14 +51,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SideButtonWidget(onTap: () {}, isLeft: true),
+                SideButtonWidget(onTap: onSideButton, isLeft: true),
 
                 MiddleButtonWidget(
-                  onSkipPress: () {},
+                  onSkipPress: onMiddleButton,
                   isLastPage: (_pageIndex == (onboardingData.length - 1)),
                 ),
 
-                SideButtonWidget(onTap: () {}),
+                SideButtonWidget(onTap: onSideButton),
               ],
             ),
           ],
@@ -66,4 +66,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     );
   }
+
+  void onSideButton() {}
+
+  void onMiddleButton() {}
 }
