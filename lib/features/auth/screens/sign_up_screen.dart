@@ -24,6 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       /// Appbar
       appBar: AppBar(
@@ -36,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: SingleChildScrollView(
         child: UnfocusKeyboardWidget(
           child: SafeArea(
-            minimum: EdgeInsets.symmetric(vertical: 50.0),
+            minimum: EdgeInsets.symmetric(vertical: 30.0),
             child: Form(
               key: _formKey,
               child: Padding(
@@ -50,9 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: AuthValidators.fullName,
                       icon: Icons.person,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Username
                     InputFieldWidget(
@@ -61,9 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: AuthValidators.userName,
                       icon: Icons.verified_user,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Email
                     InputFieldWidget(
@@ -72,9 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: AuthValidators.email,
                       icon: Icons.email_outlined,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Phone no.
                     InputFieldWidget(
@@ -83,18 +78,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: AuthValidators.number,
                       icon: Icons.phone,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
+                    SizedBox(height: height * 0.025),
 
                     /// Sign up Button Widget
                     ButtonWidget(
                       onButtonPress: onSignUpPress,
                       label: "Sign Up",
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.075,
-                    ),
+                    SizedBox(height: height * 0.075),
 
                     /// Sub Label Widget
                     SubLabelWidget(
