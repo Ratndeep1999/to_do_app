@@ -14,7 +14,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool _isPassVisible = true;
+  bool _isPassVis = true;
 
   @override
   void dispose() {
@@ -42,9 +42,8 @@ class _SignInScreenState extends State<SignInScreen> {
               formKey: _formKey,
               userNameController: _userNameController,
               passwordController: _passwordController,
-              isPassVisible: _isPassVisible,
-              onTogglePassword: () =>
-                  setState(() => _isPassVisible = !_isPassVisible),
+              isPassVisible: _isPassVis,
+              onTogglePassword: () => setState(() => _isPassVis = !_isPassVis),
               onSignInPress: onSignInPress,
               onNavigate: authNavigation,
               onPassChanged: (pass) => debugPrint("Password: $pass"),
