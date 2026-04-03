@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
+import 'package:to_do_app/core/utils/validators/validator_typedef.dart';
 
 class InputFieldWidget extends StatelessWidget {
   const InputFieldWidget({
@@ -16,7 +17,7 @@ class InputFieldWidget extends StatelessWidget {
   });
 
   final TextEditingController controller;
-  final String? Function(String?)? validator;
+  final Validator? validator;
   final Function(String)? onChanged;
   final bool isObscure;
   final String hintText;
