@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/features/auth/widgets/label_widget.dart';
+import 'package:to_do_app/features/auth/widgets/label_widgets/label_widget.dart';
 
 class TextButtonWidget extends StatelessWidget {
   const TextButtonWidget({super.key, required this.onTap, required this.label});

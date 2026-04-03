@@ -7,7 +7,7 @@ import 'package:to_do_app/features/auth/widgets/field_widgets/full_name_field_wi
 import 'package:to_do_app/features/auth/widgets/field_widgets/password_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/field_widgets/phone_no_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/field_widgets/username_field_widget.dart';
-import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
+import 'package:to_do_app/features/auth/widgets/label_widgets/sub_label_widget.dart';
 import 'package:to_do_app/features/auth/widgets/button_widgets/text_button_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
