@@ -36,7 +36,7 @@ class AuthValidators {
   }
 
   /// Full Name Validation
-  String? fullName(String? fullName) {
+  static String? fullName(String? fullName) {
     if (fullName == null || fullName.isEmpty) {
       return 'Please enter your full name';
     }
@@ -47,7 +47,7 @@ class AuthValidators {
   }
 
   /// User Name Validation
-  String? username(String? userName) {
+  static String? username(String? userName) {
     if (userName == null || userName.isEmpty) {
       return 'Please enter your username';
     }
@@ -55,7 +55,7 @@ class AuthValidators {
   }
 
   /// Email Validation
-  String? email(String? email) {
+  static String? email(String? email) {
     if (email == null || email.isEmpty) {
       return 'Please enter your email address';
     }
@@ -63,7 +63,7 @@ class AuthValidators {
   }
 
   /// Phone Number Validation
-  String? number(String? phoneNumber) {
+  static String? number(String? phoneNumber) {
     if (phoneNumber == null || phoneNumber.isEmpty) {
       return 'Please enter your phone number';
     }
