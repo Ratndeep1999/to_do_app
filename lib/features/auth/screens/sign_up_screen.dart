@@ -4,8 +4,10 @@ import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/button_widget.dart';
+import 'package:to_do_app/features/auth/widgets/full_name_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
 import 'package:to_do_app/features/auth/widgets/text_button_widget.dart';
+import 'package:to_do_app/features/auth/widgets/username_field_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -45,19 +47,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   children: [
                     /// FullName
-                    InputFieldWidget(
-                      controller: _fullNameController,
-                      hintText: "Enter your full name",
-                      validator: AuthValidators.fullName,
-                      icon: Icons.person,
-                    ),
+                    FullNameFieldWidget(controller: _fullNameController),
                     SizedBox(height: height * 0.025),
 
                     /// Username
-                    InputFieldWidget(
+                    UsernameFieldWidget(
                       controller: _userNameController,
-                      hintText: "Enter your user name",
-                      validator: AuthValidators.userName,
                       icon: Icons.verified_user,
                     ),
                     SizedBox(height: height * 0.025),
