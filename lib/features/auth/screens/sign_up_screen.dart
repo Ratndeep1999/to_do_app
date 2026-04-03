@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/utils/validators/auth_validators.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
-import 'package:to_do_app/features/auth/widgets/Input_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/button_widget.dart';
-import 'package:to_do_app/features/auth/widgets/full_name_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/fields/email_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/fields/password_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/fields/phone_no_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/fields/full_name_field_widget.dart';
 import 'package:to_do_app/features/auth/widgets/sub_label_widget.dart';
 import 'package:to_do_app/features/auth/widgets/text_button_widget.dart';
-import 'package:to_do_app/features/auth/widgets/username_field_widget.dart';
+import 'package:to_do_app/features/auth/widgets/fields/username_field_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -18,11 +19,11 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _fullNameController = TextEditingController();
-  final _userNameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _mobileNumberController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _fullnameCont = TextEditingController();
+  final _usernameCont = TextEditingController();
+  final _emailCont = TextEditingController();
+  final _mobileNoCont = TextEditingController();
+  final _passwordCont = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,47 +48,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   children: [
                     /// FullName
-                    FullNameFieldWidget(controller: _fullNameController),
+                    FullNameFieldWidget(controller: _fullnameCont),
                     SizedBox(height: height * 0.025),
 
                     /// Username
                     UsernameFieldWidget(
-                      controller: _userNameController,
+                      controller: _usernameCont,
                       icon: Icons.verified_user,
                     ),
                     SizedBox(height: height * 0.025),
 
                     /// Email
-                    InputFieldWidget(
-                      controller: _emailController,
-                      hintText: "Enter your email",
-                      validator: AuthValidators.email,
-                      icon: Icons.email_outlined,
-                    ),
+                    EmailFieldWidget(controller: _emailCont),
                     SizedBox(height: height * 0.025),
 
                     /// Phone no.
-                    InputFieldWidget(
-                      controller: _mobileNumberController,
-                      hintText: "Enter your ph. number",
-                      validator: AuthValidators.number,
-                      icon: Icons.phone,
+                    PhoneNoFieldWidget(controller: _mobileNoCont),
+                    SizedBox(height: height * 0.025),
+
+                    /// Password
+                    PasswordFieldWidget(
+                      controller: _passwordCont,
+                      icon: Icons.password,
+                      isPassVisible: false,
+                      onToggle: () {},
                     ),
                     SizedBox(height: height * 0.025),
 
-                    /// Sign up Button Widget
+                    /// SignUp Button
                     ButtonWidget(
                       onButtonPress: onSignUpPress,
                       label: "Sign Up",
                     ),
                     SizedBox(height: height * 0.075),
 
-                    /// Sub Label Widget
+                    /// Sub Label
                     SubLabelWidget(
                       label: 'If you already have account then click on',
                     ),
 
-                    /// Sign Up labelWidget
+                    /// SignUp Label
                     TextButtonWidget(onTap: authNavigation, label: "Sign in"),
                   ],
                 ),
