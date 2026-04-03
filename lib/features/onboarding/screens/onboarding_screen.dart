@@ -54,7 +54,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 SideButtonWidget(onTap: () => onSideButton(true), isLeft: true),
 
                 MiddleButtonWidget(
-                  onSkipPress: onMiddleButton,
+                  onSkipPress: () =>
+                      onMiddleButton(_pageIndex == (onboardingData.length - 1)),
                   isLastPage: (_pageIndex == (onboardingData.length - 1)),
                 ),
 
@@ -82,5 +83,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  void onMiddleButton() {}
+  ///
+  void onMiddleButton(bool? isLastPage) {
+    if (isLastPage ?? false) {
+      // Push Replacement
+      debugPrint("Replace......!");
+      return;
+    }
+    _controller.animateToPage(
+      onboardingData.length,
+      duration: Duration(milliseconds: 1000),
+      curve: Curves.easeInOut,
+    );
+  }
 }
