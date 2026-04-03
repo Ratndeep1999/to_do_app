@@ -39,7 +39,10 @@ class SignInFormWidget extends StatelessWidget {
             SizedBox(height: height * 0.025),
 
             /// Username
-            UsernameFieldWidget(controller: userNameController),
+            UsernameFieldWidget(
+              controller: userNameController,
+              prefix: Icons.verified_user,
+            ),
             SizedBox(height: height * 0.025),
 
             /// Password
