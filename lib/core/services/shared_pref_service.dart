@@ -56,4 +56,15 @@ class SharedPrefService {
     final userString = jsonEncode(user.toJson());
     prefs.setString(kUserData, userString);
   }
+
+  Future<UserModel?> getUser() async {
+    final prefs = await _instancePrefs;
+    final userString = prefs.getString(kUserData);
+
+    if (userString != null) {
+      final jsonMap = jsonDecode(userString);
+      return UserModel.fromJson(jsonMap);
+    }
+    return null;
+  }
 }
