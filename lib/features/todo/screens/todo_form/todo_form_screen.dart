@@ -11,14 +11,16 @@ import 'package:to_do_app/features/todo/common/widgets/reminder_toggle_widget.da
 import 'package:to_do_app/features/todo/common/widgets/todo_text_field.dart';
 
 class TodoFormScreen extends StatefulWidget {
-  const TodoFormScreen({super.key});
+  const TodoFormScreen({super.key, this.todo});
+
+  final TodoModel? todo;
 
   @override
   State<TodoFormScreen> createState() => _TodoFormScreenState();
 }
 
 class _TodoFormScreenState extends State<TodoFormScreen> {
-  bool isRemainder = false;
+  bool isReminder = false;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
   final List<String> _repeatData = ["Daily", "Weekly", "Monthly", "No repeat"];
@@ -34,7 +36,20 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
   String selectedRepeat = "No repeat";
   Set<String> selectedDays = {};
 
-  bool get isEdit => false;
+  bool get isEdit => widget.todo != null;
+
+  @override
+  void initState() {
+    super.initState();
+    final todo = widget.todo;
+    if (todo != null) {
+      _titleController.text = todo.title;
+      _descController.text = todo.description;
+      isReminder = todo.isReminder;
+      selectedRepeat = todo.repeat;
+      selectedDays = todo.days;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +76,8 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
 
                 /// Reminder Toggle Widget
                 ReminderToggleWidget(
-                  isRemainder: isRemainder,
-                  onTap: () => setState(() => isRemainder = !isRemainder),
+                  isReminder: isReminder,
+                  onTap: () => setState(() => isReminder = !isReminder),
                 ),
                 SizedBox(height: height * 0.04),
 
@@ -121,27 +136,27 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
     return true;
   }
 
-  ///
   void onSubmit() {
-    if (userInputValidation()) {
-      final now = DateTime.now();
-
-      /// Save Todo_Data
-      final TodoModel todoData = TodoModel(
-        isRemaindered: isRemainder,
-        isTaskCompleted: false,
-        title: _titleController.text,
-        description: _descController.text,
-        days: selectedDays,
-        repeat: selectedRepeat,
-        currentTime: DateTimeHelper.formatTime(now),
-        currentDate: DateTimeHelper.formatDate(now),
-        createdAt: now,
-      );
-      Navigator.of(context).pop(todoData);
-    } else {
+    if (!userInputValidation()) {
       showSnackBar(context, 'Please Fill The Details Properly.....!');
+      return;
     }
+
+    final now = DateTime.now(); // Current Time and Date
+
+    /// Save Todo_Data
+    final TodoModel todoData = TodoModel(
+      isReminder: isReminder,
+      isTaskCompleted: false,
+      title: _titleController.text,
+      description: _descController.text,
+      days: selectedDays,
+      repeat: selectedRepeat,
+      currentTime: DateTimeHelper.formatTime(now),
+      currentDate: DateTimeHelper.formatDate(now),
+      createdAt: now,
+    );
+    Navigator.of(context).pop(todoData);
   }
 }
 
