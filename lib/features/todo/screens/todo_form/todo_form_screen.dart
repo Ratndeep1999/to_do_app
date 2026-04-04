@@ -10,14 +10,14 @@ import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/set_remainder_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/text_field_widget.dart';
 
-class CreateTodoScreen extends StatefulWidget {
-  const CreateTodoScreen({super.key});
+class TodoFormScreen extends StatefulWidget {
+  const TodoFormScreen({super.key});
 
   @override
-  State<CreateTodoScreen> createState() => _CreateTodoScreenState();
+  State<TodoFormScreen> createState() => _TodoFormScreenState();
 }
 
-class _CreateTodoScreenState extends State<CreateTodoScreen> {
+class _TodoFormScreenState extends State<TodoFormScreen> {
   bool isRemainder = false;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
