@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/services/shared_pref_service.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/auth/screens/sign_up_screen.dart';
 import 'package:to_do_app/features/auth/widgets/form_widgets/sign_in_form_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -46,7 +48,7 @@ class _SignInScreenState extends State<SignInScreen> {
               onTogglePassword: () => setState(() => _isPassVis = !_isPassVis),
               onSignInPress: onSignInPress,
               onNavigate: authNavigation,
-              onPassChanged: (pass) => debugPrint("Password: $pass"),
+              onPassChanged: (pass) {},
             ),
           ),
         ),
@@ -55,15 +57,11 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   ///
-  void onSignInPress() {
+  Future<void> onSignInPress() async {
     if (_formKey.currentState!.validate()) {
-      debugPrint('Data Processing.......');
-      debugPrint(_userNameController.text);
-      debugPrint(_passwordController.text);
+      _loginUser();
     } else {
-      debugPrint(
-        'Invalid Details, all or some field_widgets are not validates',
-      );
+      debugPrint('Invalid Details');
       _passwordController.clear();
     }
   }
@@ -73,4 +71,20 @@ class _SignInScreenState extends State<SignInScreen> {
     context,
     MaterialPageRoute(builder: (context) => SignUpScreen()),
   );
+
+  ///
+  Future<void> _loginUser() async {
+    final result = await SharedPrefService().login(
+      username: _userNameController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    if (result) {
+      SharedPrefService().setSignInStatus(true);
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
+    } else {
+      debugPrint('Please check the Details');
+    }
+  }
 }
