@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
-class CreateTodoButtonWidget extends StatelessWidget {
-  const CreateTodoButtonWidget({super.key, required this.onTap});
+class TodoActionButtonWidget extends StatelessWidget {
+  const TodoActionButtonWidget({
+    super.key,
+    required this.onTap,
+    required this.label,
+  });
 
   final VoidCallback onTap;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,7 @@ class CreateTodoButtonWidget extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: onTap,
-      child: Text('Create to-do', style: AppTextStyles.kCreateTodoLabel),
+      child: Text(label, style: AppTextStyles.kCreateTodoLabel),
     );
   }
 }
