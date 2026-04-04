@@ -77,6 +77,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           password: _passwordCont.text.trim(),
         ),
       );
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (ctx) => SignInScreen()));
     } else {
       debugPrint('Invalid Details all or any field are not validate');
     }
