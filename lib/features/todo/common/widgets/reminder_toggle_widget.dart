@@ -5,11 +5,11 @@ class ReminderToggleWidget extends StatelessWidget {
   const ReminderToggleWidget({
     super.key,
     required this.onTap,
-    required this.isRemainder,
+    required this.isReminder,
   });
 
   final VoidCallback onTap;
-  final bool isRemainder;
+  final bool isReminder;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ReminderToggleWidget extends StatelessWidget {
       onTap: onTap,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: isRemainder ? Colors.black : Colors.white,
+          color: isReminder ? Colors.black : Colors.white,
           border: Border.all(color: Colors.black26, width: 1.5),
           borderRadius: BorderRadius.circular(40),
         ),
@@ -32,16 +32,16 @@ class ReminderToggleWidget extends StatelessWidget {
               Text(
                 'Set Reminder',
                 style: AppTextStyles.kSetRemainder.copyWith(
-                  color: isRemainder ? Colors.white : Colors.black,
+                  color: isReminder ? Colors.white : Colors.black,
                 ),
               ),
               SizedBox(width: width * 0.01),
 
               /// Icon
               Icon(
-                isRemainder ? Icons.notifications_active : Icons.notifications,
+                isReminder ? Icons.notifications_active : Icons.notifications,
                 size: 20,
-                color: isRemainder ? Colors.white : Colors.black,
+                color: isReminder ? Colors.white : Colors.black,
               ),
             ],
           ),
