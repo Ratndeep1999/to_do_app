@@ -28,11 +28,11 @@ class _TodoListWidgetState extends State<TodoListWidget> {
           final item = widget.toDoList[index];
           return TodoListItemsWidget(
             isTaskComplete: item.isTaskCompleted,
-            isRemainder: item.isRemaindered,
+            isRemainder: item.isReminder,
             onTapToggle: () =>
                 setState(() => item.isTaskCompleted = !item.isTaskCompleted),
             onTapRemainder: () =>
-                setState(() => item.isRemaindered = !item.isRemaindered),
+                setState(() => item.isReminder = !item.isReminder),
             title: item.title,
             description: item.description,
             time: item.currentTime,
