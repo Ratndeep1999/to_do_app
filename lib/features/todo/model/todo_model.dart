@@ -1,5 +1,5 @@
 class TodoModel {
-  bool isRemaindered;
+  bool isReminder;
   bool isTaskCompleted;
   String title;
   String description;
@@ -12,7 +12,7 @@ class TodoModel {
   TodoModel({
     required this.days,
     required this.repeat,
-    required this.isRemaindered,
+    required this.isReminder,
     required this.description,
     required this.title,
     required this.currentTime,
