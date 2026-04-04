@@ -5,7 +5,7 @@ import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/common/widgets/close_screen_button.dart';
 import 'package:to_do_app/features/todo/common/widgets/todo_action_button_widget.dart';
-import 'package:to_do_app/features/todo/common/widgets/input_field_label_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/section_label.dart';
 import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/reminder_toggle_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/text_field_widget.dart';
@@ -52,35 +52,35 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
 
                 /// _Todo Action Button
                 TodoActionButtonWidget(onTap: onCreateTodoPress, label: ''),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                SizedBox(height: height * 0.02),
 
                 /// Reminder Toggle Widget
                 ReminderToggleWidget(
                   isRemainder: isRemainder,
                   onTap: () => setState(() => isRemainder = !isRemainder),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(height: height * 0.04),
 
-                /// TextFields Label Widget
-                InputFieldLabelWidget(text: 'Tells us about your task'),
+                /// TodoTextField Label
+                SectionLabel(text: 'Tells us about your task'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
-                /// Title Text Field Widget
+                /// Title TextField Widget
                 TextFieldWidget(
                   hintText: "Title",
                   controller: _titleController,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.015),
 
-                /// Description Text Field Widget
+                /// Description TextField Widget
                 TextFieldWidget(
                   hintText: "Description",
                   controller: _descController,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
-                /// Chips Label Widget
-                InputFieldLabelWidget(text: 'Repeat'),
+                /// SelectableChipsWidget Label
+                SectionLabel(text: 'Repeat'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 /// Repeat Widget
