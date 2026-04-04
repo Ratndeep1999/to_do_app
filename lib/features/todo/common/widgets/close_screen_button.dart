@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CloseButtonWidget extends StatelessWidget {
-  const CloseButtonWidget({super.key, required this.onTap});
+class CloseScreenButton extends StatelessWidget {
+  const CloseScreenButton({super.key, required this.onTap});
 
   final VoidCallback onTap;
 
