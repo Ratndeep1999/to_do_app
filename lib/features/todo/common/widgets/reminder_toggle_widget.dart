@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
-class SetRemainderWidget extends StatelessWidget {
-  const SetRemainderWidget({
+class ReminderToggleWidget extends StatelessWidget {
+  const ReminderToggleWidget({
     super.key,
     required this.onTap,
     required this.isRemainder,
@@ -13,6 +13,7 @@ class SetRemainderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return InkWell(
       splashFactory: NoSplash.splashFactory,
       onTap: onTap,
@@ -34,7 +35,7 @@ class SetRemainderWidget extends StatelessWidget {
                   color: isRemainder ? Colors.white : Colors.black,
                 ),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+              SizedBox(width: width * 0.01),
 
               /// Icon
               Icon(
