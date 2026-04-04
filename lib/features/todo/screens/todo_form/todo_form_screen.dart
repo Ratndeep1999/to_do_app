@@ -7,7 +7,7 @@ import 'package:to_do_app/features/todo/common/widgets/close_screen_button.dart'
 import 'package:to_do_app/features/todo/common/widgets/todo_action_button_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/input_field_label_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
-import 'package:to_do_app/features/todo/common/widgets/set_remainder_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/reminder_toggle_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/text_field_widget.dart';
 
 class TodoFormScreen extends StatefulWidget {
@@ -47,15 +47,15 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 /// Close Button
-                CloseButtonWidget(onTap: () => Navigator.of(context).pop()),
+                CloseScreenButton(onTap: () => Navigator.of(context).pop()),
                 SizedBox(height: height * 0.03),
 
-                /// Create to-do Button
+                /// _Todo Action Button
                 TodoActionButtonWidget(onTap: onCreateTodoPress, label: ''),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
-                /// Set Remainder Widget
-                SetRemainderWidget(
+                /// Reminder Toggle Widget
+                ReminderToggleWidget(
                   isRemainder: isRemainder,
                   onTap: () => setState(() => isRemainder = !isRemainder),
                 ),
