@@ -8,7 +8,7 @@ import 'package:to_do_app/features/todo/common/widgets/todo_action_button_widget
 import 'package:to_do_app/features/todo/common/widgets/section_label.dart';
 import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/reminder_toggle_widget.dart';
-import 'package:to_do_app/features/todo/common/widgets/text_field_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/todo_text_field.dart';
 
 class TodoFormScreen extends StatefulWidget {
   const TodoFormScreen({super.key});
@@ -66,14 +66,11 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 /// Title TextField Widget
-                TextFieldWidget(
-                  hintText: "Title",
-                  controller: _titleController,
-                ),
+                TodoTextField(hintText: "Title", controller: _titleController),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.015),
 
                 /// Description TextField Widget
-                TextFieldWidget(
+                TodoTextField(
                   hintText: "Description",
                   controller: _descController,
                 ),
