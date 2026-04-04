@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'chip_widget.dart';
 
-class RepeatWidget extends StatelessWidget {
-  const RepeatWidget({
+class SelectableChipsWidget extends StatelessWidget {
+  const SelectableChipsWidget({
     super.key,
     required this.repeatData,
     required this.onSelect,
