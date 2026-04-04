@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/core/services/shared_pref_service.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
+import 'package:to_do_app/features/auth/model/user_model.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 import 'package:to_do_app/features/auth/widgets/form_widgets/sign_up_form_widget.dart';
 
@@ -63,11 +65,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   ///
-  void onSignUpPress() {
+  Future<void> onSignUpPress() async {
     if (_formKey.currentState!.validate()) {
       debugPrint('Data Processing.....');
+      await SharedPrefService().saveUser(
+        UserModel(
+          fullname: _fullnameCont.text.trim().toLowerCase(),
+          username: _usernameCont.text.trim().toLowerCase(),
+          email: _emailCont.text.trim(),
+          phoneNo: _mobileNoCont.text.trim(),
+          password: _passwordCont.text.trim(),
+        ),
+      );
     } else {
-      debugPrint('Invalid Details all or any field_widgets are not validate');
+      debugPrint('Invalid Details all or any field are not validate');
     }
   }
 
