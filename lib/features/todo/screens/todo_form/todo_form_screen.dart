@@ -3,12 +3,12 @@ import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/core/utils/helpers/date_time_helper.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
-import 'package:to_do_app/features/todo/screens/create_todo/widgets/close_button_widget.dart';
-import 'package:to_do_app/features/todo/screens/create_todo/widgets/create_todo_button_widget.dart';
-import 'package:to_do_app/features/todo/screens/create_todo/widgets/input_field_label_widget.dart';
-import 'package:to_do_app/features/todo/screens/create_todo/widgets/repeat_widget.dart';
-import 'package:to_do_app/features/todo/screens/create_todo/widgets/set_remainder_widget.dart';
-import 'package:to_do_app/features/todo/screens/create_todo/widgets/text_field_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/close_button_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/create_todo_button_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/input_field_label_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/set_remainder_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/text_field_widget.dart';
 
 class CreateTodoScreen extends StatefulWidget {
   const CreateTodoScreen({super.key});
