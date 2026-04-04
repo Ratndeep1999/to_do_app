@@ -50,6 +50,15 @@ class SharedPrefService {
     prefs.remove(kSignInStatus);
   }
 
+  Future<bool> login({
+    required String username,
+    required String password,
+  }) async {
+    final user = await getUser();
+    if (user == null) return false;
+    return user.username == username && user.password == password;
+  }
+
   ///--------------------Sign Up-------------------------
   Future<void> saveUser(UserModel user) async {
     final prefs = await _instancePrefs;
