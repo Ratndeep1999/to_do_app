@@ -34,6 +34,8 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
   String selectedRepeat = "No repeat";
   Set<String> selectedDays = {};
 
+  bool get isEdit => false;
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -51,7 +53,10 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
                 SizedBox(height: height * 0.03),
 
                 /// _Todo Action Button
-                TodoActionButtonWidget(onTap: onCreateTodoPress, label: ''),
+                TodoActionButtonWidget(
+                  onTap: onSubmit,
+                  label: isEdit ? "Update to-do" : "Create to-do",
+                ),
                 SizedBox(height: height * 0.02),
 
                 /// Reminder Toggle Widget
@@ -78,17 +83,17 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
 
                 /// Repeat Label
                 SectionLabel(text: 'Repeat'),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                SizedBox(height: height * 0.01),
 
-                /// Repeat Widget
+                /// RepeatChip Widget
                 SelectableChipsWidget(
                   repeatData: _repeatData,
                   selectedChip: selectedRepeat,
                   onSelect: (title) => setState(() => selectedRepeat = title),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(height: height * 0.04),
 
-                /// WeekDays Widget
+                /// WeekDays Chip Widget
                 SelectableChipsWidget(
                   repeatData: _weekDays,
                   selectedChips: selectedDays,
@@ -117,7 +122,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
   }
 
   ///
-  void onCreateTodoPress() {
+  void onSubmit() {
     if (userInputValidation()) {
       final now = DateTime.now();
 
