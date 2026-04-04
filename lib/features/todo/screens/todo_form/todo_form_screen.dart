@@ -3,8 +3,8 @@ import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/core/utils/helpers/date_time_helper.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
-import 'package:to_do_app/features/todo/common/widgets/close_button_widget.dart';
-import 'package:to_do_app/features/todo/common/widgets/create_todo_button_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/close_screen_button.dart';
+import 'package:to_do_app/features/todo/common/widgets/todo_action_button_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/input_field_label_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/set_remainder_widget.dart';
@@ -36,6 +36,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: UnfocusKeyboardWidget(
@@ -45,12 +46,12 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /// Close Button Widget
+                /// Close Button
                 CloseButtonWidget(onTap: () => Navigator.of(context).pop()),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                SizedBox(height: height * 0.03),
 
                 /// Create to-do Button
-                CreateTodoButtonWidget(onTap: onCreateTodoPress),
+                TodoActionButtonWidget(onTap: onCreateTodoPress, label: ''),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                 /// Set Remainder Widget
