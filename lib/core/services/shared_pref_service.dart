@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:to_do_app/features/auth/model/user_model.dart';
 
 class SharedPrefService {
   /// Singleton
@@ -18,8 +21,9 @@ class SharedPrefService {
   /// Keys
   static const String kOnboardingStatus = "onboarding_status";
   static const String kSignInStatus = "sign_in_status";
+  static const String kUserData = "user_data";
 
-  /// Onboarding Status Methods
+  /// --------------------Onboarding-------------------------
   Future<void> setOnboardingStatus() async {
     final prefs = await _instancePrefs;
     prefs.setBool(kOnboardingStatus, true);
@@ -30,7 +34,7 @@ class SharedPrefService {
     return prefs.getBool(kOnboardingStatus) ?? false;
   }
 
-  /// Sign In Status Methods
+  /// --------------------Sign In-------------------------
   Future<void> setSignInStatus(bool status) async {
     final prefs = await _instancePrefs;
     prefs.setBool(kSignInStatus, status);
@@ -44,5 +48,12 @@ class SharedPrefService {
   Future<void> clearLoginStatus() async {
     final prefs = await _instancePrefs;
     prefs.remove(kSignInStatus);
+  }
+
+  ///--------------------Sign Up-------------------------
+  Future<void> saveUser(UserModel user) async {
+    final prefs = await _instancePrefs;
+    final userString = jsonEncode(user.toJson());
+    prefs.setString(kUserData, userString);
   }
 }
