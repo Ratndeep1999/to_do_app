@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/services/shared_pref_service.dart';
 import 'package:to_do_app/features/auth/screens/sign_in_screen.dart';
 import 'package:to_do_app/features/onboarding/screens/onboarding_screen.dart';
+import 'package:to_do_app/features/todo/screens/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,14 +23,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
   /// Go to next page
   Future<void> _navigateToNextPage() async {
-    /// Check Status
+    /// Get Onboarding and SignIn Status
     final isSeen = await SharedPrefService().getOnboardingStatus();
+    final isLoggedIn = await SharedPrefService().getSignInStatus();
     if (!mounted) return;
+
+    Widget nextScreen = !isSeen
+        ? OnboardingScreen()
+        : !isLoggedIn
+        ? SignInScreen()
+        : HomeScreen();
+
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (context) => isSeen ? SignInScreen() : OnboardingScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => nextScreen),
     );
   }
 
