@@ -89,7 +89,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
                 /// WeekDays Widget
-                RepeatWidget(
+                SelectableChipsWidget(
                   repeatData: _weekDays,
                   selectedChips: selectedDays,
                   onSelect: updateSelectedDays,
