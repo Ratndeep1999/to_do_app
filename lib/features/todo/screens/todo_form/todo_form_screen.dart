@@ -6,7 +6,7 @@ import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/common/widgets/close_screen_button.dart';
 import 'package:to_do_app/features/todo/common/widgets/todo_action_button_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/section_label.dart';
-import 'package:to_do_app/features/todo/common/widgets/repeat_widget.dart';
+import 'package:to_do_app/features/todo/common/widgets/selectable_chips_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/reminder_toggle_widget.dart';
 import 'package:to_do_app/features/todo/common/widgets/todo_text_field.dart';
 
@@ -63,25 +63,25 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
 
                 /// TodoTextField Label
                 SectionLabel(text: 'Tells us about your task'),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                SizedBox(height: height * 0.01),
 
                 /// Title TextField Widget
                 TodoTextField(hintText: "Title", controller: _titleController),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+                SizedBox(height: height * 0.015),
 
                 /// Description TextField Widget
                 TodoTextField(
                   hintText: "Description",
                   controller: _descController,
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(height: height * 0.04),
 
-                /// SelectableChipsWidget Label
+                /// Repeat Label
                 SectionLabel(text: 'Repeat'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.01),
 
                 /// Repeat Widget
-                RepeatWidget(
+                SelectableChipsWidget(
                   repeatData: _repeatData,
                   selectedChip: selectedRepeat,
                   onSelect: (title) => setState(() => selectedRepeat = title),
