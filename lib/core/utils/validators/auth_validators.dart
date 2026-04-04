@@ -18,7 +18,7 @@ class AuthValidators {
   /// Password Validation
   static String? password(String? password) {
     if (password == null || password.isEmpty) {
-      return 'Please enter your username properly';
+      return 'Please enter password properly';
     } else if (password.contains(' ')) {
       return 'Space not allow';
     } else if (password.length < 8) {
@@ -39,7 +39,7 @@ class AuthValidators {
   static String? fullName(String? fullName) {
     final fullname = fullName?.trim();
     if (fullname == null || fullname.isEmpty) {
-      return 'Please enter your full name';
+      return 'Please enter full name';
     }
     if (fullname.length < 6) {
       return 'Full name length must be 6';
@@ -51,7 +51,7 @@ class AuthValidators {
   static String? username(String? userName) {
     final username = userName?.trim();
     if (username == null || username.isEmpty) {
-      return 'Please enter your username';
+      return 'Please enter username';
     }
     return null;
   }
@@ -60,7 +60,7 @@ class AuthValidators {
   static String? email(String? email) {
     final emailId = email?.trim();
     if (emailId == null || emailId.isEmpty) {
-      return 'Please enter your email address';
+      return 'Please enter email address';
     }
     return null;
   }
@@ -69,7 +69,7 @@ class AuthValidators {
   static String? number(String? phoneNumber) {
     final number = phoneNumber?.trim();
     if (number == null || number.isEmpty) {
-      return 'Please enter your phone number';
+      return 'Please enter phone number';
     }
     return null;
   }
