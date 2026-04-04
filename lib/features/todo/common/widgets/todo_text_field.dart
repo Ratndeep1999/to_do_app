@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
-class TextFieldWidget extends StatelessWidget {
-  const TextFieldWidget({
+class TodoTextField extends StatelessWidget {
+  const TodoTextField({
     super.key,
     required this.controller,
     this.onChanged,
