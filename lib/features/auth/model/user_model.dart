@@ -12,4 +12,26 @@ class UserModel {
     required this.phoneNo,
     required this.password,
   });
+
+  /// Convert to Map
+  Map<String, dynamic> toJson() {
+    return {
+      "fullname": fullname,
+      "username": username,
+      "email": email,
+      "phoneNo": phoneNo,
+      "password": password,
+    };
+  }
+
+  /// Convert from Map
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      fullname: json["fullname"],
+      username: json["username"],
+      email: json["email"],
+      phoneNo: json["phoneNo"],
+      password: json["password"],
+    );
+  }
 }
