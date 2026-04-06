@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 
-class TodayAndFilterWidget extends StatelessWidget {
-  const TodayAndFilterWidget({super.key, required this.onTap});
+class HeaderFilterWidget extends StatelessWidget {
+  const HeaderFilterWidget({
+    super.key,
+    required this.onTap,
+    required this.label,
+  });
 
   final VoidCallback onTap;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class TodayAndFilterWidget extends StatelessWidget {
                 children: [
                   /// Label
                   Text(
-                    'Filter ',
+                    label,
                     style: AppTextStyles.kTodayLabel.copyWith(fontSize: 16),
                   ),
 
