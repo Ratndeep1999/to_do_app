@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_items_widget.dart';
 
-class TodoListWidget extends StatefulWidget {
-  const TodoListWidget({super.key, required this.toDoList});
+class TodoListView extends StatefulWidget {
+  const TodoListView({super.key, required this.toDoList});
 
   final List<TodoModel> toDoList;
 
   @override
-  State<TodoListWidget> createState() => _TodoListWidgetState();
+  State<TodoListView> createState() => _TodoListViewState();
 }
 
-class _TodoListWidgetState extends State<TodoListWidget> {
+class _TodoListViewState extends State<TodoListView> {
   @override
   void initState() {
     super.initState();
