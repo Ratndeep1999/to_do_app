@@ -60,12 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   ///
   Future<void> onAddTodo() async {
-    TodoModel? data =
-        await Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TodoFormScreen()),
-            )
-            as TodoModel?;
+    final TodoModel? data = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => TodoFormScreen()),
+    );
 
     if (data != null) {
       setState(() => todoList.add(data));
