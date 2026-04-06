@@ -3,7 +3,7 @@ import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/add_todo_button.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/header_filter_widget.dart';
-import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_view.dart';
 import 'package:to_do_app/features/todo/screens/todo_form/todo_form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,8 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /// Floating Action Button
-      floatingActionButton: FloatingActionButtonWidget(onPress: onCreateTodo),
+      /// Add Todo_Button
+      floatingActionButton: AddTodoButton(onPress: onAddTodo),
 
       /// Appbar
       appBar: AppBar(
@@ -37,11 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             /// Today & Filter Widget
-            HeaderFilterWidget(onTap: () {}, label: 'Filter'),
+            HeaderFilterWidget(onTap: () {}, title: 'Today'),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
 
             /// ToDoList Widget
-            TodoListWidget(toDoList: toDoList),
+            TodoListView(toDoList: todoList),
           ],
         ),
       ),
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   ///
-  Future<void> onCreateTodo() async {
+  Future<void> onAddTodo() async {
     TodoModel? data =
         await Navigator.push(
               context,
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             as TodoModel?;
 
     if (data != null) {
-      setState(() => toDoList.add(data));
+      setState(() => todoList.add(data));
     }
   }
 }
