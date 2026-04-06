@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/floating_action_button_widget.dart';
-import 'package:to_do_app/features/todo/screens/home/widgets/today_and_filter_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/header_filter_widget.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_widget.dart';
 import 'package:to_do_app/features/todo/screens/todo_form/todo_form_screen.dart';
 
@@ -33,13 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
-        minimum: const EdgeInsets.symmetric(horizontal: 20),
+        minimum: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.027),
-
             /// Today & Filter Widget
-            TodayAndFilterWidget(onTap: () {}),
+            HeaderFilterWidget(onTap: () {}, label: 'Filter'),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
 
             /// ToDoList Widget
