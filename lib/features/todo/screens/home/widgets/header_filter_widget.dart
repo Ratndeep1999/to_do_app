@@ -5,18 +5,18 @@ class HeaderFilterWidget extends StatelessWidget {
   const HeaderFilterWidget({
     super.key,
     required this.onTap,
-    required this.label,
+    required this.title,
   });
 
   final VoidCallback onTap;
-  final String label;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         /// Today
-        Text('Today', style: AppTextStyles.kTodayLabel),
+        Text(title, style: AppTextStyles.kTodayLabel),
         Spacer(),
 
         /// Filter Button
@@ -37,7 +37,7 @@ class HeaderFilterWidget extends StatelessWidget {
                 children: [
                   /// Label
                   Text(
-                    label,
+                    "Filter",
                     style: AppTextStyles.kTodayLabel.copyWith(fontSize: 16),
                   ),
 
