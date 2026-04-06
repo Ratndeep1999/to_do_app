@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onToggleReminder: (int index) => setState(
                 () => todoList[index].isReminder = !todoList[index].isReminder,
               ),
-              onItemTap: (int index) {},
+              onItemTap: onUpdateTodo,
             ),
           ],
         ),
@@ -71,4 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() => todoList.add(data));
     }
   }
+
+  ///
+  onUpdateTodo(int index) {}
 }
