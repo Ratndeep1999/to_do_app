@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FloatingActionButtonWidget extends StatelessWidget {
-  const FloatingActionButtonWidget({super.key, required this.onPress});
+class AddTodoButton extends StatelessWidget {
+  const AddTodoButton({super.key, required this.onPress});
 
   final VoidCallback onPress;
 
