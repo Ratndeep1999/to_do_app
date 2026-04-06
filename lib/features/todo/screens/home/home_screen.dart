@@ -73,9 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   ///
-  onUpdateTodo(int index) {
-    Navigator.of(context).push(
+  onUpdateTodo(int index) async {
+    final updatedTodo = await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => TodoFormScreen(todo: todoList[index])),
     );
+
+    if (updatedTodo != null) {
+      setState(() => todoList[index] = updatedTodo);
+    }
   }
 }
