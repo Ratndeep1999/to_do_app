@@ -41,7 +41,17 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
 
             /// ToDoList Widget
-            TodoListView(toDoList: todoList),
+            TodoListView(
+              todoList: todoList,
+              onToggleComplete: (int index) => setState(
+                () => todoList[index].isTaskCompleted =
+                    !todoList[index].isTaskCompleted,
+              ),
+              onToggleReminder: (int index) => setState(
+                () => todoList[index].isReminder = !todoList[index].isReminder,
+              ),
+              onItemTap: (int index) {},
+            ),
           ],
         ),
       ),
