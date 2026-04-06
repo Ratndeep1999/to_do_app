@@ -22,15 +22,18 @@ class TodoListView extends StatelessWidget {
         itemBuilder: (ctx, index) {
           ///
           final item = todoList[index];
-          return TodoListItemsWidget(
-            isTaskComplete: item.isTaskCompleted,
-            isRemainder: item.isReminder,
-            onTapToggle: () => onToggleComplete(index),
-            onTapRemainder: () => onToggleReminder(index),
-            title: item.title,
-            description: item.description,
-            time: item.currentTime,
-            date: item.currentDate,
+          return GestureDetector(
+            onTap: () => onItemTap(index),
+            child: TodoListItemsWidget(
+              isTaskComplete: item.isTaskCompleted,
+              isRemainder: item.isReminder,
+              onTapToggle: () => onToggleComplete(index),
+              onTapRemainder: () => onToggleReminder(index),
+              title: item.title,
+              description: item.description,
+              time: item.currentTime,
+              date: item.currentDate,
+            ),
           );
         },
         separatorBuilder: (ctx, index) => Divider(),
