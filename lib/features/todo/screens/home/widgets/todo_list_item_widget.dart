@@ -4,8 +4,8 @@ import 'package:to_do_app/features/todo/screens/home/widgets/title_widget.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/toggle_circle_widget.dart';
 import 'description_widget.dart';
 
-class TodoListItemsWidget extends StatelessWidget {
-  const TodoListItemsWidget({
+class TodoListItemWidget extends StatelessWidget {
+  const TodoListItemWidget({
     super.key,
     required this.isTaskComplete,
     required this.isRemainder,
@@ -23,19 +23,18 @@ class TodoListItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       children: [
         /// Toggle Circle Widget
         ToggleCircleWidget(isTaskComplete: isTaskComplete, onTap: onTapToggle),
-        SizedBox(width: 10),
+        SizedBox(width: size.width * 0.025),
 
         /// ToDoData
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
-
               /// Title Widget
               TitleWidget(title: title, isTaskComplete: isTaskComplete),
 
@@ -44,7 +43,7 @@ class TodoListItemsWidget extends StatelessWidget {
                 desc: description,
                 isTaskComplete: isTaskComplete,
               ),
-              SizedBox(height: 2),
+              SizedBox(height: size.height * 0.002),
 
               /// Time, Date, Notification, Refresh
               TimeDateAndNotiWidget(
@@ -53,7 +52,6 @@ class TodoListItemsWidget extends StatelessWidget {
                 isRemainder: isRemainder,
                 onTapRemainder: onTapRemainder,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             ],
           ),
         ),
