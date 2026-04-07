@@ -22,4 +22,16 @@ class DbService {
     final dbPath = await getDatabasesPath();
     return join(dbPath, DbConstants.kTableTodo);
   }
+
+  /// Initialize Database
+  Future<Database?> _initDb() async {
+    final path = await _dbPath;
+    Database database = await openDatabase(
+      path,
+      version: DbConstants.kDbVersion,
+      onCreate: _createDb,
+      singleInstance: true,
+    );
+    return database;
+  }
 }
