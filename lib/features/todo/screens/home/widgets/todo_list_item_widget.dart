@@ -29,6 +29,7 @@ class TodoListItemWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Row(
+          key: ValueKey(isTaskComplete),
           children: [
             /// Toggle
             ToggleCircleWidget(
