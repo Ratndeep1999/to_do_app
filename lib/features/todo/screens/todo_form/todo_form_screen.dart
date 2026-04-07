@@ -52,6 +52,13 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
   }
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _descController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -122,30 +129,27 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
     );
   }
 
-  ///
   void updateSelectedDays(String title) {
     final data = selectedDays.contains(title);
     setState(() => data ? selectedDays.remove(title) : selectedDays.add(title));
   }
 
-  ///
-  bool userInputValidation() {
-    final title = _titleController.text.trim();
-    final desc = _descController.text.trim();
-    if (title.isEmpty || desc.isEmpty) return false;
-    return true;
-  }
+  bool get isValid =>
+      _titleController.text.trim().isNotEmpty &&
+      _descController.text.trim().isNotEmpty;
 
   void onSubmit() {
-    if (!userInputValidation()) {
+    if (!isValid) {
       showSnackBar(context, 'Please Fill The Details Properly.....!');
       return;
     }
+    Navigator.of(context).pop(_createTodo());
+  }
 
+  /// Save Todo_Data
+  TodoModel _createTodo() {
     final now = DateTime.now(); // Current Time and Date
-
-    /// Save Todo_Data
-    final TodoModel todoData = TodoModel(
+    return TodoModel(
       isReminder: isReminder,
       isTaskCompleted: false,
       title: _titleController.text,
@@ -156,19 +160,17 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
       currentDate: DateTimeHelper.formatDate(now),
       createdAt: now,
     );
-    Navigator.of(context).pop(todoData);
   }
-}
 
-///
-void showSnackBar(context, label) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      duration: Duration(seconds: 3),
-      showCloseIcon: true,
-      backgroundColor: Colors.black,
-      dismissDirection: DismissDirection.horizontal,
-      content: Text(label, style: AppTextStyles.kSnackbarLabel),
-    ),
-  );
+  void showSnackBar(context, label) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 3),
+        showCloseIcon: true,
+        backgroundColor: Colors.black,
+        dismissDirection: DismissDirection.horizontal,
+        content: Text(label, style: AppTextStyles.kSnackbarLabel),
+      ),
+    );
+  }
 }
