@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
-import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_items_widget.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_item_widget.dart';
 
 class TodoListView extends StatelessWidget {
   const TodoListView({
@@ -24,11 +24,11 @@ class TodoListView extends StatelessWidget {
           final item = todoList[index];
           return GestureDetector(
             onTap: () => onItemTap(index),
-            child: TodoListItemsWidget(
+            child: TodoListItemWidget(
               isTaskComplete: item.isTaskCompleted,
-              isRemainder: item.isReminder,
+              isReminder: item.isReminder,
               onTapToggle: () => onToggleComplete(index),
-              onTapRemainder: () => onToggleReminder(index),
+              onReminderToggle: () => onToggleReminder(index),
               title: item.title,
               description: item.description,
               time: item.currentTime,
