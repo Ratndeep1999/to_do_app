@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
+import 'package:to_do_app/features/todo/screens/home/widgets/delete_todo_widget.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/todo_list_item_widget.dart';
 
 class TodoListItemTile extends StatelessWidget {
@@ -20,21 +21,9 @@ class TodoListItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: ValueKey(item.createdAt),
-      direction: DismissDirection.endToStart,
-
-      /// Delete Item
-      onDismissed: (_) => onDelete(index),
-      background: Container(
-        alignment: Alignment.centerRight,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: const Icon(Icons.delete, color: Colors.white),
-      ),
+    return DeleteTodoWidget(
+      uniqueKey: ValueKey(item.createdAt),
+      onDelete: onDelete(index),
       child: GestureDetector(
         /// Edit Item
         onTap: () => onItemTap(index),
