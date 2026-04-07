@@ -24,43 +24,46 @@ class TodoListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          /// Toggle
-          ToggleCircleWidget(
-            isTaskComplete: isTaskComplete,
-            onTap: onTapToggle,
-          ),
-          SizedBox(width: size.width * 0.025),
-
-          /// Content
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// Title
-                TitleWidget(title: title, isTaskComplete: isTaskComplete),
-
-                /// Description
-                DescriptionWidget(
-                  desc: description,
-                  isTaskComplete: isTaskComplete,
-                ),
-                SizedBox(height: size.height * 0.002),
-
-                /// Time, Date, Notification, Refresh
-                TimeDateAndNotiWidget(
-                  time: time,
-                  date: date,
-                  isRemainder: isReminder,
-                  onTapRemainder: onReminderToggle,
-                ),
-              ],
+    return AnimatedSwitcher(
+      duration: Duration(milliseconds: 300),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          children: [
+            /// Toggle
+            ToggleCircleWidget(
+              isTaskComplete: isTaskComplete,
+              onTap: onTapToggle,
             ),
-          ),
-        ],
+            SizedBox(width: size.width * 0.025),
+
+            /// Content
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Title
+                  TitleWidget(title: title, isTaskComplete: isTaskComplete),
+
+                  /// Description
+                  DescriptionWidget(
+                    desc: description,
+                    isTaskComplete: isTaskComplete,
+                  ),
+                  SizedBox(height: size.height * 0.002),
+
+                  /// Time, Date, Notification, Refresh
+                  TimeDateAndNotiWidget(
+                    time: time,
+                    date: date,
+                    isRemainder: isReminder,
+                    onTapRemainder: onReminderToggle,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
