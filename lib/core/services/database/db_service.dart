@@ -37,8 +37,8 @@ class DbService {
   }
 
   /// Create Database Table
-  FutureOr<void> _createDb(Database db, int version) {
-    db.execute('''
+  Future<void> _createDb(Database db, int version) async {
+    await db.execute('''
     CREATE TABLE ${DbConstants.kTableTodo} (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
