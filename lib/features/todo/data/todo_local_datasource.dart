@@ -8,6 +8,13 @@ class TodoLocalDatasource {
   /// Add Todo_ to Database
   Future<int> insertTodo(TodoModel todo) async {
     final database = await db.db;
-    return await database!.insert(DbConstants.kTableTodo, todo.toMap());
+    return await database.insert(DbConstants.kTableTodo, todo.toMap());
+  }
+
+  /// Get Database Data
+  Future<List<TodoModel>> getTodos() async {
+    final database = await db.db;
+    final data = await database.query(DbConstants.kTableTodo);
+    return data.map((e) => TodoModel.fromMap(e)).toList();
   }
 }
