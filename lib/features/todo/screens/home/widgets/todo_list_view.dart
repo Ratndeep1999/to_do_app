@@ -24,6 +24,7 @@ class TodoListView extends StatelessWidget {
           final item = todoList[index];
           return GestureDetector(
             onTap: () => onItemTap(index),
+            onLongPress: () => onItemTap(index),
             child: TodoListItemWidget(
               isTaskComplete: item.isTaskCompleted,
               isReminder: item.isReminder,
