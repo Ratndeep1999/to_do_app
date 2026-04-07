@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 () => todoList[index].isReminder = !todoList[index].isReminder,
               ),
               onItemTap: onUpdateTodo,
-              onDelete: (int index) => setState(() => todoList.removeAt(index)),
+              onDelete: onDelete,
             ),
           ],
         ),
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   ///
-  onUpdateTodo(int index) async {
+  void onUpdateTodo(int index) async {
     final updatedTodo = await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => TodoFormScreen(todo: todoList[index])),
     );
@@ -80,5 +80,20 @@ class _HomeScreenState extends State<HomeScreen> {
     if (updatedTodo != null) {
       setState(() => todoList[index] = updatedTodo);
     }
+  }
+
+  ///
+  void onDelete(int index) {
+    final deletedTodo = todoList[index];
+    setState(() => todoList.removeAt(index));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text("Task Deleted"),
+        action: SnackBarAction(
+          label: "UNDO",
+          onPressed: () => setState(() => todoList.insert(index, deletedTodo)),
+        ),
+      ),
+    );
   }
 }
