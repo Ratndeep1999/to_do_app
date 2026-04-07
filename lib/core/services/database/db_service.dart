@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:to_do_app/core/services/database/db_constants.dart';
@@ -33,5 +35,23 @@ class DbService {
       singleInstance: true,
     );
     return database;
+  }
+
+  /// Create Database Table
+  FutureOr<void> _createDb(Database db, int version) {
+    db.execute('''
+    CREATE TABLE ${DbConstants.kTableTodo} (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        description TEXT,
+        repeat TEXT,
+        days TEXT,
+        isReminder INTEGER,
+        isTaskCompleted INTEGER,
+        currentTime TEXT,
+        currentDate TEXT,
+        createdAt TEXT
+      )
+      ''');
   }
 }
