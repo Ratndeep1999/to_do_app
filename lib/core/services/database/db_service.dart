@@ -12,10 +12,10 @@ class DbService {
   static Database? _database;
 
   /// Return Database
-  Future<Database?> get db async {
+  Future<Database> get db async {
     if (_database != null) return _database!;
     _database = await _initDb();
-    return _database;
+    return _database!;
   }
 
   /// Return Database Path
