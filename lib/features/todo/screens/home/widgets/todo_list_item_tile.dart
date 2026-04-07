@@ -24,6 +24,7 @@ class TodoListItemTile extends StatelessWidget {
     return DeleteTodoWidget(
       uniqueKey: ValueKey(item.createdAt),
       onDelete: onDelete(index),
+      onComplete: onToggleComplete(index),
       child: GestureDetector(
         /// Edit Item
         onTap: () => onItemTap(index),
