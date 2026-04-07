@@ -51,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 () => todoList[index].isReminder = !todoList[index].isReminder,
               ),
               onItemTap: onUpdateTodo,
+              onDelete: (int index) => setState(() => todoList.removeAt(index)),
             ),
           ],
         ),
