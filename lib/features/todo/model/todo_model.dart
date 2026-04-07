@@ -48,7 +48,7 @@ class TodoModel {
       title: map['title'],
       description: map['description'],
       repeat: map['repeat'],
-      days: map['days'].split(','),
+      days: map['days'].split(',').toSet(),
       currentTime: map['currentTime'],
       currentDate: map['currentDate'],
       createdAt: DateTime.parse(map['createdAt']),
