@@ -33,7 +33,7 @@ class TodoListView extends StatelessWidget {
               index: index,
               onDelete: onDelete,
               onItemTap: onItemTap,
-              onToggleComplete: onToggleComplete,
+              onToggleComplete: onToggleComplete(index),
               onToggleReminder: onToggleReminder,
             );
           },
