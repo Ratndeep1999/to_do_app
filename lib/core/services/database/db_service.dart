@@ -1,4 +1,6 @@
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:to_do_app/core/services/database/db_constants.dart';
 
 class DbService {
   /// Singleton
@@ -13,5 +15,11 @@ class DbService {
     if (_database != null) return _database!;
     _database = await _initDb();
     return _database;
+  }
+
+  /// Return Database Path
+  Future<String> get _dbPath async {
+    final dbPath = await getDatabasesPath();
+    return join(dbPath, DbConstants.kTableTodo);
   }
 }
