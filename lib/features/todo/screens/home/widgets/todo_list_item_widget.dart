@@ -8,54 +8,60 @@ class TodoListItemWidget extends StatelessWidget {
   const TodoListItemWidget({
     super.key,
     required this.isTaskComplete,
-    required this.isRemainder,
+    required this.isReminder,
     required this.onTapToggle,
-    required this.onTapRemainder,
     required this.title,
     required this.description,
     required this.time,
     required this.date,
+    required this.onReminderToggle,
   });
 
-  final bool isTaskComplete, isRemainder;
-  final VoidCallback onTapToggle, onTapRemainder;
+  final bool isTaskComplete, isReminder;
+  final VoidCallback onTapToggle, onReminderToggle;
   final String title, description, time, date;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Row(
-      children: [
-        /// Toggle Circle Widget
-        ToggleCircleWidget(isTaskComplete: isTaskComplete, onTap: onTapToggle),
-        SizedBox(width: size.width * 0.025),
-
-        /// ToDoData
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /// Title Widget
-              TitleWidget(title: title, isTaskComplete: isTaskComplete),
-
-              /// Description Widget
-              DescriptionWidget(
-                desc: description,
-                isTaskComplete: isTaskComplete,
-              ),
-              SizedBox(height: size.height * 0.002),
-
-              /// Time, Date, Notification, Refresh
-              TimeDateAndNotiWidget(
-                time: time,
-                date: date,
-                isRemainder: isRemainder,
-                onTapRemainder: onTapRemainder,
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          /// Toggle
+          ToggleCircleWidget(
+            isTaskComplete: isTaskComplete,
+            onTap: onTapToggle,
           ),
-        ),
-      ],
+          SizedBox(width: size.width * 0.025),
+
+          /// Content
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /// Title
+                TitleWidget(title: title, isTaskComplete: isTaskComplete),
+
+                /// Description
+                DescriptionWidget(
+                  desc: description,
+                  isTaskComplete: isTaskComplete,
+                ),
+                SizedBox(height: size.height * 0.002),
+
+                /// Time, Date, Notification, Refresh
+                TimeDateAndNotiWidget(
+                  time: time,
+                  date: date,
+                  isRemainder: isReminder,
+                  onTapRemainder: onReminderToggle,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
