@@ -63,12 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   ///
-  Future<void> loadTodos() async {
-    final data = await _todoDb.getTodos();
-    setState(() => todoList = data);
-  }
-
-  ///
   Future<void> onAddTodo() async {
     final result = await Navigator.push(
       context,
@@ -94,17 +88,16 @@ class _HomeScreenState extends State<HomeScreen> {
   ///
   Future<void> onDelete(int index) async {
     final todo = todoList[index];
-    await _todoDb.deleteTodo(todo.id!);
-    await loadTodos();
-    // ScaffoldMessenger.of(context).showSnackBar(
-    //   SnackBar(
-    //     content: const Text("Task Deleted"),
-    //     action: SnackBarAction(
-    //       label: "UNDO",
-    //       onPressed: () => setState(() => todoList.insert(index, deletedTodo)),
-    //     ),
-    //   ),
-    // );
+    final result = await _todoDb.deleteTodo(todo.id!);
+    if (result) {
+      await loadTodos();
+    }
+  }
+
+  ///
+  Future<void> loadTodos() async {
+    final data = await _todoDb.getTodos();
+    setState(() => todoList = data);
   }
 
   ///
