@@ -147,7 +147,14 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
       return;
     }
     final todo = _createTodo();
-    final result = await _todoDb.insertTodo(todo);
+    bool result = false;
+
+    if (isEdit) {
+      final updatedTodo = await todo.copyWith(id: widget.todo!.id);
+      result = await _todoDb.updateTodo(updatedTodo);
+    } else {
+      result = await _todoDb.insertTodo(todo);
+    }
     Navigator.pop(context, result);
   }
 
