@@ -70,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ///
   Future<void> loadTodos() async {
     final data = await _todoDb.getTodos();
+    debugPrint("Data: ${data.length}");
     setState(() => todoList = data);
   }
 
@@ -87,27 +88,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   ///
   void onUpdateTodo(int index) async {
-    final updatedTodo = await Navigator.of(context).push(
+    final result = await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => TodoFormScreen(todo: todoList[index])),
     );
 
-    if (updatedTodo != null) {
-      setState(() => todoList[index] = updatedTodo);
+    if (result) {
+      await loadTodos();
     }
   }
 
   ///
-  void onDelete(int index) {
-    final deletedTodo = todoList[index];
-    setState(() => todoList.removeAt(index));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text("Task Deleted"),
-        action: SnackBarAction(
-          label: "UNDO",
-          onPressed: () => setState(() => todoList.insert(index, deletedTodo)),
-        ),
-      ),
-    );
+  Future<void> onDelete(int index) async {
+    final todo = todoList[index];
+    await _todoDb.deleteTodo(todo.id!);
+    await loadTodos();
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(
+    //     content: const Text("Task Deleted"),
+    //     action: SnackBarAction(
+    //       label: "UNDO",
+    //       onPressed: () => setState(() => todoList.insert(index, deletedTodo)),
+    //     ),
+    //   ),
+    // );
   }
 }
