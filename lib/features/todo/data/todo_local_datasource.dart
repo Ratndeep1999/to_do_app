@@ -27,4 +27,15 @@ class TodoLocalDatasource {
       whereArgs: [id],
     );
   }
+
+  /// Update_Todo
+  Future<int> updateTodo(TodoModel todo) async {
+    final database = await db.db;
+    return await database.update(
+      DbConstants.kTableTodo,
+      todo.toMap(),
+      where: "${DbConstants.kColId} = ?",
+      whereArgs: [todo.id],
+    );
+  }
 }
