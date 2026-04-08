@@ -1,7 +1,7 @@
 class TodoModel {
   final int? id;
-  final bool isReminder;
-  final bool isTaskCompleted;
+  bool isReminder;
+  bool isTaskCompleted;
   final String title;
   final String description;
   final String repeat;
