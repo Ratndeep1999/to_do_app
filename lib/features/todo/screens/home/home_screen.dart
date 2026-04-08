@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
+import 'package:to_do_app/features/todo/data/todo_local_datasource.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/add_todo_button.dart';
 import 'package:to_do_app/features/todo/screens/home/widgets/header_filter_widget.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TodoLocalDatasource _todoDb = TodoLocalDatasource();
   List<TodoModel> todoList = [];
 
   @override
@@ -61,14 +63,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   ///
   Future<void> onAddTodo() async {
-    final TodoModel? data = await Navigator.push(
+    final result = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => TodoFormScreen()),
     );
 
-    if (data != null) {
-      setState(() => todoList.add(data));
-    }
+    debugPrint("Result: $result");
   }
 
   ///
