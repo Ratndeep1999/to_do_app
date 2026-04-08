@@ -1,5 +1,5 @@
 class DbConstants {
-  static const String kTableTodo = 'todos.db';
+  static const String kTableTodo = 'todos';
   static const int kDbVersion = 1;
   static const String kColId = 'id';
   static const String kColTitle = 'title';
