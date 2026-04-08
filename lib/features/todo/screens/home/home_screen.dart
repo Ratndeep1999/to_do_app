@@ -19,6 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<TodoModel> todoList = [];
 
   @override
+  void initState() {
+    super.initState();
+    loadTodos();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       /// Add Todo_Button
@@ -59,6 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  ///
+  Future<void> loadTodos() async {
+    final data = await _todoDb.getTodos();
+    setState(() => todoList = data);
   }
 
   ///
