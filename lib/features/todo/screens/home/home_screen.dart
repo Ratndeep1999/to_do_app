@@ -52,9 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
             TodoListView(
               todoList: todoList,
               onToggleComplete: onToggleComplete,
-              onToggleReminder: (int index) => setState(
-                () => todoList[index].isReminder = !todoList[index].isReminder,
-              ),
+              onToggleReminder: onToggleReminder,
               onItemTap: onUpdateTodo,
               onDelete: onDelete,
             ),
@@ -67,7 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
   ///
   Future<void> loadTodos() async {
     final data = await _todoDb.getTodos();
-    debugPrint("Data: ${data.length}");
     setState(() => todoList = data);
   }
 
@@ -113,8 +110,15 @@ class _HomeScreenState extends State<HomeScreen> {
   ///
   onToggleComplete(int index) async {
     final todo = todoList[index];
-    debugPrint("isTaskComplete 1: ${todo.isTaskCompleted}");
     final updatedTodo = todo.copyWith(isTaskCompleted: !todo.isTaskCompleted);
+    await _todoDb.updateTodo(updatedTodo);
+    await loadTodos();
+  }
+
+  ///
+  onToggleReminder(int index) async {
+    final todo = todoList[index];
+    final updatedTodo = todo.copyWith(isReminder: !todo.isReminder);
     await _todoDb.updateTodo(updatedTodo);
     await loadTodos();
   }
