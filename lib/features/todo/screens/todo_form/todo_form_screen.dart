@@ -152,6 +152,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
     if (isEdit) {
       final updatedTodo = await todo.copyWith(id: widget.todo!.id);
       result = await _todoDb.updateTodo(updatedTodo);
+      showSnackBar(context, 'Todo Update.....!');
     } else {
       result = await _todoDb.insertTodo(todo);
     }
