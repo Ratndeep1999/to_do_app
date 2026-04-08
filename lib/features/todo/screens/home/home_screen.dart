@@ -51,10 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
             /// ToDoList Widget
             TodoListView(
               todoList: todoList,
-              onToggleComplete: (int index) => setState(
-                () => todoList[index].isTaskCompleted =
-                    !todoList[index].isTaskCompleted,
-              ),
+              onToggleComplete: onToggleComplete,
               onToggleReminder: (int index) => setState(
                 () => todoList[index].isReminder = !todoList[index].isReminder,
               ),
@@ -111,5 +108,14 @@ class _HomeScreenState extends State<HomeScreen> {
     //     ),
     //   ),
     // );
+  }
+
+  ///
+  onToggleComplete(int index) async {
+    final todo = todoList[index];
+    debugPrint("isTaskComplete 1: ${todo.isTaskCompleted}");
+    final updatedTodo = todo.copyWith(isTaskCompleted: !todo.isTaskCompleted);
+    await _todoDb.updateTodo(updatedTodo);
+    await loadTodos();
   }
 }
