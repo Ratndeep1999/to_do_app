@@ -6,9 +6,10 @@ class TodoLocalDatasource {
   final db = DbService.instance;
 
   /// Add Todo_ to Database
-  Future<int> insertTodo(TodoModel todo) async {
+  Future<bool> insertTodo(TodoModel todo) async {
     final database = await db.db;
-    return await database.insert(DbConstants.kTableTodo, todo.toMap());
+    final result = await database.insert(DbConstants.kTableTodo, todo.toMap());
+    return result > 0;
   }
 
   /// Get Database Data
@@ -19,23 +20,25 @@ class TodoLocalDatasource {
   }
 
   /// Delete_Todo
-  Future<int> deleteTodo(int id) async {
+  Future<bool> deleteTodo(int id) async {
     final database = await db.db;
-    return await database.delete(
+    final result = await database.delete(
       DbConstants.kTableTodo,
       where: "${DbConstants.kColId} = ?",
       whereArgs: [id],
     );
+    return result > 0;
   }
 
   /// Update_Todo
-  Future<int> updateTodo(TodoModel todo) async {
+  Future<bool> updateTodo(TodoModel todo) async {
     final database = await db.db;
-    return await database.update(
+    final result = await database.update(
       DbConstants.kTableTodo,
       todo.toMap(),
       where: "${DbConstants.kColId} = ?",
       whereArgs: [todo.id],
     );
+    return result > 0;
   }
 }
