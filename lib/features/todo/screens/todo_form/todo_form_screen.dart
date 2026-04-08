@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/core/utils/helpers/date_time_helper.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
+import 'package:to_do_app/features/todo/data/todo_local_datasource.dart';
 import 'package:to_do_app/features/todo/model/todo_model.dart';
 import 'package:to_do_app/features/todo/common/widgets/close_screen_button.dart';
 import 'package:to_do_app/features/todo/common/widgets/todo_action_button_widget.dart';
@@ -20,6 +21,8 @@ class TodoFormScreen extends StatefulWidget {
 }
 
 class _TodoFormScreenState extends State<TodoFormScreen> {
+  final TodoLocalDatasource _todoDb = TodoLocalDatasource();
+
   bool isReminder = false;
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
@@ -138,12 +141,14 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
       _titleController.text.trim().isNotEmpty &&
       _descController.text.trim().isNotEmpty;
 
-  void onSubmit() {
+  Future<void> onSubmit() async {
     if (!isValid) {
       showSnackBar(context, 'Please Fill The Details Properly.....!');
       return;
     }
-    Navigator.of(context).pop(_createTodo());
+    final todo = _createTodo();
+    final result = await _todoDb.insertTodo(todo);
+    Navigator.pop(context, result);
   }
 
   /// Save Todo_Data
@@ -151,7 +156,6 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
     final now = DateTime.now(); // Current Time and Date
     return TodoModel(
       isReminder: isReminder,
-      isTaskCompleted: false,
       title: _titleController.text,
       description: _descController.text,
       days: selectedDays,
