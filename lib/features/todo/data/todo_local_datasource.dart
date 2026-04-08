@@ -17,4 +17,14 @@ class TodoLocalDatasource {
     final data = await database.query(DbConstants.kTableTodo);
     return data.map((e) => TodoModel.fromMap(e)).toList();
   }
+
+  /// Delete_Todo
+  Future<int> deleteTodo(int id) async {
+    final database = await db.db;
+    return await database.delete(
+      DbConstants.kTableTodo,
+      where: "${DbConstants.kColId} = ?",
+      whereArgs: [id],
+    );
+  }
 }
