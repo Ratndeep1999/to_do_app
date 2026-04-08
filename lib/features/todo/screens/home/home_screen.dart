@@ -80,7 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
       MaterialPageRoute(builder: (context) => TodoFormScreen()),
     );
 
-    debugPrint("Result: $result");
+    if (result) {
+      await loadTodos();
+    }
   }
 
   ///
