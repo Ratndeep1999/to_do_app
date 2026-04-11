@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       MaterialPageRoute(builder: (context) => TodoFormScreen()),
     );
 
-    if (result != null) {
+    if (result) {
       await loadTodos();
     }
   }
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
       MaterialPageRoute(builder: (_) => TodoFormScreen(todo: todoList[index])),
     );
 
-    if (result != null) {
+    if (result) {
       await loadTodos();
     }
   }
