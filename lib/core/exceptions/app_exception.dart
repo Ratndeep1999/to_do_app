@@ -9,3 +9,8 @@ class AppException implements Exception {
     return "${prefix ?? ""}$message";
   }
 }
+
+class DatabaseException extends AppException {
+  DatabaseException(String message)
+    : super(message, prefix: "Database Error: ");
+}
