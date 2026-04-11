@@ -17,27 +17,37 @@ class TodoLocalDatasource {
       );
       return result > 0;
     } catch (e) {
-      debugPrint(" Insert Error : $e");
+      debugPrint("Insert Error: $e");
       throw DatabaseException("Failed to insert todo");
     }
   }
 
   /// Get Database Data
   Future<List<TodoModel>> getTodos() async {
-    final database = await db.db;
-    final data = await database.query(DbConstants.kTableTodo);
-    return data.map((e) => TodoModel.fromMap(e)).toList();
+    try {
+      final database = await db.db;
+      final data = await database.query(DbConstants.kTableTodo);
+      return data.map((e) => TodoModel.fromMap(e)).toList();
+    } catch (e) {
+      debugPrint("Delete Error: $e");
+      throw DatabaseException("Failed to delete todo");
+    }
   }
 
   /// Delete_Todo
   Future<bool> deleteTodo(int id) async {
-    final database = await db.db;
-    final result = await database.delete(
-      DbConstants.kTableTodo,
-      where: "${DbConstants.kColId} = ?",
-      whereArgs: [id],
-    );
-    return result > 0;
+    try {
+      final database = await db.db;
+      final result = await database.delete(
+        DbConstants.kTableTodo,
+        where: "${DbConstants.kColId} = ?",
+        whereArgs: [id],
+      );
+      return result > 0;
+    } catch (e) {
+      debugPrint("Delete Error: $e");
+      throw DatabaseException("Failed to delete todo");
+    }
   }
 
   /// Update_Todo
