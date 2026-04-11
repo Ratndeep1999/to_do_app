@@ -52,13 +52,18 @@ class TodoLocalDatasource {
 
   /// Update_Todo
   Future<bool> updateTodo(TodoModel todo) async {
-    final database = await dbInstance.db;
-    final result = await database.update(
-      DbConstants.kTableTodo,
-      todo.toMap(),
-      where: "${DbConstants.kColId} = ?",
-      whereArgs: [todo.id],
-    );
-    return result > 0;
+    try {
+      final database = await dbInstance.db;
+      final result = await database.update(
+        DbConstants.kTableTodo,
+        todo.toMap(),
+        where: "${DbConstants.kColId} = ?",
+        whereArgs: [todo.id],
+      );
+      return result > 0;
+    } catch (e) {
+      debugPrint("Update Error: $e");
+      throw DatabaseException("Failed to update todo");
+    }
   }
 }
