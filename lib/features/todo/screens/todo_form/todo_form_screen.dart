@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:to_do_app/core/services/snackbar_service.dart';
 import 'package:to_do_app/core/utils/constants/app_text_styles.dart';
 import 'package:to_do_app/core/utils/helpers/date_time_helper.dart';
 import 'package:to_do_app/core/widgets/unfocus_keyboard_widget.dart';
@@ -137,6 +139,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
     setState(() => data ? selectedDays.remove(title) : selectedDays.add(title));
   }
 
+  /// Validate TextFields
   bool get isValid =>
       _titleController.text.trim().isNotEmpty &&
       _descController.text.trim().isNotEmpty;
@@ -149,20 +152,35 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
     final todo = _createTodo();
     bool result = false;
 
-    if (isEdit) {
-      final updatedTodo = await todo.copyWith(id: widget.todo!.id);
-      result = await _todoDb.updateTodo(updatedTodo);
-      showSnackBar(context, 'Todo Update.....!');
-    } else {
-      result = await _todoDb.insertTodo(todo);
+    try {
+      /// Update or Create
+      if (isEdit) {
+        final updatedTodo = todo.copyWith(id: widget.todo!.id);
+        result = await _todoDb.updateTodo(updatedTodo);
+      } else {
+        result = await _todoDb.insertTodo(todo);
+      }
+
+      if (!mounted) return;
+      if (result) {
+        SnackbarService.instance.showSuccess(
+          isEdit ? "Todo Updated!" : "Todo Created",
+        );
+        Navigator.pop(context, result);
+      } else {
+        SnackbarService.instance.showError("Operation failed!");
+      }
+    } on DatabaseException catch (e) {
+      SnackbarService.instance.showError(e.toString());
+    } catch (e) {
+      SnackbarService.instance.showError("Something went wrong!");
     }
-    Navigator.pop(context, result);
   }
 
   /// Save Todo_Data
   TodoModel _createTodo() {
     final now = DateTime.now(); // Current Time and Date
-    return TodoModel(
+    TodoModel savedTodo = TodoModel(
       isReminder: isReminder,
       title: _titleController.text,
       description: _descController.text,
@@ -172,6 +190,7 @@ class _TodoFormScreenState extends State<TodoFormScreen> {
       currentDate: DateTimeHelper.formatDate(now),
       createdAt: now,
     );
+    return savedTodo;
   }
 
   void showSnackBar(context, label) {
